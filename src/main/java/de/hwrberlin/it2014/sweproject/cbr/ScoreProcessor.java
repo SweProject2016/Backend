@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
+import de.hwrberlin.it2014.sweproject.thesaurus.ThesaurusLoader;
+
 /**
  * Klasse für Ähnlichkeitsanalyse
  * 
@@ -155,10 +157,10 @@ public class ScoreProcessor {
 		return filtered;
 	}
 
-	public static ArrayList<String> getSynonyms(String word){
+	/*public static ArrayList<String> getSynonyms(String word){
 		// TODO forward call: alle synonyme für ein keyword
 		return null;
-	}
+	}*/
 
 	/**
 	 * Erweitert ein Keyword um Synonyme
@@ -185,7 +187,7 @@ public class ScoreProcessor {
 	public ArrayList<String> expandSynonyms(ArrayList<String> keywords){
 		ArrayList<String> allKeywords = new ArrayList<>(keywords);
 		for(String keyword : keywords) {
-			ArrayList<String> synonyms = getSynonyms(keyword.toLowerCase());
+			ArrayList<String> synonyms = ThesaurusLoader.getSynonyms(keyword.toLowerCase());
 			for(String word : synonyms) {
 				if(!allKeywords.contains(word.toLowerCase())) {
 					allKeywords.add(word.toLowerCase());
