@@ -20,20 +20,27 @@ public class QueryBuilder {
 	}
 	/**
 	 * 
-	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlüsselwörter
-	 * @return Als Rückgabe erhält man die Datenbankanfrage, die die Spalten nach den Schlüsselworttreffern auswählt
+	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlüsselwörter(ohne synonyme)
+	 * @return Als Rückgabe erhält man die Datenbankanfrage, die die Zeilen nach den Schlüsselworttreffern auswählt
 	 */
 	private String buildQuery(String[] keywords){
-		String query = "SELECT * FROM TABLE_NAME WHERE ";
+		String query = "SELECT * FROM tbl_judgement WHERE CONTAINS((sentence, offence, keywords),";
+		String queryKeywords = " '";
 		
 		for(String key : keywords){
-			this.keysWithSyn.add(key);
+//			this.keysWithSyn.add(key);
+			queryKeywords += key.toLowerCase() + "','";
 			for(String syn : ThesaurusLoader.getSynonyms(key)){
-				keysWithSyn.add(syn);
+//				keysWithSyn.add(syn);
+				queryKeywords += syn.toLowerCase() + "','";
 			}
 		}
 		
-		
+		if(queryKeywords.endsWith("','")){
+			int len = 0;
+			len = queryKeywords.length();
+			queryKeywords = queryKeywords.substring(0, len-1);
+		}
 		
 		return query;
 	}
