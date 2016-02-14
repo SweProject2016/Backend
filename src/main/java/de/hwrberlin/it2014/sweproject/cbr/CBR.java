@@ -9,7 +9,9 @@ package de.hwrberlin.it2014.sweproject.cbr;
  */
 public class CBR {
 	
-	private ArrayList<Case> activeCases;
+	private ArrayList<Case> activeCases; //all cases from current userRequests
+	
+	
 	public HTTPResponse startCBR(ArrayList<String> usersInput)
 	{
 		//calls retrieve:CaseList
@@ -41,6 +43,6 @@ public class CBR {
 	
 	private void retain(Case evaluatedCase)
 	{
-		
+		//save the evalution from userResponse to the DB
 	}
 }
