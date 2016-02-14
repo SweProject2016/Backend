@@ -1,7 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.thesaurus.ThesaurusLoader;
-import java.util.ArrayList;
 
 /**
  * die Klasse baut eine SQL-Anfrage mit der die vom Nutzer eingegebenen Keywords mit der Datenbank verglichen werden können
@@ -20,16 +19,17 @@ public class QueryBuilder {
 		String queryKeywords = " '";
 		
 		for(String key : keywords){
-			queryKeywords += key.toLowerCase() + "','";
+			queryKeywords += key.toLowerCase() + " or ";
 			for(String syn : ThesaurusLoader.getSynonyms(key)){
-				queryKeywords += syn.toLowerCase() + "','";
+				queryKeywords += syn.toLowerCase() + " or ";
 			}
 		}
 		
-		if(queryKeywords.endsWith("','")){
+		if(queryKeywords.endsWith(" or ")){
 			int len = 0;
 			len = queryKeywords.length();
-			queryKeywords = queryKeywords.substring(0, len-1);
+			queryKeywords = queryKeywords.substring(0, len-3);
+			queryKeywords += "');";
 		}
 		
 		return query;
