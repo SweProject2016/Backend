@@ -1,5 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import de.hwrberlin.it2014.sweproject.cbr.Case.java;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ public class CBR {
 	private ArrayList<Case> activeCases; //all cases from current userRequests
 	
 	
-	public HTTPResponse startCBR(ArrayList<String> usersInput)
+	public String startCBR(ArrayList<String> usersInput)
 	{
 		//calls retrieve:CaseList
 		
@@ -20,7 +21,7 @@ public class CBR {
 		//build HTTPResponse
 	}
 	
-	public HTTPResponse saveUserEvaluate(Case evaluatedCase)
+	public String saveUserEvaluate(Case evaluatedCase)
 	{
 		//calls retain and write Case to DB
 	}
