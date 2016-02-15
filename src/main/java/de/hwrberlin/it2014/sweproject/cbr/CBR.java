@@ -15,6 +15,7 @@ public class CBR {
 	
 	public String startCBR(ArrayList<String> usersInput)
 	{
+		retrieve(usersInput);
 		return null;
 		//calls retrieve:CaseList
 		
@@ -22,19 +23,22 @@ public class CBR {
 		//build HTTPResponse
 	}
 	
-	public String saveUserEvaluate(Case evaluatedCase)
+	public String saveUserEvaluate(String evaluation)
 	{
-		return null;
+		return evaluation;
 		//calls retain and write Case to DB
 	}
 	
 	private ArrayList<Case> retrieve(ArrayList<String> usersInput)
 	{
+		Case c = new Case(usersInput);
+		activeCases.add(c);
+		
 		return activeCases;
 		//create new CaseObject
 		//save case in activeCases
 		//new query to DB
-		//recieves a CaseList with similiar cases
+		//recieves and returns a CaseList with similiar cases
 	}
 	
 	private ArrayList<Case> reuse(ArrayList<Case> caseListFromDBQuery)
@@ -51,6 +55,7 @@ public class CBR {
 	
 	private void retain(Case evaluatedCase)
 	{
+		//return something; boolean or HTTPCode(int)?
 		//save the evalution from userResponse to the DB
 	}
 }
