@@ -101,6 +101,9 @@ public class Judgement implements Scoreable {
 		this.pageRank = pageRank;
 	}
 
+	/**
+	 * @author Tobias Glaeser
+	 */
 	@Override
 	public ArrayList<String> getKeywordsAsList(){
 		// parse keywords in arraylist
@@ -112,6 +115,9 @@ public class Judgement implements Scoreable {
 		return l;
 	}
 
+	/**
+	 * @author Tobias Glaeser
+	 */
 	@Override
 	public long getTimestamp(){
 		return date.getTime();
