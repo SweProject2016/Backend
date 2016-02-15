@@ -1,6 +1,7 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * 

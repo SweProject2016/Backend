@@ -1,6 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
-import de.hwrberlin.it2014.sweproject.cbr.Case.java;
+import de.hwrberlin.it2014.sweproject.cbr.Case;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +15,7 @@ public class CBR {
 	
 	public String startCBR(ArrayList<String> usersInput)
 	{
+		return null;
 		//calls retrieve:CaseList
 		
 		//calls reuse and revise
@@ -23,11 +24,13 @@ public class CBR {
 	
 	public String saveUserEvaluate(Case evaluatedCase)
 	{
+		return null;
 		//calls retain and write Case to DB
 	}
 	
 	private ArrayList<Case> retrieve(ArrayList<String> usersInput)
 	{
+		return activeCases;
 		//create new CaseObject
 		//save case in activeCases
 		//new query to DB
@@ -36,11 +39,13 @@ public class CBR {
 	
 	private ArrayList<Case> reuse(ArrayList<Case> caseListFromDBQuery)
 	{
+		return caseListFromDBQuery;
 		//edit and control the caselist from DB-query
 	}
 	
 	private ArrayList<Case> revise(ArrayList<Case> caseListFromReuse)
 	{
+		return caseListFromReuse;
 		//build HTTPResponse
 	}
 	
