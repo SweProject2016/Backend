@@ -1,8 +1,10 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import java.util.ArrayList;
+
 /**
  * 
- * @author Max
+ * @author Max Bock
  *
  */
 public class Case {
@@ -11,7 +13,7 @@ public class Case {
 	
 	public Case(ArrayList<String> userInput)
 	{
-		description=userInput.toString();
+		//description=userInput.toString();
 	}
 	
 	public void getSimiliarFromDB()

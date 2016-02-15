@@ -1,10 +1,10 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
-//import ArrayList;
+import java.util.ArrayList;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
- * @author Max
+ * @author Max Bock
  * 
  */
 public class CBR {
@@ -15,6 +15,7 @@ public class CBR {
 	public HTTPResponse startCBR(ArrayList<String> usersInput)
 	{
 		//calls retrieve:CaseList
+		
 		//calls reuse and revise
 		//build HTTPResponse
 	}
@@ -27,6 +28,7 @@ public class CBR {
 	private ArrayList<Case> retrieve(ArrayList<String> usersInput)
 	{
 		//create new CaseObject
+		//save case in activeCases
 		//new query to DB
 		//recieves a CaseList with similiar cases
 	}
