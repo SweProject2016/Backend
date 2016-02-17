@@ -12,12 +12,6 @@ public interface PageRankable {
 
 	/**
 	 * @author Tobias Glaeser
-	 * @return pagerank dieses objektes
-	 */
-	public double getPageRank();
-
-	/**
-	 * @author Tobias Glaeser
 	 * @return liste mit von diesem objekt referenzierten objekten
 	 */
 	public ArrayList<PageRankable> getReferenced();
