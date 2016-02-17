@@ -80,8 +80,8 @@ public class DatabaseConnection {
 		ArrayList<Judgement> list = new ArrayList<Judgement>();
 		HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
 		HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
-		Judgement judge = new Judgement(null, null);
 		while(rs.next()){
+			Judgement judge = new Judgement(null, null);
 			judge.setFileReference(rs.getString("file_reference"));
 			judge.setKeywords(rs.getString("keywords"));
 			judge.setOffence(rs.getString("offence"));
@@ -119,6 +119,37 @@ public class DatabaseConnection {
 	}
 	
 	/**
+	 * Converts a ResultSet into an ArrayList of Result
+	 * 
+	 * @author Dominik Habel
+	 *
+	 * @param rs result of a query (query must be SELECT * [...])
+	 * @return ArrayList of Result
+	 * @throws SQLException 
+	 */
+	public ArrayList<Result> convertResultSetToResultList(ResultSet rs) throws SQLException{
+		ArrayList<Result> list = new ArrayList<Result>();
+		HashMap<Integer, Judgement> j = new HashMap<Integer, Judgement>();
+		while(rs.next()){
+			Result result = new Result(null, null, 0);
+			result.setUserInput(rs.getString("user_input"));
+			result.setSimilarity(rs.getFloat("similarity"));
+			
+			int id = rs.getInt("picked_file");
+			Judgement judge = j.get(id);
+			if(judge==null){
+				ResultSet newLS = executeQuery("SELECT name FROM tbl_results WHERE ID="+id+";");
+				ArrayList<Judgement> dummy = convertResultSetToJudgementList(newLS);
+				j.put(id, dummy.get(0));
+				result.setJudgement(dummy.get(0));
+			}else{
+				result.setJudgement(judge);
+			}
+		}
+		return list;
+	}
+	
+	/**
 	 * Converts a ResultSet into an ArrayList of LawSector
 	 * 
 	 * @author Dominik Habel
@@ -127,7 +158,7 @@ public class DatabaseConnection {
 	 * @return ArrayList of LawSector
 	 * @throws SQLException 
 	 */
-	public ArrayList<LawSector> convertResultToLawSectorList(ResultSet rs) throws SQLException{
+	public ArrayList<LawSector> convertResultSetToLawSectorList(ResultSet rs) throws SQLException{
 		ArrayList<LawSector> list = new ArrayList<LawSector>();
 		while(rs.next()){
 			LawSector dummy = new LawSector(rs.getString("name"));
@@ -145,7 +176,7 @@ public class DatabaseConnection {
 	 * @return ArrayList of Committee
 	 * @throws SQLException 
 	 */
-	public ArrayList<Committee> convertResultToCommitteeList(ResultSet rs) throws SQLException{
+	public ArrayList<Committee> convertResultSetToCommitteeList(ResultSet rs) throws SQLException{
 		ArrayList<Committee> list = new ArrayList<Committee>();
 		while(rs.next()){
 			Committee dummy = new Committee(rs.getString("name"));
