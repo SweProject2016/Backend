@@ -17,16 +17,15 @@ public class Case {
 	private ArrayList<String> description;
 	private String offense;
 	private QueryBuilder queryBuilder;
-	private QueryBuilder queryBuilder;
 	
-	public Case(ArrayList<String> userInput)
+	public Case(ArrayList<String> userInput) //constructor for userrequest
 	{
 	    queryBuilder = new QueryBuilder();
-	    String query = queryBuilder.buildquery(userInput);
+	    String query = queryBuilder.buildQuery(userInput);
 		description=userInput;
 	}
 	
-	public Case(String sentence, String offense)
+	public Case(String sentence, String offense) //constructor for resultset
 	{
 		description = new ArrayList<String>();
 		description.add(sentence);
@@ -39,8 +38,8 @@ public class Case {
 	    String query = QueryBuilder.buildQuery(description);
 	    ResultSet rs=dbc.executeQuery(query);
 	    ArrayList<Case> casesFromQuery= new ArrayList<Case>();
-	    int colSent=5; //right column?
-	    int colOff=6;
+	    int colSent=5; //right column? //column of sentence
+	    int colOff=6; //column of offense
 	    while (rs.next())
 	    {
 	    	Case c = new Case(rs.getString(colSent),rs.getString(colOff));
