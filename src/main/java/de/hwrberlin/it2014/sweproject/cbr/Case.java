@@ -16,12 +16,9 @@ public class Case {
 	
 	private ArrayList<String> description;
 	private String offense;
-	private QueryBuilder queryBuilder;
 	
 	public Case(ArrayList<String> userInput) //constructor for userrequest
 	{
-	    queryBuilder = new QueryBuilder();
-	    String query = queryBuilder.buildQuery(userInput);
 		description=userInput;
 	}
 	

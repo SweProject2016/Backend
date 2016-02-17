@@ -1,6 +1,9 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Case;
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -11,11 +14,26 @@ import java.util.ArrayList;
 public class CBR {
 	
 	private ArrayList<Case> activeCases; //all cases from current userRequests
+	DatabaseConnection dbc;
 	
+	public CBR()
+	{
+		dbc=new DatabaseConnection();
+        String host="localhost";
+        String database="swe_project";
+        String user="user";
+        String pwd="pwd";
+		dbc.connectToMysql(host, database, user, pwd);
+	}
 	
 	public String startCBR(ArrayList<String> usersInput)
 	{
-		retrieve(usersInput);
+		try {
+			retrieve(usersInput);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 		//calls retrieve:CaseList
 		
@@ -29,11 +47,11 @@ public class CBR {
 		//calls retain and write Case to DB
 	}
 	
-	private void retrieve(ArrayList<String> usersInput)
+	private ArrayList<Case> retrieve(ArrayList<String> usersInput) throws SQLException
 	{
 		Case c = new Case(usersInput);
 		activeCases.add(c);
-		
+		return c.getSimiliarFromDB(dbc);
 		//create new CaseObject
 		//save case in activeCases
 		//new query to DB
