@@ -59,15 +59,11 @@ public class CBR {
 		try {
 			resultList=retrieve(usersInput);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			resultList=new ArrayList<Result>();
-			e.printStackTrace();
+			//TODO write to log
+			e.printStackTrace(); 
 		}
 		return resultList;
-		//calls retrieve:CaseList
-		
-		//calls reuse and revise
-		//build HTTPResponse
 	}
 
 	/**
