@@ -6,6 +6,7 @@ import de.hwrberlin.it2014.sweproject.database.Judgement;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.json.*;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
