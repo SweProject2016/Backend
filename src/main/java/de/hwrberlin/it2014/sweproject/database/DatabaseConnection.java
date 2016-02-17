@@ -74,7 +74,7 @@ public class DatabaseConnection {
 	 *
 	 * @param rs result of a query (query must be SELECT * [...])
 	 * @return ArrayList of Judgement
-	 * @throws SQLException if query used to create ResultSet is not SELECT * [...]
+	 * @throws SQLException 
 	 */
 	public ArrayList<Judgement> convertResultSetToJudgementList(ResultSet rs) throws SQLException{
 		ArrayList<Judgement> list = new ArrayList<Judgement>();
@@ -114,6 +114,42 @@ public class DatabaseConnection {
 			}
 			
 			list.add(judge);
+		}
+		return list;
+	}
+	
+	/**
+	 * Converts a ResultSet into an ArrayList of LawSector
+	 * 
+	 * @author Dominik Habel
+	 *
+	 * @param rs result of a query (query must be SELECT * [...])
+	 * @return ArrayList of LawSector
+	 * @throws SQLException 
+	 */
+	public ArrayList<LawSector> convertResultToLawSectorList(ResultSet rs) throws SQLException{
+		ArrayList<LawSector> list = new ArrayList<LawSector>();
+		while(rs.next()){
+			LawSector dummy = new LawSector(rs.getString("name"));
+			list.add(dummy);
+		}
+		return list;
+	}
+	
+	/**
+	 * Converts a ResultSet into an ArrayList of Committee
+	 * 
+	 * @author Dominik Habel
+	 *
+	 * @param rs result of a query (query must be SELECT * [...])
+	 * @return ArrayList of Committee
+	 * @throws SQLException 
+	 */
+	public ArrayList<Committee> convertResultToCommitteeList(ResultSet rs) throws SQLException{
+		ArrayList<Committee> list = new ArrayList<Committee>();
+		while(rs.next()){
+			Committee dummy = new Committee(rs.getString("name"));
+			list.add(dummy);
 		}
 		return list;
 	}
