@@ -33,6 +33,26 @@ public class CBR {
 		activeCases = new ArrayList<Case>();
 	}
 	
+	/**
+	 * @author Max Bock
+	 * @param usersInput (String)
+	 * @return ähnliche Fälle
+	 */
+	public ArrayList<Result> startCBR(String usersInput)
+	{
+		ArrayList<String> al = new ArrayList<>();
+		String[] ar = usersInput.split(" ");
+		for(String s:ar){
+			al.add(s);
+		}
+		return startCBR(al);
+	}
+	
+	/**
+	 * @author Max Bock
+	 * @param usersInput (ArrayList<String>)
+	 * @return ähnliche Fälle
+	 */
 	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
 		ArrayList<Result> resultList;
