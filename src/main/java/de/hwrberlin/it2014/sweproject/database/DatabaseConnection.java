@@ -130,6 +130,8 @@ public class DatabaseConnection {
 	public ArrayList<Result> convertResultSetToResultList(ResultSet rs) throws SQLException{
 		ArrayList<Result> list = new ArrayList<Result>();
 		HashMap<Integer, Judgement> j = new HashMap<Integer, Judgement>();
+		HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
+		HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
 		while(rs.next()){
 			Result result = new Result(null, null, 0);
 			result.setUserInput(rs.getString("user_input"));
@@ -139,9 +141,42 @@ public class DatabaseConnection {
 			Judgement judge = j.get(id);
 			if(judge==null){
 				ResultSet newLS = executeQuery("SELECT name FROM tbl_results WHERE ID="+id+";");
-				ArrayList<Judgement> dummy = convertResultSetToJudgementList(newLS);
-				j.put(id, dummy.get(0));
-				result.setJudgement(dummy.get(0));
+				//questionable
+				Judgement dummy = new Judgement(null, null);
+				dummy.setFileReference(newLS.getString("file_reference"));
+				dummy.setKeywords(newLS.getString("keywords"));
+				dummy.setOffence(newLS.getString("offence"));
+				dummy.setSentence(newLS.getString("sentence"));
+				dummy.setPdfFileName(newLS.getString("pdf_filename"));
+				dummy.setPdfLink(newLS.getString("pdf_link"));
+				dummy.setDate(newLS.getDate("date"));
+				dummy.setPageRank(newLS.getFloat("page_rank"));
+				
+				int id2 = newLS.getInt("law_sector");
+				LawSector sector = ls.get(id2);
+				if(sector==null){
+					ResultSet newLS2 = executeQuery("SELECT name FROM tbl_law_sector WHERE ID="+id2+";");
+					LawSector dummy2 = new LawSector(newLS2.getString("name"));
+					ls.put(id2, dummy2);
+					dummy.setSector(dummy2);
+				}else{
+					dummy.setSector(sector);
+				}
+				
+				id2=newLS.getInt("committee");
+				Committee committee = c.get(id2);
+				if(committee==null){
+					ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE ID="+id2+";");
+					Committee dummy2 = new Committee(newC.getString("name"));
+					c.put(id2, dummy2);
+					dummy.setComittee(dummy2);
+				}else{
+					dummy.setComittee(committee);
+				}
+				//end
+//				ArrayList<Judgement> dummy = convertResultSetToJudgementList(newLS);
+				j.put(id, dummy);
+				result.setJudgement(dummy);
 			}else{
 				result.setJudgement(judge);
 			}
