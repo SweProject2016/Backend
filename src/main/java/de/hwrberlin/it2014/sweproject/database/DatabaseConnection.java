@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseConnection {
 	private Connection con;
@@ -63,6 +65,57 @@ public class DatabaseConnection {
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		return rs;
+	}
+	
+	/**
+	 * Converts a ResultSet into an ArrayList of Judgements
+	 * 
+	 * @author Dominik Habel
+	 *
+	 * @param rs result of a query (query must be SELECT * [...])
+	 * @return ArrayList of Judgement
+	 * @throws SQLException if query used to create ResultSet is not SELECT * [...]
+	 */
+	public ArrayList<Judgement> convertResultSetToJudgementList(ResultSet rs) throws SQLException{
+		ArrayList<Judgement> list = new ArrayList<Judgement>();
+		HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
+		HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
+		Judgement judge = new Judgement(null, null);
+		while(rs.next()){
+			judge.setFileReference(rs.getString("file_reference"));
+			judge.setKeywords(rs.getString("keywords"));
+			judge.setOffence(rs.getString("offence"));
+			judge.setSentence(rs.getString("sentence"));
+			judge.setPdfFileName(rs.getString("pdf_filename"));
+			judge.setPdfLink(rs.getString("pdf_link"));
+			judge.setDate(rs.getDate("date"));
+			judge.setPageRank(rs.getFloat("page_rank"));
+			
+			int id = rs.getInt("law_sector");
+			LawSector sector = ls.get(id);
+			if(sector==null){
+				ResultSet newLS = executeQuery("SELECT name FROM tbl_law_sector WHERE ID="+id+";");
+				LawSector dummy = new LawSector(newLS.getString("name"));
+				ls.put(id, dummy);
+				judge.setSector(dummy);
+			}else{
+				judge.setSector(sector);
+			}
+			
+			int id2=rs.getInt("committee");
+			Committee committee = c.get(id2);
+			if(committee==null){
+				ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE ID="+id2+";");
+				Committee dummy = new Committee(newC.getString("name"));
+				c.put(id2, dummy);
+				judge.setComittee(dummy);
+			}else{
+				judge.setComittee(committee);
+			}
+			
+			list.add(judge);
+		}
+		return list;
 	}
 	
 	/**
