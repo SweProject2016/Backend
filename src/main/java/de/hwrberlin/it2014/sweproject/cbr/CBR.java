@@ -2,14 +2,14 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Case;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.database.Judgement;
+import de.hwrberlin.it2014.sweproject.database.Result;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.json.*;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
+ * 
  * @author Max Bock & Felix Lehmann
  * 
  */
@@ -18,6 +18,10 @@ public class CBR {
 	private ArrayList<Case> activeCases; //all cases from current userRequests
 	DatabaseConnection dbc;
 	
+	/**
+	 * erstellt eine Datenbankverbindung
+	 * @author Max Bock
+	 */
 	public CBR()
 	{
 		dbc=new DatabaseConnection();
@@ -29,41 +33,75 @@ public class CBR {
 		activeCases = new ArrayList<Case>();
 	}
 	
-	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
+	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
-		ArrayList<Judgement> judgList;
+		ArrayList<Result> resultList;
 		try {
-			judgList=retrieve(usersInput);
+			resultList=retrieve(usersInput);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			judgList=new ArrayList<Judgement>();
+			resultList=new ArrayList<Result>();
 			e.printStackTrace();
 		}
-		return judgList;
+		return resultList;
 		//calls retrieve:CaseList
 		
 		//calls reuse and revise
 		//build HTTPResponse
 	}
 
-	public String saveUserEvaluate(String evaluation)
+	/**
+	 * 
+	 * @param evaluation
+	 * @return
+	 */
+	public String saveUserEvaluate(String evaluation) //jean-pierre
 	{
 		return evaluation;
 		//calls retain and write Case to DB
 		//build response if successful or not
 	}
 	
-	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
+	/**
+	 * interne Methode für den CBR-Zyklus
+	 * @author Max Bock
+	 * @param usersInput
+	 * @return ähnliche Fälle
+	 * @throws SQLException
+	 */
+	private ArrayList<Result> retrieve(ArrayList<String> usersInput) throws SQLException
 	{
-		Case c = new Case(usersInput);
+		Case c = new Case(getHighestID()+1,usersInput);
 		activeCases.add(c);
 		return c.getSimiliarFromDB(dbc);
 		//recieves and returns a CaseList with similiar cases
 	}
 	
-	private void retain(Case evaluatedCase)
+	/**
+	 *
+	 * @param evaluatedCase
+	 */
+	private void retain(Case evaluatedCase) //jean-pierre
 	{
 		//return something; boolean or HTTPCode(int)?
 		//save the evalution from userResponse to the DB
+		//remove Case from activeCases
+	}
+	
+	/**
+	 * @author Max Bock
+	 * @return highest ID in activeCases
+	 */
+	private int getHighestID()
+	{
+		int id=0;
+		for(Case c: activeCases)
+		{
+			if(c.getID()>id)
+			{
+				id=c.getID();
+			}
+		}
+		return id;
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.Judgement;
+import de.hwrberlin.it2014.sweproject.database.Result;
 
 /**
  * 
@@ -17,25 +18,41 @@ public class Case {
 	
 	private int id;
 	private ArrayList<String> description;
-	private String offense;
 	
-	public Case(ArrayList<String> userInput) //constructor for userrequest
+	/**
+	 * @author Max Bock
+	 * @param interne id, um später die evaluation zur Anfrage zu zu ordnen
+	 * @param userInput
+	 */
+	public Case(int id, ArrayList<String> userInput) //constructor for userrequest
 	{
 		description=userInput;
+		this.id=id;
 	}
-		
-	public ArrayList<Judgement> getSimiliarFromDB(DatabaseConnection dbc) throws SQLException
+	
+	/**
+	 * @author Max Bock
+	 * @param DatabaseConnection
+	 * @return ArrayList of Sets containing all similiar cases from DB
+	 * @throws SQLException
+	 */
+	public ArrayList<Result> getSimiliarFromDB(DatabaseConnection dbc) throws SQLException
 	{
 		//queryBuilder = new QueryBuilder(); buildQuery is static
 	    String query = QueryBuilder.buildQuery(description);
 	    ResultSet rs=dbc.executeQuery(query);
 	    ArrayList<Judgement> judgListFromQuery = dbc.convertResultSetToJudgementList(rs);
-	    return judgListFromQuery;
+	    return JudgementToResultList(judgListFromQuery);
 		//load similiar cases from DB for step: retrieve
 	}
 	
-	public void saveEvaluation(Case ca, String eval) 
-	//alt. parameter: (ArrayList<Case> evaluatedCases) and ad	d evaluation as attribute to case
+	/**
+	 * 
+	 * @param Case
+	 * @param Evaluation
+	 */
+	public void saveEvaluation(Case ca, String eval) //soll Jean-Pierre machen
+	//alt. parameter: (ArrayList<Case> evaluatedCases) and add evaluation as attribute to case
 	{
 		//save the evaluated cases to DB for step: retain
 	}
@@ -53,5 +70,20 @@ public class Case {
 	public int getID()
 	{
 		return id;
+	}
+	
+	/**
+	 * @author Max Bock
+	 * @param JudgementList from DBQuery
+	 * @return a ArrayList containing Result (userInput, Judgement and similiarity)
+	 */
+	private ArrayList<Result> JudgementToResultList(ArrayList<Judgement> judgList) {
+		// TODO Auto-generated method stub
+		ArrayList<Result> rl=new ArrayList<Result>();
+		for(Judgement j : judgList)
+		{
+			rl.add(new Result(getDescription(), j, 1.0f)); //wie berechnet sich die similiarity?!
+		}
+		return rl;
 	}
 }
