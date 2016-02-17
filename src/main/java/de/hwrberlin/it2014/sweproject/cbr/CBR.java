@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
- * @author Max Bock
+ * @author Max Bock & Felix Lehmann
  * 
  */
 public class CBR {
@@ -29,12 +29,11 @@ public class CBR {
 		//calls retain and write Case to DB
 	}
 	
-	private ArrayList<Case> retrieve(ArrayList<String> usersInput)
+	private void retrieve(ArrayList<String> usersInput)
 	{
 		Case c = new Case(usersInput);
 		activeCases.add(c);
 		
-		return activeCases;
 		//create new CaseObject
 		//save case in activeCases
 		//new query to DB

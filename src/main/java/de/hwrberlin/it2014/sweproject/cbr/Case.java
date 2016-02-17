@@ -5,15 +5,18 @@ import java.util.Map;
 
 /**
  * 
- * @author Max Bock
+ * @author Max Bock & Felix Lehmann
  *
  */
 public class Case {
 	
 	private String description;
+	private QueryBuilder queryBuilder;
 	
 	public Case(ArrayList<String> userInput)
 	{
+	    queryBuilder = new QueryBuilder();
+	    String query = queryBuilder.buildquery(userInput);
 		//description=userInput.toString();
 	}
 	
