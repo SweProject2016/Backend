@@ -29,7 +29,7 @@ public class CBR {
 		activeCases = new ArrayList<Case>();
 	}
 	
-	public String startCBR(ArrayList<String> usersInput)
+	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
 	{
 		ArrayList<Judgement> judgList;
 		try {
@@ -39,27 +39,11 @@ public class CBR {
 			judgList=new ArrayList<Judgement>();
 			e.printStackTrace();
 		}
-		return judgmentListToJson(judgList);
+		return judgList;
 		//calls retrieve:CaseList
 		
 		//calls reuse and revise
 		//build HTTPResponse
-	}
-	
-	private String judgmentListToJson(ArrayList<Judgement> judgList) {
-		// TODO Auto-generated method stub
-		String build="[";
-		for(Judgement j : judgList)
-		{
-			build+="{\"sentence\":\""+j.getSentence()+"\",";
-			build+="\"keywords\":\""+j.getKeywords()+"\",";
-			build+="\"offence\":\""+j.getOffence()+"\",";
-			build+="\"date\":\""+j.getDate().toString()+"\"";
-			//build+="\"comitte\":\""+j.getComittee()+"\",";
-			build+="}";
-		}
-		build+="]";
-		return build;
 	}
 
 	public String saveUserEvaluate(String evaluation)
