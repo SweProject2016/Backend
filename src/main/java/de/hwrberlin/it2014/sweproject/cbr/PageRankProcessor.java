@@ -36,7 +36,7 @@ public class PageRankProcessor {
 	 * 
 	 * @author Tobias Glaeser
 	 * @param rankables liste mit objekten deren PageRank berechnet werden soll
-	 * @param iterations berechnungsiterationen für pagerank
+	 * @param iterations berechnungsiterationen für pagerank (lt. Google sind 100 ok)
 	 * @return liste mit pageranks, sortiert nach elementen der eingabeliste
 	 */
 	public ArrayList<Double> recomputePageRanks(ArrayList<PageRankable> rankables, int iterations){
