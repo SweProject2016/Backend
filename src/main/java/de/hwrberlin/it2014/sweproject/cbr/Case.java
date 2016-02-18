@@ -18,6 +18,7 @@ public class Case {
 	
 	private int id;
 	private ArrayList<String> description;
+	private ArrayList<Judgement> similiarCases;
 	
 	/**
 	 * @author Max Bock
@@ -40,9 +41,9 @@ public class Case {
 	{
 		//queryBuilder = new QueryBuilder(); buildQuery is static
 	    String query = QueryBuilder.buildQuery(description);
-	    ResultSet rs=dbc.executeQuery(query);
-	    ArrayList<Judgement> judgListFromQuery = dbc.convertResultSetToJudgementList(rs);
-	    return JudgementToResultList(judgListFromQuery);
+	    ResultSet rs = dbc.executeQuery(query);
+	    similiarCases = dbc.convertResultSetToJudgementList(rs);
+	    return JudgementToResultList(similiarCases);
 		//load similiar cases from DB for step: retrieve
 	}
 	
@@ -54,6 +55,7 @@ public class Case {
 	public void saveEvaluation(Case ca, String eval) //soll Jean-Pierre machen
 	//alt. parameter: (ArrayList<Case> evaluatedCases) and add evaluation as attribute to case
 	{
+		//TODO
 		//save the evaluated cases to DB for step: retain
 	}
 	
@@ -78,11 +80,11 @@ public class Case {
 	 * @return a ArrayList containing Result (userInput, Judgement and similiarity)
 	 */
 	private ArrayList<Result> JudgementToResultList(ArrayList<Judgement> judgList) {
-		// TODO Auto-generated method stub
 		ArrayList<Result> rl=new ArrayList<Result>();
 		for(Judgement j : judgList)
 		{
-			rl.add(new Result(getDescription(), j, 1.0f)); //wie berechnet sich die similiarity?!
+			float sim=Result.calcSimilarity();
+			rl.add(new Result(this.getDescription(), j, sim)); //wie berechnet sich die similiarity?!
 		}
 		return rl;
 	}

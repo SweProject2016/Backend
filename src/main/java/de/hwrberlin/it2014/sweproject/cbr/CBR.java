@@ -73,11 +73,48 @@ public class CBR {
 	 */
 	public String saveUserEvaluate(String evaluation) //jean-pierre
 	{
+		//TODO
+		int id=0;
+		retain (getCaseByID(id));
 		return evaluation;
 		//calls retain and write Case to DB
 		//build response if successful or not
 	}
+
+	/**
+	 * Löscht einen Fall aus den activeCases
+	 * @author Max Bock
+	 * @param CaseID
+	 * @return boolean
+	 */
+	private boolean removeCaseByID(int id)
+	{
+		Case c = getCaseByID(id);
+		if(null!=c)
+			return activeCases.remove(c);
+		else
+			return false;
+	}
 	
+	/**
+	 * liefert für die Bewertung anhand der ID den Case zurück
+	 * @author Max Bock
+	 * @param interne Case ID
+	 * @return Case
+	 */
+	private Case getCaseByID(int id) 
+	{
+		for(Case c :activeCases)
+		{
+			if(c.getID()==id)
+			{
+				return c;
+			}
+		}
+		return null;
+	}
+	
+
 	/**
 	 * interne Methode für den CBR-Zyklus
 	 * @author Max Bock
@@ -99,6 +136,7 @@ public class CBR {
 	 */
 	private void retain(Case evaluatedCase) //jean-pierre
 	{
+		//TODO
 		//return something; boolean or HTTPCode(int)?
 		//save the evalution from userResponse to the DB
 		//remove Case from activeCases
