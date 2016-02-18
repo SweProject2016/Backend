@@ -34,4 +34,9 @@ public class Result {
 	public void setSimilarity(float similarity){
 		this.similarity=similarity;
 	}
+
+	public static float calcSimilarity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
