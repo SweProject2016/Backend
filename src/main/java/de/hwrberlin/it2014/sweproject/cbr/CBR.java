@@ -35,17 +35,27 @@ public class CBR {
 	
 	/**
 	 * @author Max Bock
+	 * @param usersInput (String[])
+	 * @return ähnliche Fälle
+	 */
+	public ArrayList<Result> startCBR(String[] usersInput)
+	{
+		ArrayList<String> al = new ArrayList<>();
+		for(String s:usersInput){
+			al.add(s);
+		}
+		return startCBR(al);
+	}
+	
+	/**
+	 * @author Max Bock
 	 * @param usersInput (String)
 	 * @return ähnliche Fälle
 	 */
 	public ArrayList<Result> startCBR(String usersInput)
 	{
-		ArrayList<String> al = new ArrayList<>();
 		String[] ar = usersInput.split(" ");
-		for(String s:ar){
-			al.add(s);
-		}
-		return startCBR(al);
+		return startCBR(ar);
 	}
 	
 	/**
