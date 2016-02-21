@@ -141,7 +141,7 @@ public class DatabaseConnection {
 			Judgement judge = j.get(id);
 			if(judge==null){
 				ResultSet newLS = executeQuery("SELECT name FROM tbl_results WHERE ID="+id+";");
-				//questionable
+				//questionable but should save some memory
 				Judgement dummy = new Judgement(null, null);
 				dummy.setFileReference(newLS.getString("file_reference"));
 				dummy.setKeywords(newLS.getString("keywords"));
@@ -173,7 +173,8 @@ public class DatabaseConnection {
 				}else{
 					dummy.setComittee(committee);
 				}
-				//end
+				//end of questionable stuff
+				//next line: alternative
 //				ArrayList<Judgement> dummy = convertResultSetToJudgementList(newLS);
 				j.put(id, dummy);
 				result.setJudgement(dummy);
