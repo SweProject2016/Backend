@@ -94,7 +94,8 @@ public class DatabaseConnection {
 			int id = rs.getInt("law_sector");
 			LawSector sector = ls.get(id);
 			if(sector==null){
-				ResultSet newLS = executeQuery("SELECT name FROM tbl_law_sector WHERE ID="+id+";");
+				ResultSet newLS = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id+";");
+				newLS.next();
 				LawSector dummy = new LawSector(newLS.getString("name"));
 				ls.put(id, dummy);
 				judge.setSector(dummy);
@@ -105,7 +106,8 @@ public class DatabaseConnection {
 			int id2=rs.getInt("committee");
 			Committee committee = c.get(id2);
 			if(committee==null){
-				ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE ID="+id2+";");
+				ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE id="+id2+";");
+				newC.next();
 				Committee dummy = new Committee(newC.getString("name"));
 				c.put(id2, dummy);
 				judge.setComittee(dummy);
@@ -140,7 +142,8 @@ public class DatabaseConnection {
 			int id = rs.getInt("picked_file");
 			Judgement judge = j.get(id);
 			if(judge==null){
-				ResultSet newLS = executeQuery("SELECT name FROM tbl_results WHERE ID="+id+";");
+				ResultSet newLS = executeQuery("SELECT * FROM tbl_judgement WHERE id="+id+";");
+				newLS.next();
 				//questionable but should save some memory
 				Judgement dummy = new Judgement(null, null);
 				dummy.setFileReference(newLS.getString("file_reference"));
@@ -155,7 +158,8 @@ public class DatabaseConnection {
 				int id2 = newLS.getInt("law_sector");
 				LawSector sector = ls.get(id2);
 				if(sector==null){
-					ResultSet newLS2 = executeQuery("SELECT name FROM tbl_law_sector WHERE ID="+id2+";");
+					ResultSet newLS2 = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id2+";");
+					newLS2.next();
 					LawSector dummy2 = new LawSector(newLS2.getString("name"));
 					ls.put(id2, dummy2);
 					dummy.setSector(dummy2);
@@ -166,7 +170,8 @@ public class DatabaseConnection {
 				id2=newLS.getInt("committee");
 				Committee committee = c.get(id2);
 				if(committee==null){
-					ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE ID="+id2+";");
+					ResultSet newC = executeQuery("SELECT name FROM tbl_committee WHERE id="+id2+";");
+					newC.next();
 					Committee dummy2 = new Committee(newC.getString("name"));
 					c.put(id2, dummy2);
 					dummy.setComittee(dummy2);
@@ -181,6 +186,7 @@ public class DatabaseConnection {
 			}else{
 				result.setJudgement(judge);
 			}
+			list.add(result);
 		}
 		return list;
 	}

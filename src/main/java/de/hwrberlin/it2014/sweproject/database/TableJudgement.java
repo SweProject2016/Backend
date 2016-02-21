@@ -1,6 +1,7 @@
 package de.hwrberlin.it2014.sweproject.database;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class TableJudgement {
 
@@ -11,7 +12,8 @@ public class TableJudgement {
 		sql+="'"+judgement.getFileReference()+"',";
 		//TODO: committee+law_sector-parse
 		sql+="c.id,ls.id,";
-		DateFormat form = DateFormat.getDateInstance(DateFormat.SHORT);
+		DateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+//		DateFormat form = DateFormat.getDateInstance(DateFormat.SHORT);
 		String dummy = form.format(judgement.getDate());
 		sql+="'"+dummy+"',";
 		sql+="'"+judgement.getSentence()+"',";
@@ -20,8 +22,9 @@ public class TableJudgement {
 		sql+="'"+judgement.getPdfFileName()+"',";
 		sql+="'"+judgement.getPdfLink()+"',";
 		sql+="'"+judgement.getKeywords();
-		sql+="' FROM tbl_committee c, tbl_law_sector ls WHERE c.name="+judgement.getComittee().getName();
-		sql+=" AND ls.name="+judgement.getSector().getName()+";";
+		sql+="' FROM tbl_committee c, tbl_law_sector ls WHERE c.name='"+judgement.getComittee().getName();
+		sql+="' AND ls.name='"+judgement.getSector().getName()+"';";
+		System.out.println(sql);
 		return sql;
 	}
 }
