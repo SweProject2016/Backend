@@ -20,13 +20,32 @@ public class TestDBStuff {
 //		j.setSentence("30 Jahre im Bau");
 //		j.setComittee(new Committee("com2"));
 //		j.setFileReference("pdf2");
-//		TableJudgement t = new TableJudgement();
+////		TableJudgement t = new TableJudgement();
+////		try {
+////			con.executeUpdate(t.getInsertSQLCode(j));
+////		} catch (SQLException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+//		
+//		Result r = new Result("testing", j, 1.124124f);
+//		TableResultsSQL rsql = new TableResultsSQL();
 //		try {
-//			con.executeUpdate(t.getInsertSQLCode(j));
-//		} catch (SQLException e) {
+//			con.executeUpdate(rsql.getInsertSQLCode(r));
+//		} catch (SQLException e1) {
 //			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//			e1.printStackTrace();
 //		}
+		
+		LawSector c = new LawSector("testing");
+		TableLawSectorSQL tab = new TableLawSectorSQL();
+		try {
+			con.executeUpdate(tab.getInsertSQLCode(c));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try {
 			ResultSet test = con.executeQuery("SELECT * FROM tbl_judgement WHERE id = 5 OR id = 7");
 			

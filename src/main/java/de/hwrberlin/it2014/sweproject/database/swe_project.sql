@@ -84,6 +84,7 @@ CREATE TABLE `tbl_results` (
 --
 ALTER TABLE `tbl_committee`
   ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `tbl_judgement`
@@ -99,6 +100,7 @@ ALTER TABLE `tbl_judgement`
 --
 ALTER TABLE `tbl_law_sector`
   ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `tbl_results`
