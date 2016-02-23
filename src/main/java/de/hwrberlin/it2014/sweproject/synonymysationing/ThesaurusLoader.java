@@ -1,4 +1,4 @@
-package de.hwrberlin.it2014.sweproject.thesaurus;
+package de.hwrberlin.it2014.sweproject.synonymysationing;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

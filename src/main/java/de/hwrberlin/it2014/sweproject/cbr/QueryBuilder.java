@@ -2,7 +2,7 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import java.util.ArrayList;
 
-import de.hwrberlin.it2014.sweproject.thesaurus.ThesaurusLoader;
+import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
 
 /**
  * die Klasse baut eine SQL-Anfrage mit der die vom Nutzer eingegebenen Keywords mit der Datenbank verglichen werden können
