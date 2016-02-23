@@ -65,17 +65,23 @@ public class CBR {
 	 */
 	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
-		ArrayList<Result> resultList;
-		try {
-			resultList=retrieve(usersInput);
-		} catch (SQLException e) {
-			resultList=new ArrayList<Result>();
-			//TODO write to log
-			e.printStackTrace(); 
+		if(dbc.isConnected())
+		{
+			ArrayList<Result> resultList;
+			try {
+				resultList=retrieve(usersInput);
+			} catch (SQLException e) {
+				resultList=new ArrayList<Result>();
+				//TODO write to log
+				e.printStackTrace(); 
+			}
+			return resultList;
+		}else{
+			//try to reconnect?
+		
+			return null;
 		}
-		return resultList;
 	}
-
 	/**
 	 * 
 	 * @param evaluation
