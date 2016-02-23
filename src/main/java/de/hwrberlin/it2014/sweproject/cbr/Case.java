@@ -3,11 +3,11 @@ package de.hwrberlin.it2014.sweproject.cbr;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.Judgement;
 import de.hwrberlin.it2014.sweproject.database.Result;
+import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
 
 /**
  * 
@@ -18,7 +18,8 @@ public class Case {
 	
 	private int id;
 	private ArrayList<String> description;
-	private ArrayList<Judgement> similiarCases;
+	private ArrayList<Result> similiarCases;
+	//private String evaluation;
 	
 	/**
 	 * @author Max Bock
@@ -42,8 +43,8 @@ public class Case {
 		//queryBuilder = new QueryBuilder(); buildQuery is static
 	    String query = QueryBuilder.buildQuery(description);
 	    ResultSet rs = dbc.executeQuery(query);
-	    similiarCases = dbc.convertResultSetToJudgementList(rs);
-	    return JudgementToResultList(similiarCases);
+	    similiarCases = judgementToResultList(dbc.convertResultSetToJudgementList(rs));
+	    return similiarCases;
 		//load similiar cases from DB for step: retrieve
 	}
 	
@@ -52,11 +53,16 @@ public class Case {
 	 * @param Case
 	 * @param Evaluation
 	 */
-	public void saveEvaluation(Case ca, String eval) //soll Jean-Pierre machen
+	public void saveEvaluation(String eval) //soll Jean-Pierre machen
 	//alt. parameter: (ArrayList<Case> evaluatedCases) and add evaluation as attribute to case
 	{
 		//TODO
 		//save the evaluated cases to DB for step: retain
+		ArrayList<String> insertQuery=new ArrayList<>(); 
+		for(Result r : similiarCases)
+		{
+			insertQuery.add(TableResultsSQL.getInsertSQLCode(r));
+		}
 	}
 	
 	public String getDescription()
@@ -79,12 +85,12 @@ public class Case {
 	 * @param JudgementList from DBQuery
 	 * @return a ArrayList containing Result (userInput, Judgement and similiarity)
 	 */
-	private ArrayList<Result> JudgementToResultList(ArrayList<Judgement> judgList) {
+	private ArrayList<Result> judgementToResultList(ArrayList<Judgement> judgList) {
 		ArrayList<Result> rl=new ArrayList<Result>();
 		for(Judgement j : judgList)
 		{
-			float sim=Result.calcSimilarity();
-			rl.add(new Result(this.getDescription(), j, sim)); //wie berechnet sich die similiarity?!
+			//float sim=1.0f;  //Result.calcSimilarity();
+			rl.add(new Result(this.getDescription(), j, 1.0f)); //wie berechnet sich die similarity?!
 		}
 		return rl;
 	}
