@@ -63,6 +63,11 @@ public class Case {
 		{
 			insertQuery.add(TableResultsSQL.getInsertSQLCode(r));
 		}
+		for(String query : insertQuery)
+		{
+			//execute query
+		}
+		
 	}
 	
 	public String getDescription()
