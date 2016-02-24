@@ -38,6 +38,9 @@ public class Result {
 	public float calcSimilarity() {
 		// TODO Auto-generated method stub
 		// wie berechnet sich die similarity?
+		//*****
+//			Das kommt hier nicht rein! ScoreProcessor berechnet das, hier dann setSimilarity benutzen!
+		//*****
 		return 0;
 	}
 }
