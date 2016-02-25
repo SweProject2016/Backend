@@ -88,14 +88,19 @@ public class CBR {
 	 * @param evaluation
 	 * @return
 	 */
-	public String saveUserEvaluate(String evaluation) //jean-pierre
+	public String saveUserEvaluate(DatabaseConnection dbc, String evaluation) //jean-pierre
 	{
 		//TODO
-		int id=0;
-		retain (getCaseByID(id));
-		return evaluation;
-		//calls retain and write Case to DB
-		//build response if successful or not
+		if(dbc.isConnected()){
+			int id=0; // get ID from request...
+			retain (getCaseByID(id));
+			return null;
+			//calls retain and write Case to DB
+			//build response if successful or not
+		}else
+		{
+			return "not sucessful; no DBC";
+		}
 	}
 
 	/**

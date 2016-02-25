@@ -23,7 +23,7 @@ public class Case {
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um spï¿½ter die evaluation zur Anfrage zu zu ordnen
+	 * @param interne id, um später die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
 	public Case(int id, ArrayList<String> userInput) //constructor for userrequest
@@ -51,13 +51,14 @@ public class Case {
 	/**
 	 * 
 	 * @param Case
-	 * @param Evaluation
+	 * @param Evaluation (true = passend; false = unpassend)
 	 */
-	public void saveEvaluation(String eval) //soll Jean-Pierre machen
+	public void saveEvaluation(DatabaseConnection dbc, boolean[] evaluation)
 	//alt. parameter: (ArrayList<Case> evaluatedCases) and add evaluation as attribute to case
 	{
 		//TODO
 		//save the evaluated cases to DB for step: retain
+		//add evaluation evaluation to query
 		ArrayList<String> insertQuery=new ArrayList<>(); 
 		for(Result r : similiarCases)
 		{
@@ -65,7 +66,12 @@ public class Case {
 		}
 		for(String query : insertQuery)
 		{
-			//execute query
+			try {
+				dbc.executeUpdate(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
