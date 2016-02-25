@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import de.hwrberlin.it2014.sweproject.thesaurus.ThesaurusLoader;
+import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
 
 /**
  * Klasse für Ähnlichkeitsanalyse
