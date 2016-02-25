@@ -45,4 +45,28 @@ public class ResultResource extends Resource {
 		}
 	}
 	
+	@POST
+	@Path("rate")
+	public Response rateResult(@QueryParam("id") int id,
+							   @QueryParam("rating") float rating,
+							   @QueryParam("delay") int delay){
+		//Sample Verarbeitung
+		try{
+			String str = null;
+			if(id>0){
+				Thread.sleep(delay*1000);
+				str = id + " - " + rating;
+				System.out.println(str);
+				return build(Status.NO_CONTENT);
+			} else {
+				return build(Status.NOT_FOUND);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+			return build(Status.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+	}
+	
 }

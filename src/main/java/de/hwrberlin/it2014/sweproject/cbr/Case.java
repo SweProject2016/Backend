@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.Result;
 
