@@ -3,6 +3,8 @@ package de.hwrberlin.it2014.sweproject.database;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import de.hwrberlin.it2014.sweproject.model.Judgement;
+
 public class TableJudgementSQL {
 
 	public String getInsertSQLCode(Judgement judgement){

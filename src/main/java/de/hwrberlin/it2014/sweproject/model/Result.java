@@ -1,4 +1,4 @@
-package de.hwrberlin.it2014.sweproject.database;
+package de.hwrberlin.it2014.sweproject.model;
 
 public class Result {
 	private String userInput;

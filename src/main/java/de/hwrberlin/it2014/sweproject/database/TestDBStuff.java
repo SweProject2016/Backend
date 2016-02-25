@@ -5,6 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.LawSector;
+import de.hwrberlin.it2014.sweproject.model.Result;
+
 public class TestDBStuff {
 
 	public static void main(String[] args) {

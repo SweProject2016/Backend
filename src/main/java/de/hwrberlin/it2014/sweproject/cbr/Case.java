@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.database.Judgement;
-import de.hwrberlin.it2014.sweproject.database.Result;
+import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.Result;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class Case {
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um später die evaluation zur Anfrage zu zu ordnen
+	 * @param interne id, um spï¿½ter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
 	public Case(int id, ArrayList<String> userInput) //constructor for userrequest

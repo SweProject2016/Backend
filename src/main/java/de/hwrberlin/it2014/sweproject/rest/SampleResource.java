@@ -1,12 +1,14 @@
 package de.hwrberlin.it2014.sweproject.rest;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import javax.ws.rs.core.Response.Status;
 
 import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
 
@@ -21,7 +23,7 @@ import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
  *
  */
 @Path("/sample")
-public class SampleResource {
+public class SampleResource extends Resource {
 
     /**
      * Testmethode um den REST WS zu prüfen
@@ -37,19 +39,21 @@ public class SampleResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response testMethod(@QueryParam("type") String type,
     						   @QueryParam("size") int size,
-    						   @QueryParam("input") String input) {
+    						   @QueryParam("input") String input,
+    						   @QueryParam("delay") int delay) {
     	Generator generator = new Generator();
-    	List output = generator.generate(type, size, input);
+    	List<?> output = generator.generate(type, size, input);
     	
     	try{
+    		Thread.sleep(delay*1000);
     		if(size>1){
-    			return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(output).build();
+    			return build(Status.OK,output);
     		} else {
-    			return Response.status(Response.Status.OK).header("Access-Control-Allow-Origin", "*/*").entity(output.get(0)).build();
+    			return build(Status.OK,output.get(0));
     		}
     	    
     	} catch(Exception e){
-    		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+    		return build(Status.INTERNAL_SERVER_ERROR);
     	}
     
     }

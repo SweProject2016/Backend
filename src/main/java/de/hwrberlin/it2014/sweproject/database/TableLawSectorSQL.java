@@ -1,5 +1,7 @@
 package de.hwrberlin.it2014.sweproject.database;
 
+import de.hwrberlin.it2014.sweproject.model.LawSector;
+
 public class TableLawSectorSQL {
 	
 	public String getInsertSQLCode(LawSector ls){

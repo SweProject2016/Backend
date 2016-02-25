@@ -1,17 +1,28 @@
 package de.hwrberlin.it2014.sweproject.rest.sample;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import de.hwrberlin.it2014.sweproject.database.Committee;
-import de.hwrberlin.it2014.sweproject.database.Judgement;
-import de.hwrberlin.it2014.sweproject.database.LawSector;
-import de.hwrberlin.it2014.sweproject.database.Result;
-
+import de.hwrberlin.it2014.sweproject.model.Committee;
+import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.LawSector;
+import de.hwrberlin.it2014.sweproject.model.Result;
+/**
+ * Generator Klasse für Sample REST API
+ * 
+ * Generiert zufällig prototypische Antworten für Anfragen an die API
+ * 
+ * @author csc
+ *
+ */
 public class Generator {
 
-	public List generate(String type, int entries, String userInput){
+	public List<?> generate(String type, int entries, String userInput){
 		switch(type.toLowerCase()){
 		case "committee":
 			return generateCommittee(entries);
@@ -39,20 +50,29 @@ public class Generator {
 		return resultList;
 	}
 
-	private float randomFloat(){
-		return (float) Math.random();
+	private String createPdfFileName() {
+		return "pdfFile_"+randomInt();
 	}
-	
+
 	private String createPdfLink() {
 		return "pdfLink/"+randomInt();
+	}
+
+	private float randomFloat(){
+		return (float) Math.random();
 	}
 
 	private int randomInt() {
 		return 10000 + (int)(Math.random() * 99999);
 	}
 
-	private String createPdfFileName() {
-		return "pdfFile_"+randomInt();
+	private List<Committee> generateCommittee(int entries) {
+		List<Committee> committeeList = new ArrayList<>();
+		for(int i=0;i<entries;i++){
+			Committee aCommittee = new Committee("name"+randomInt());
+			committeeList.add(aCommittee);
+		}
+		return committeeList;
 	}
 
 	private List<LawSector> generateLawSector(int entries) {
@@ -71,7 +91,7 @@ public class Generator {
 			judgement.setComittee(generateCommittee(1).get(0));
 			judgement.setFileReference("fileref"+randomInt());
 			judgement.setSentence("Sentence"+randomInt());
-			judgement.setOffence("Offence"+randomInt());
+			judgement.setOffence(generateOffence(20));
 			judgement.setKeywords(generateKeywords(5));
 			judgement.setSector(generateLawSector(1).get(0));
 			judgement.setDate(getDate());
@@ -82,9 +102,34 @@ public class Generator {
 		return judgementList;
 	}
 	
-	private Date getDate(){
-		Date date = new Date();
-		return date;
+	private String generateOffence(int size) {
+		StringBuffer response = new StringBuffer();
+
+		try {
+			String url = "https://baconipsum.com/api/?type=all-meat&sentences=2&start-with-lorem=1&format=text";
+			
+			URL obj = new URL(url);
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+	
+			// optional default is GET
+			con.setRequestMethod("GET");
+	
+			int responseCode = con.getResponseCode();
+			System.out.println("\nSending 'GET' request to URL : " + url);
+			System.out.println("Response Code : " + responseCode);
+	
+			BufferedReader in = new BufferedReader(
+			        new InputStreamReader(con.getInputStream()));
+			String inputLine;
+	
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return response.toString();
 	}
 
 	private String generateKeywords(int size) {
@@ -95,12 +140,8 @@ public class Generator {
 		return str;
 	}
 
-	private List<Committee> generateCommittee(int entries) {
-		List<Committee> committeeList = new ArrayList<>();
-		for(int i=0;i<entries;i++){
-			Committee aCommittee = new Committee("name"+randomInt());
-			committeeList.add(aCommittee);
-		}
-		return committeeList;
+	private Date getDate(){
+		Date date = new Date();
+		return date;
 	}	
 }

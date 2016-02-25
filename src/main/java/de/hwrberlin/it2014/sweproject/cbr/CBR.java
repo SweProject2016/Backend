@@ -2,7 +2,7 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Case;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.database.Result;
+import de.hwrberlin.it2014.sweproject.model.Result;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class CBR {
 	/**
 	 * @author Max Bock
 	 * @param usersInput (String[])
-	 * @return ähnliche Fälle
+	 * @return ï¿½hnliche Fï¿½lle
 	 */
 	public ArrayList<Result> startCBR(String[] usersInput)
 	{
@@ -50,7 +50,7 @@ public class CBR {
 	/**
 	 * @author Max Bock
 	 * @param usersInput (String)
-	 * @return ähnliche Fälle
+	 * @return ï¿½hnliche Fï¿½lle
 	 */
 	public ArrayList<Result> startCBR(String usersInput)
 	{
@@ -61,7 +61,7 @@ public class CBR {
 	/**
 	 * @author Max Bock
 	 * @param usersInput (ArrayList<String>)
-	 * @return ähnliche Fälle
+	 * @return ï¿½hnliche Fï¿½lle
 	 */
 	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
@@ -92,7 +92,7 @@ public class CBR {
 	}
 
 	/**
-	 * Löscht einen Fall aus den activeCases
+	 * Lï¿½scht einen Fall aus den activeCases
 	 * @author Max Bock
 	 * @param CaseID
 	 * @return boolean
@@ -107,7 +107,7 @@ public class CBR {
 	}
 	
 	/**
-	 * liefert für die Bewertung anhand der ID den Case zurück
+	 * liefert fï¿½r die Bewertung anhand der ID den Case zurï¿½ck
 	 * @author Max Bock
 	 * @param interne Case ID
 	 * @return Case
@@ -126,10 +126,10 @@ public class CBR {
 	
 
 	/**
-	 * interne Methode für den CBR-Zyklus
+	 * interne Methode fï¿½r den CBR-Zyklus
 	 * @author Max Bock
 	 * @param usersInput
-	 * @return ähnliche Fälle
+	 * @return ï¿½hnliche Fï¿½lle
 	 * @throws SQLException
 	 */
 	private ArrayList<Result> retrieve(ArrayList<String> usersInput) throws SQLException

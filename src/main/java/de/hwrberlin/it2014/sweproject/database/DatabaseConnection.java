@@ -8,6 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.hwrberlin.it2014.sweproject.model.Committee;
+import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.LawSector;
+import de.hwrberlin.it2014.sweproject.model.Result;
+
 public class DatabaseConnection {
 	private Connection con;
 	
