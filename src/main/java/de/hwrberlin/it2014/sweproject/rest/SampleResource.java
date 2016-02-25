@@ -3,6 +3,7 @@ package de.hwrberlin.it2014.sweproject.rest;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -37,24 +38,27 @@ public class SampleResource extends Resource {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response testMethod(@QueryParam("type") String type,
+    public Response testMethod(@HeaderParam("X-Api-Key") String apiKey,
+    						   @HeaderParam("X-Access-Token") String accessToken,
+    						   @QueryParam("type") String type,
     						   @QueryParam("size") int size,
     						   @QueryParam("input") String input,
     						   @QueryParam("delay") int delay) {
-    	Generator generator = new Generator();
-    	List<?> output = generator.generate(type, size, input);
-    	
     	try{
-    		Thread.sleep(delay*1000);
-    		if(size>1){
-    			return build(Status.OK,output);
+    		Generator generator = new Generator();
+    		List<?> output = generator.generate(type, size, input);
+    		if(!auth(apiKey,accessToken)){
+    			return build(Status.FORBIDDEN);
     		} else {
-    			return build(Status.OK,output.get(0));
-    		}
-    	    
+	    		Thread.sleep(delay*1000);
+	    		if(size>1){
+	    			return build(Status.OK,output);
+	    		} else {
+	    			return build(Status.OK,output.get(0));
+	    		}
+    		} 
     	} catch(Exception e){
-    		return build(Status.INTERNAL_SERVER_ERROR);
-    	}
-    
+	    		return build(Status.INTERNAL_SERVER_ERROR);
+	    }
     }
 }
