@@ -3,6 +3,8 @@ package de.hwrberlin.it2014.sweproject.rest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import de.hwrberlin.it2014.sweproject.model.Entity;
+
 public abstract class Resource {
 	
 	private final static String ALLOW_ORIGIN_HEADER="Access-Control-Allow-Origin";
@@ -10,10 +12,10 @@ public abstract class Resource {
 	private final static String API_KEY="$A$9af4d8381781baccb0f915e554f8798d";
 	private final static String ACCESS_TOKEN = "$T$de61425667e2e4ac0884808b769cd042";
 	
-	protected Response build(Status status, Object entity){
+	protected Response build(Status status, Object entity, String path){
 		return Response.status(status)
 				.header(ALLOW_ORIGIN_HEADER,WILDCARD)
-				.entity(entity)
+				.entity(createEntity(path, status, entity))
 				.build();
 	}
 	
@@ -30,6 +32,13 @@ public abstract class Resource {
 		} else{
 			return false;
 		}
+	}
+	
+	private Object createEntity(String path, Status status, Object entity){
+		Entity theEntity = new Entity(path,
+									  status.getStatusCode(),
+									  entity);
+		return theEntity;
 	}
 	
 }

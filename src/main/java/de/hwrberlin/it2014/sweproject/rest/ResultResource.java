@@ -38,12 +38,13 @@ public class ResultResource extends Resource {
 			   				   @HeaderParam("X-Access-Token") String accessToken,
 			   				   @QueryParam("input") String input){
 		try{
+			final String path = "/result/get";
 			if(!auth(apiKey,accessToken)){
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
 				ArrayList<Result> resultList = cbr.startCBR(input);
-				return build(Status.OK,resultList);
+				return build(Status.OK,resultList,path);
 			} 
 		} catch(Exception e){
 			e.printStackTrace();

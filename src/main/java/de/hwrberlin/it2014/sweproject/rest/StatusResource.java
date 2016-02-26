@@ -17,10 +17,11 @@ public class StatusResource extends Resource{
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getServerStatus(){
 		try{
+			final String path="/status";
 			de.hwrberlin.it2014.sweproject.model.Status status = new de.hwrberlin.it2014.sweproject.model.Status();
 			status.setDatabaseStatus(ServerStatus.RUNNING);
 			status.setServer(ServerStatus.RUNNING);
-			return build(Status.OK,status);
+			return build(Status.OK,status,path);
 		} catch(Exception e){
 			e.printStackTrace();
 			return build(Status.INTERNAL_SERVER_ERROR);

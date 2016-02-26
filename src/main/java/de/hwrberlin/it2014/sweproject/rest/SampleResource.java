@@ -47,14 +47,15 @@ public class SampleResource extends Resource {
     	try{
     		Generator generator = new Generator();
     		List<?> output = generator.generate(type, size, input);
+    		final String path="/sample/get";
     		if(!auth(apiKey,accessToken)){
     			return build(Status.FORBIDDEN);
     		} else {
 	    		Thread.sleep(delay*1000);
 	    		if(size>1){
-	    			return build(Status.OK,output);
+	    			return build(Status.OK,output,path);
 	    		} else {
-	    			return build(Status.OK,output.get(0));
+	    			return build(Status.OK,output.get(0),path);
 	    		}
     		} 
     	} catch(Exception e){
