@@ -27,6 +27,8 @@ public abstract class Resource {
 	}
 	
 	protected boolean auth(String apiKey, String accessToken){
+		apiKey=normalize(apiKey);
+		accessToken=normalize(accessToken);
 		if(apiKey.equals(API_KEY) && accessToken.equals(ACCESS_TOKEN)){
 			return true;
 		} else{
@@ -39,6 +41,13 @@ public abstract class Resource {
 									  status.getStatusCode(),
 									  entity);
 		return theEntity;
+	}
+	
+	private String normalize(String str){
+		if(str.startsWith("\"") && str.endsWith("\"")){
+			str = str.substring(1, str.length()-1);
+		}
+		return str;
 	}
 	
 }

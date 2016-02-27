@@ -52,6 +52,15 @@ public class ResultResource extends Resource {
 		}
 	}
 	
+	/**
+	 * REST Resource um 
+	 * @param apiKey der API-Key
+	 * @param accessToken der Access-Token
+	 * @param id Result ID
+	 * @param rating Die Bewertung des Results
+	 * @param delay Verzögerung
+	 * @return
+	 */
 	@POST
 	@Path("rate")
 	public Response rateResult(@HeaderParam("X-Api-Key") String apiKey,
