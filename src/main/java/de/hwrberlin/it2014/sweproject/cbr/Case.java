@@ -20,14 +20,13 @@ public class Case {
 	private ArrayList<String> description;
 	private ArrayList<Judgement> similiarCases;
 	private ScoreProcessor<Judgement> scoreProc;
-	//private String evaluation;
 	
 	/**
 	 * @author Max Bock
 	 * @param interne id, um später die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
-	public Case(int id, ArrayList<String> userInput) //constructor for userrequest
+	public Case(int id, ArrayList<String> userInput)
 	{
 		description=userInput;
 		this.id=id;
@@ -43,7 +42,7 @@ public class Case {
 	public ArrayList<Judgement> getSimiliarFromDB(int number) throws SQLException
 	{
 		
-		similiarCases= scoreProc.getBestMatches(description, number, (long) 100, "");
+		similiarCases= scoreProc.getBestMatches(description, number, (long) 100, ""); //TODO whats the correct long
 	    return similiarCases;
 	}
 	
@@ -75,6 +74,12 @@ public class Case {
 		
 	}
 	
+	/**
+	 * erzeugt ein Resultobjekt aus einem Judgement für diesen Fall(also mit der aktuellen Useranfrage)
+	 * @author Max Bock
+	 * @param Judgement
+	 * @return Result
+	 */
 	private Result newResultFromJudgement(Judgement j) {
 		Result r=new Result(
 				this.getDescription(), 
@@ -84,6 +89,12 @@ public class Case {
 		return r;
 	}
 
+	
+	public ArrayList<String> getDescription(boolean asList)
+	{
+		return description;
+	}
+	
 	public String getDescription()
 	{
 		String sstream="";

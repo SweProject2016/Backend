@@ -64,7 +64,6 @@ public class CBR {
 			judgList=retrieve(usersInput);
 		} catch (SQLException e) {
 			judgList=new ArrayList<>();
-			//TODO write to log
 			e.printStackTrace(); 
 		}
 		return judgList;
@@ -136,10 +135,6 @@ public class CBR {
 	 */
 	private void retain(Case evaluatedCase, float[] evaluation)
 	{
-		//TODO
-		//return something; boolean or HTTPCode(int)?
-		//save the evalution from userResponse to the DB
-		//remove Case from activeCases
 		evaluatedCase.saveEvaluation(evaluation);
 		removeCaseByID(evaluatedCase.getID());
 	}
