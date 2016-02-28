@@ -100,11 +100,10 @@ public class Case {
 	 */
 	private ArrayList<Result> judgementToResultList(ArrayList<Judgement> judgList) {
 		ArrayList<Result> rl=new ArrayList<Result>();
-//		ScoreProcessor sp=new ScoreProcessor();
+		ScoreProcessor<Judgement> sp=new ScoreProcessor<Judgement>();
 		for(Judgement j : judgList)
 		{
-			float sim=1.0f;
-			rl.add(new Result(this.getDescription(), j, sim));
+			rl.add(new Result(this.getDescription(), j, (float) sp.getDistance(j, description, j.getTimestamp()), j.getDate()));
 		}
 		return rl;
 	}

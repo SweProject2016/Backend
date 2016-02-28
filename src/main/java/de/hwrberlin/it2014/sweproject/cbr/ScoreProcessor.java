@@ -62,7 +62,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @param timestamp Zeitangabe im query (in ms)
 	 * @return distance value
 	 */
-	private double getDistance(T s, ArrayList<String> filteredKeywords, long timestamp){
+	public double getDistance(T s, ArrayList<String> filteredKeywords, long timestamp){
 		double dist = 0d;
 
 		// check keyword
