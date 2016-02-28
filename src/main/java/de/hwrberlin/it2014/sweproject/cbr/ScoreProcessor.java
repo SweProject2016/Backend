@@ -1,10 +1,12 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
 
 /**
@@ -13,7 +15,7 @@ import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
  * @author Tobias Glaeser
  * @since 11.02.2016 09:43:34
  */
-public class ScoreProcessor {
+public class ScoreProcessor<T extends Scoreable> {
 
 	/**
 	 * ignore timestamp flag
@@ -60,7 +62,7 @@ public class ScoreProcessor {
 	 * @param timestamp Zeitangabe im query (in ms)
 	 * @return distance value
 	 */
-	private double getDistance(Scoreable s, ArrayList<String> filteredKeywords, long timestamp){
+	private double getDistance(T s, ArrayList<String> filteredKeywords, long timestamp){
 		double dist = 0d;
 
 		// check keyword
@@ -98,22 +100,25 @@ public class ScoreProcessor {
 	 * @param timestamp Zeitangabe im query (in ms)
 	 * @param lawsector Rechtsbereich (prefilter exclude only)
 	 * @return liste mit ähnlichen Fällen (absteigende Ähnlichkeit)
+	 * @throws SQLException db error
 	 */
-	public ArrayList<Scoreable> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector){
+	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector) throws SQLException{
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
 		String query = QueryBuilder.buildQuery(allKeywords);
-		ArrayList<Scoreable> prefilter = new ArrayList<>(); // TODO retrieve by prefilter sql
-		final HashMap<Scoreable, Double> scores = new HashMap<>();
-		for(Scoreable s : prefilter) {
+		DatabaseConnection con = new DatabaseConnection();
+		con.connectToMysql();
+		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(con.executeQuery(query)); // cast is safe as Judgement implement scoreable
+		final HashMap<T, Double> scores = new HashMap<>();
+		for(T s : prefilter) {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));
 		}
 		// sort
-		ArrayList<Scoreable> ordered = new ArrayList<>(prefilter);
-		Collections.sort(ordered, new Comparator<Scoreable>(){
+		ArrayList<T> ordered = new ArrayList<>(prefilter);
+		Collections.sort(ordered, new Comparator<T>(){
 
 			@Override
-			public int compare(Scoreable o1, Scoreable o2){
+			public int compare(T o1, T o2){
 				double d1 = scores.get(o1);
 				double d2 = scores.get(o2);
 				double v1 = -(d1 * sortWeights[0]) + o1.getPageRank() * sortWeights[1];
