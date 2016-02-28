@@ -28,5 +28,19 @@ public class LawTester {
 	private static ArrayList<String> getLexiEntries(){
 		return null;
 	}
+	
+	
+	/**
+	 * 
+	 * @param Der Ausrdruck der geprueft werden soll, ob dieser ein juristicher Begriff ist.
+	 * @return gibt true zurück wenn der Begriff aus der juristischen Sprache stammt
+	 */
+	private static boolean testIfLawTermOnline(String term){
+		boolean result = false;
+		
+		//TODO http connection if possibles and get the result from the result, if necessary filter the content from the result
+		
+		return result;
+	}
 
 }
