@@ -59,15 +59,16 @@ public class Case {
 		//TODO
 		//save the evaluated cases to DB for step: retain
 		//add evaluation evaluation to query
-		ArrayList<String> insertQuery=new ArrayList<>(); 
+		ArrayList<String> insertQueries=new ArrayList<>(); 
 		for(Result r : similiarCases)
 		{
-			insertQuery.add(TableResultsSQL.getInsertSQLCode(r));
+			insertQueries.add(TableResultsSQL.getInsertSQLCode(r));
+			//add the evaluation?
 		}
-		for(String query : insertQuery)
+		for(String insertQuery : insertQueries)
 		{
 			try {
-				dbc.executeUpdate(query);
+				dbc.executeUpdate(insertQuery);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
