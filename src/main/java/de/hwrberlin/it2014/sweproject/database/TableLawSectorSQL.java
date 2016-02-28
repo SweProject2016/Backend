@@ -4,7 +4,7 @@ import de.hwrberlin.it2014.sweproject.model.LawSector;
 
 public class TableLawSectorSQL {
 	
-	public String getInsertSQLCode(LawSector ls){
+	public static String getInsertSQLCode(LawSector ls){
 		return "INSERT INTO tbl_law_sector (name) VALUES ('"+ls.getName()+"');";
 	}
 }

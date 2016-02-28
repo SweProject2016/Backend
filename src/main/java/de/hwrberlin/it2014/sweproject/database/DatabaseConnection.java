@@ -17,7 +17,7 @@ public class DatabaseConnection {
 	private Connection con;
 	
 	/**
-	 * Connects to MySQL-DB using JDBC Driver
+	 * Connects to MySQL-DB using JDBC Driver using parameters
 	 * 
 	 * @author Dominik Habel
 	 *
@@ -32,6 +32,27 @@ public class DatabaseConnection {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			String connectionCommand = "jdbc:mysql://" + host + "/" + database + "?user=" + user + ((pwd != null) ? "&password=" + pwd : "");
+			con = DriverManager.getConnection(connectionCommand);
+			return true;
+
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * Connects to MySQL-DB using JDBC Driver using DatabaseConfig
+	 * 
+	 * @author Dominik Habel
+	 *
+	 * @return true if successfully connected, false if not
+	 */
+	public boolean connectToMysql(){
+		assert con == null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			String connectionCommand = "jdbc:mysql://" + DatabaseConfig.DB_HOST + "/" + DatabaseConfig.DB_NAME + "?user=" + DatabaseConfig.DB_USER + ((DatabaseConfig.DB_PASSWORD != null) ? "&password=" + DatabaseConfig.DB_PASSWORD : "");
 			con = DriverManager.getConnection(connectionCommand);
 			return true;
 
@@ -140,9 +161,10 @@ public class DatabaseConnection {
 		HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
 		HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
 		while(rs.next()){
-			Result result = new Result(null, null, 0);
+			Result result = new Result(null, null, 0, null);
 			result.setUserInput(rs.getString("user_input"));
 			result.setSimilarity(rs.getFloat("similarity"));
+			result.setDate(rs.getDate("date"));
 			
 			int id = rs.getInt("picked_file");
 			Judgement judge = j.get(id);

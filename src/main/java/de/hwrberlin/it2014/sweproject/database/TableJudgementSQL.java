@@ -1,23 +1,17 @@
 package de.hwrberlin.it2014.sweproject.database;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 public class TableJudgementSQL {
 
-	public String getInsertSQLCode(Judgement judgement){
+	public static String getInsertSQLCode(Judgement judgement){
 		String sql = "INSERT INTO tbl_judgement (file_reference, committee, law_sector,"
 				+ "date, sentence, offence, page_rank, pdf_filename,"
 				+ "pdf_link, keywords) SELECT ";
 		sql+="'"+judgement.getFileReference()+"',";
 		//TODO: committee+law_sector-parse
 		sql+="c.id,ls.id,";
-		DateFormat form = new SimpleDateFormat("yyyy-MM-dd");
-//		DateFormat form = DateFormat.getDateInstance(DateFormat.SHORT);
-		String dummy = form.format(judgement.getDate());
-		sql+="'"+dummy+"',";
+		sql+="'"+judgement.getDate()+"',";
 		sql+="'"+judgement.getSentence()+"',";
 		sql+="'"+judgement.getOffence()+"',";
 		sql+=judgement.getPageRank()+",";

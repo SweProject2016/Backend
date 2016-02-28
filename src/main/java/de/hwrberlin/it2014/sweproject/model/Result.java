@@ -1,14 +1,18 @@
 package de.hwrberlin.it2014.sweproject.model;
 
+import java.util.Date;
+
 public class Result {
 	private String userInput;
 	private Judgement judgement;
 	private float similarity;
+	private Date date;
 	
-	public Result(String userInput, Judgement judgement, float similarity){
+	public Result(String userInput, Judgement judgement, float similarity, Date date){
 		this.userInput=userInput;
 		this.judgement=judgement;
 		this.similarity=similarity;
+		this.date = date;
 	}
 	
 	public String getUserInput(){
@@ -34,13 +38,17 @@ public class Result {
 	public void setSimilarity(float similarity){
 		this.similarity=similarity;
 	}
-
-/*	public float calcSimilarity() {
-		// TO DO Auto-generated method stub
-		// wie berechnet sich die similarity?
-		//*****
-//			Das kommt hier nicht rein! ScoreProcessor berechnet das, hier dann setSimilarity benutzen!
-		//*****
-		return 0;
-	}*/
+	
+	public Date getDate(){
+		return date;
+	}
+	
+	/**
+	 * @author Dominik Habel
+	 *
+	 * @param date MUST be YYYY/MM/DD
+	 */
+	public void setDate(Date date){
+		this.date=date;
+	}
 }
