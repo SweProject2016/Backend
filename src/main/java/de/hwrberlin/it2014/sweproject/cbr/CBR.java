@@ -3,7 +3,6 @@ package de.hwrberlin.it2014.sweproject.cbr;
 import de.hwrberlin.it2014.sweproject.cbr.Case;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.Result;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,12 +24,6 @@ public class CBR {
 	 */
 	public CBR()
 	{
-		dbc=new DatabaseConnection();
-        String host="localhost";
-        String database="swe_project";
-        String user="user";
-        String pwd="pwd";
-		dbc.connectToMysql(host, database, user, pwd);
 		activeCases = new ArrayList<Case>();
 	}
 	
@@ -66,42 +59,27 @@ public class CBR {
 	 */
 	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
 	{
-		if(dbc.isConnected())
-		{
-			ArrayList<Judgement> judgList;
-			try {
-				judgList=retrieve(usersInput);
-			} catch (SQLException e) {
-				judgList=new ArrayList<>();
-				//TODO write to log
-				e.printStackTrace(); 
-			}
-			return judgList;
-		}else{
-			//try to reconnect?
-		
-			return null;
+		ArrayList<Judgement> judgList;
+		try {
+			judgList=retrieve(usersInput);
+		} catch (SQLException e) {
+			judgList=new ArrayList<>();
+			//TODO write to log
+			e.printStackTrace(); 
 		}
+		return judgList;
 	}
 	
 	/**
-	 * 
+	 * @author Max Bock
 	 * @param evaluation
 	 * @return
 	 */
-	public String saveUserEvaluate(DatabaseConnection dbc, String evaluation) //jean-pierre
+	public String saveUserEvaluate(int id, float[] evaluation)
 	{
-		//TODO
-		if(dbc.isConnected()){
-			int id=0; // get ID from request...
-			retain(getCaseByID(id), evaluation);
-			return null;
-			//calls retain and write Case to DB
-			//build response if successful or not
-		}else
-		{
-			return "not sucessful; no DBC";
-		}
+		Case c = getCaseByID(id);
+		retain(c, evaluation);
+		return null;
 	}
 
 	/**
@@ -153,15 +131,17 @@ public class CBR {
 	}
 	
 	/**
-	 *
+	 * @author Max Bock
 	 * @param evaluatedCase
 	 */
-	private void retain(Case evaluatedCase, String evaluation) //jean-pierre
+	private void retain(Case evaluatedCase, float[] evaluation)
 	{
 		//TODO
 		//return something; boolean or HTTPCode(int)?
 		//save the evalution from userResponse to the DB
 		//remove Case from activeCases
+		evaluatedCase.saveEvaluation(evaluation);
+		removeCaseByID(evaluatedCase.getID());
 	}
 	
 	/**
