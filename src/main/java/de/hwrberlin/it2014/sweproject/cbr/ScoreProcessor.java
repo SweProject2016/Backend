@@ -22,6 +22,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 */
 	public static final long IGNORE_TIMESTAMP = -1;
 
+	private HashMap<T, Double> scoreCache = new HashMap<>();
 	private final double weights[];
 	private final double[] sortWeights;
 
@@ -113,6 +114,7 @@ public class ScoreProcessor<T extends Scoreable> {
 		for(T s : prefilter) {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));
 		}
+		scoreCache.putAll(scores);
 		// sort
 		ArrayList<T> ordered = new ArrayList<>(prefilter);
 		Collections.sort(ordered, new Comparator<T>(){
@@ -135,6 +137,18 @@ public class ScoreProcessor<T extends Scoreable> {
 			ordered.remove(ordered.size() - 1);
 		}
 		return ordered;
+	}
+
+	/**
+	 * gibt gecachten score wert zurück
+	 * achtung: vorher muss getBestMatches() ausgeführt worden sein.
+	 * 
+	 * @author Tobias Glaeser
+	 * @param t case/judgement
+	 * @return ähnlichkeitswert der für diesen fall berechnet wurde
+	 */
+	public double getCachedScore(T t){
+		return scoreCache.get(t);
 	}
 
 	/**
