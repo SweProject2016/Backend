@@ -18,7 +18,7 @@ public class Case {
 	
 	private int id;
 	private ArrayList<String> description;
-	private ArrayList<Result> similiarCases;
+	private ArrayList<Judgement> similiarCases;
 	//private String evaluation;
 	
 	/**
@@ -38,22 +38,19 @@ public class Case {
 	 * @return ArrayList of Sets containing all similiar cases from DB
 	 * @throws SQLException
 	 */
-	public ArrayList<Result> getSimiliarFromDB(DatabaseConnection dbc) throws SQLException
+	public ArrayList<Judgement> getSimiliarFromDB(int number) throws SQLException
 	{
-//	    String query = QueryBuilder.buildQuery(description);
-//	    ResultSet rs = dbc.executeQuery(query);
 		ScoreProcessor<Judgement> scoreProc=new ScoreProcessor<Judgement>();
-		ArrayList<Judgement> judgList= scoreProc.getBestMatches(description, 15, (long) 100, "");
-	    similiarCases = judgementToResultList(judgList);
+		similiarCases= scoreProc.getBestMatches(description, number, (long) 100, "");
 	    return similiarCases;
-	    //maybe use ScoreProcessor.getBestMatches() instead
 	}
 	
 	/**
-	 * 
+	 * @author Max Bock
 	 * @param Case
 	 * @param Evaluation (true = passend; false = unpassend)
-	 */
+	 * in Rücksprache mit Dominik wird die Fallbewertung nicht durch Java gespeichert
+	 * 
 	public void saveEvaluation(DatabaseConnection dbc, boolean[] evaluation)
 	//alt. parameter: (ArrayList<Case> evaluatedCases) and add evaluation as attribute to case
 	{
@@ -76,7 +73,7 @@ public class Case {
 			}
 		}
 		
-	}
+	}/* */
 	
 	public String getDescription()
 	{
