@@ -21,6 +21,7 @@ public class ScoreProcessor {
 	public static final long IGNORE_TIMESTAMP = -1;
 
 	private final double weights[];
+	private final double[] sortWeights;
 
 	/**
 	 * @author Tobias Glaeser
@@ -29,10 +30,14 @@ public class ScoreProcessor {
 	 *            [0] : keyword (normal)
 	 *            [1] : keyword (jura)
 	 *            [2] : Weight pro Tag Unterschied
-	 *            [3] : Weight fuer Location (TBD)
+	 * 
+	 * @param sortWeights Gewichte für Sortierung
+	 *            [0] : -score
+	 *            [1] : pagerank value
 	 */
-	public ScoreProcessor(double weights[]){
+	public ScoreProcessor(double weights[], double sortWeights[]){
 		this.weights = weights;
+		this.sortWeights = sortWeights;
 	}
 
 	/**
@@ -42,7 +47,7 @@ public class ScoreProcessor {
 	 * @since 11.02.2016 09:46:36
 	 */
 	public ScoreProcessor(){
-		this(new double[]{10, 20, 2, 0});
+		this(new double[]{10, 20, 2, 0}, new double[]{1, 0.2d});
 	}
 
 	/**
@@ -80,8 +85,6 @@ public class ScoreProcessor {
 			dist += (Math.abs(timestamp - s.getTimestamp()) / (1000 * 60 * 60 * 24)) * weights[2];
 		}
 
-		// TODO check geo/policatal distance
-
 		return dist;
 	}
 
@@ -98,14 +101,8 @@ public class ScoreProcessor {
 	 */
 	public ArrayList<Scoreable> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector){
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
-		/**
-		 * 
-		 * TODO
-		 * make sql prefilter req here
-		 * filter by: lawsector
-		 * build query: contains at leasgt one of the keywords
-		 */
-		// ArrayList<String> allKeywords = expandSynonyms(filteredKeywords); TODO use for sql prefilter
+		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
+		String query = QueryBuilder.buildQuery(allKeywords);
 		ArrayList<Scoreable> prefilter = new ArrayList<>(); // TODO retrieve by prefilter sql
 		final HashMap<Scoreable, Double> scores = new HashMap<>();
 		for(Scoreable s : prefilter) {
@@ -119,9 +116,11 @@ public class ScoreProcessor {
 			public int compare(Scoreable o1, Scoreable o2){
 				double d1 = scores.get(o1);
 				double d2 = scores.get(o2);
-				if(d1 < d2) {
+				double v1 = -(d1 * sortWeights[0]) + o1.getPageRank() * sortWeights[1];
+				double v2 = -(d2 * sortWeights[0]) + o2.getPageRank() * sortWeights[1];
+				if(v1 < v2) {
 					return -1;
-				} else if(d2 > d2) {
+				} else if(v1 > v2) {
 					return 1;
 				} else
 					return 0;
@@ -156,11 +155,6 @@ public class ScoreProcessor {
 		}
 		return filtered;
 	}
-
-	/*public static ArrayList<String> getSynonyms(String word){
-		// TODO forward call: alle synonyme für ein keyword
-		return null;
-	}*/
 
 	/**
 	 * Erweitert ein Keyword um Synonyme

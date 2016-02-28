@@ -24,4 +24,10 @@ public interface Scoreable {
 	 */
 	public long getTimestamp();
 
+	/**
+	 * @author Tobias Glaeser
+	 * @return page rank value
+	 */
+	public float getPageRank();
+
 }
