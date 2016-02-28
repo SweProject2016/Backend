@@ -40,12 +40,13 @@ public class Case {
 	 */
 	public ArrayList<Result> getSimiliarFromDB(DatabaseConnection dbc) throws SQLException
 	{
-		//queryBuilder = new QueryBuilder(); buildQuery is static
-	    String query = QueryBuilder.buildQuery(description);
-	    ResultSet rs = dbc.executeQuery(query);
-	    similiarCases = judgementToResultList(dbc.convertResultSetToJudgementList(rs));
+//	    String query = QueryBuilder.buildQuery(description);
+//	    ResultSet rs = dbc.executeQuery(query);
+		ScoreProcessor<Judgement> scoreProc=new ScoreProcessor<Judgement>();
+		ArrayList<Judgement> judgList= scoreProc.getBestMatches(description, 15, (long) 100, "");
+	    similiarCases = judgementToResultList(judgList);
 	    return similiarCases;
-		//load similiar cases from DB for step: retrieve
+	    //maybe use ScoreProcessor.getBestMatches() instead
 	}
 	
 	/**
