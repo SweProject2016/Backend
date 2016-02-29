@@ -7,12 +7,21 @@ public class Result {
 	private Judgement judgement;
 	private float similarity;
 	private Date date;
+	private float userRating;
 	
 	public Result(String userInput, Judgement judgement, float similarity, Date date){
 		this.userInput=userInput;
 		this.judgement=judgement;
 		this.similarity=similarity;
 		this.date = date;
+	}
+	
+	public float getUserRating(){
+		return userRating;
+	}
+	
+	public void setUserRating(float rating){
+		this.userRating=rating;
 	}
 	
 	public String getUserInput(){
@@ -50,10 +59,5 @@ public class Result {
 	 */
 	public void setDate(Date date){
 		this.date=date;
-	}
-
-	public void setEvaluation(float f) {
-		// TODO Auto-generated method stub
-		
 	}
 }

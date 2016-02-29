@@ -64,7 +64,7 @@ public class Case {
 		{
 			evaluatedJudgements.add(j);
 			Result result = newResultFromJudgement(j);
-			result.setEvaluation(evaluation);
+			result.setUserRating(evaluation);
 			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
 			try {
 				dbc.executeUpdate(insertQuery);
