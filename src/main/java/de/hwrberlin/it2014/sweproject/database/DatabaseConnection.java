@@ -165,6 +165,7 @@ public class DatabaseConnection {
 			result.setUserInput(rs.getString("user_input"));
 			result.setSimilarity(rs.getFloat("similarity"));
 			result.setDate(rs.getDate("date"));
+			result.setUserRating(rs.getFloat("user_rating"));
 			
 			int id = rs.getInt("picked_file");
 			Judgement judge = j.get(id);

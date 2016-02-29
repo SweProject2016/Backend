@@ -57,7 +57,7 @@ public class Case {
 		{
 			Judgement j = similiarCases.get(i);
 			Result result = newResultFromJudgement(j);
-			result.setEvaluation(evaluation[i]);
+			result.setUserRating(evaluation[i]);
 			insertQueries.add(TableResultsSQL.getInsertSQLCode(result));
 		}
 		for(String insertQuery : insertQueries)
