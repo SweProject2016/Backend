@@ -34,7 +34,7 @@ public class Case {
 		description=userInput;
 		this.id=id;
 		scoreProc = new ScoreProcessor<Judgement>();
-		setDateOfRequest(new Date());
+		dateOfRequest=new Date();
 	}
 	
 	/**
