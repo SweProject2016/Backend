@@ -74,7 +74,7 @@ CREATE TABLE `tbl_results` (
   `picked_file` int(11) NOT NULL,
   `similarity` float NOT NULL,
   `date` date NOT NULL,
-  `user_rating` float
+  `user_rating` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
