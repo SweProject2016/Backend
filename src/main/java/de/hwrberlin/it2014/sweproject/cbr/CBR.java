@@ -2,7 +2,7 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Case;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.model.Result;
+import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,12 +24,6 @@ public class CBR {
 	 */
 	public CBR()
 	{
-		dbc=new DatabaseConnection();
-        String host="localhost";
-        String database="swe_project";
-        String user="user";
-        String pwd="pwd";
-		dbc.connectToMysql(host, database, user, pwd);
 		activeCases = new ArrayList<Case>();
 	}
 	
@@ -38,7 +32,7 @@ public class CBR {
 	 * @param usersInput (String[])
 	 * @return �hnliche F�lle
 	 */
-	public ArrayList<Result> startCBR(String[] usersInput)
+	public ArrayList<Judgement> startCBR(String[] usersInput)
 	{
 		ArrayList<String> al = new ArrayList<>();
 		for(String s:usersInput){
@@ -52,7 +46,7 @@ public class CBR {
 	 * @param usersInput (String)
 	 * @return �hnliche F�lle
 	 */
-	public ArrayList<Result> startCBR(String usersInput)
+	public ArrayList<Judgement> startCBR(String usersInput)
 	{
 		String[] ar = usersInput.split(" ");
 		return startCBR(ar);
@@ -63,44 +57,28 @@ public class CBR {
 	 * @param usersInput (ArrayList<String>)
 	 * @return �hnliche F�lle
 	 */
-	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
+	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
 	{
-		if(dbc.isConnected())
-		{
-			ArrayList<Result> resultList;
-			try {
-				resultList=retrieve(usersInput);
-			} catch (SQLException e) {
-				resultList=new ArrayList<Result>();
-				//TODO write to log
-				e.printStackTrace(); 
-			}
-			return resultList;
-		}else{
-			//try to reconnect?
-		
-			return null;
+		ArrayList<Judgement> judgList;
+		try {
+			judgList=retrieve(usersInput);
+		} catch (SQLException e) {
+			judgList=new ArrayList<>();
+			e.printStackTrace(); 
 		}
+		return judgList;
 	}
 	
 	/**
-	 * 
+	 * @author Max Bock
 	 * @param evaluation
 	 * @return
 	 */
-	public String saveUserEvaluate(DatabaseConnection dbc, String evaluation) //jean-pierre
+	public String saveUserEvaluate(int id, float[] evaluation)
 	{
-		//TODO
-		if(dbc.isConnected()){
-			int id=0; // get ID from request...
-			retain (getCaseByID(id));
-			return null;
-			//calls retain and write Case to DB
-			//build response if successful or not
-		}else
-		{
-			return "not sucessful; no DBC";
-		}
+		Case c = getCaseByID(id);
+		retain(c, evaluation);
+		return null;
 	}
 
 	/**
@@ -144,24 +122,21 @@ public class CBR {
 	 * @return �hnliche F�lle
 	 * @throws SQLException
 	 */
-	private ArrayList<Result> retrieve(ArrayList<String> usersInput) throws SQLException
+	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
 	{
 		Case c = new Case(getHighestID()+1,usersInput);
 		activeCases.add(c);
-		return c.getSimiliarFromDB(dbc);
-		//recieves and returns a CaseList with similiar cases
+		return c.getSimiliarFromDB(30); //change for more casess
 	}
 	
 	/**
-	 *
+	 * @author Max Bock
 	 * @param evaluatedCase
 	 */
-	private void retain(Case evaluatedCase) //jean-pierre
+	private void retain(Case evaluatedCase, float[] evaluation)
 	{
-		//TODO
-		//return something; boolean or HTTPCode(int)?
-		//save the evalution from userResponse to the DB
-		//remove Case from activeCases
+		evaluatedCase.saveEvaluation(evaluation);
+		removeCaseByID(evaluatedCase.getID());
 	}
 	
 	/**

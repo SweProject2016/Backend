@@ -51,4 +51,9 @@ public class Result {
 	public void setDate(Date date){
 		this.date=date;
 	}
+
+	public void setEvaluation(float f) {
+		// TODO Auto-generated method stub
+		
+	}
 }
