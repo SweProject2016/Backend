@@ -15,9 +15,10 @@ public class QueryBuilder {
 	/**
 	 * 
 	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlüsselwörter(ohne synonyme)
+	 * @param lawsector TODO
 	 * @return Als Rückgabe erhält man die Datenbankanfrage, die die Zeilen nach den Schlüsselworttreffern auswählt
 	 */
-	public static String buildQuery(ArrayList<String> keywords){
+	public static String buildQuery(ArrayList<String> keywords, String lawsector){
 		String query = "SELECT * FROM tbl_judgement WHERE CONTAINS((sentence, offence, keywords),";
 		String queryKeywords = " '";
 
