@@ -6,6 +6,7 @@ import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
@@ -35,9 +36,7 @@ public class CBR {
 	public ArrayList<Judgement> startCBR(String[] usersInput)
 	{
 		ArrayList<String> al = new ArrayList<>();
-		for(String s:usersInput){
-			al.add(s);
-		}
+		for(String s : usersInput){ al.add(s); }
 		return startCBR(al);
 	}
 	
@@ -70,14 +69,18 @@ public class CBR {
 	}
 	
 	/**
-	 * @author Max Bock
-	 * @param evaluation
+	 * speichert die Bewertung zu einem Fall einer Anfrage
+	 * @param id der Anfrage
+	 * @param numberOfJudgement ist die Nummer des Falls in der bestimmten Anfrage
+	 * @param evaluation Bewertung
 	 * @return
 	 */
-	public String saveUserEvaluate(int id, float[] evaluation)
+	public String saveUserEvaluate(int id, int numberOfJudgement, float evaluation)
 	{
 		Case c = getCaseByID(id);
-		retain(c, evaluation);
+		c.saveEvaluation(numberOfJudgement, evaluation);
+		if(c.isCompletelyEvaluated())
+			removeCaseByID(c.getID());
 		return null;
 	}
 
@@ -114,7 +117,6 @@ public class CBR {
 		return null;
 	}
 	
-
 	/**
 	 * interne Methode fï¿½r den CBR-Zyklus
 	 * @author Max Bock
@@ -126,17 +128,7 @@ public class CBR {
 	{
 		Case c = new Case(getHighestID()+1,usersInput);
 		activeCases.add(c);
-		return c.getSimiliarFromDB(30); //change for more casess
-	}
-	
-	/**
-	 * @author Max Bock
-	 * @param evaluatedCase
-	 */
-	private void retain(Case evaluatedCase, float[] evaluation)
-	{
-		evaluatedCase.saveEvaluation(evaluation);
-		removeCaseByID(evaluatedCase.getID());
+		return c.getSimiliarFromDB(30); //change for more cases
 	}
 	
 	/**
@@ -154,5 +146,53 @@ public class CBR {
 			}
 		}
 		return id;
+	}
+	
+	public ArrayList<Case> getActiveCases()
+	{
+		return activeCases;
+	}
+	
+	/**
+	 * löscht alle Fälle aus den activeCases, die älter als ein Tag sind
+	 * @author Max Bock
+	 * @return count of deleted cases(/requests)
+	 */
+	public int removeOldCases()
+	{
+		long time = (long) 24 * 60 * 60 * 1000; // 1 day
+		return removeOldCases(time);
+	}
+	/**
+	 * löscht alle Fälle aus den active Cases, die älter als der Parameter(miliseconds) sind
+	 * sollte regelmäßig benutzt werden, damit nicht komplett bewertete Anfragen gelöscht werden
+	 * miliseconds <= 1 löscht alle Fälle
+	 * @author Max Bock
+	 * @param miliseconds
+	 * @return count of deleted cases(/requests)
+	 */
+	public int removeOldCases(long miliseconds)
+	{
+		int count = 0;
+		if(1>=miliseconds)
+		{
+			count=activeCases.size();
+			activeCases.clear();
+		}
+		else
+		{
+			Date current = new Date();
+			Date before = new Date(current.getTime()-miliseconds);
+			for(Case c : activeCases)
+			{
+				if(c.getDateOfRequest().before(before))
+				{
+					removeCaseByID(c.getID());
+					count++;
+				}
+			}
+		}
+		
+		return count;
 	}
 }
