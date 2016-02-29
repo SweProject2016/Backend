@@ -23,7 +23,7 @@ public class Case {
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um später die evaluation zur Anfrage zu zu ordnen
+	 * @param interne id, um spï¿½ter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
 	public Case(int id, ArrayList<String> userInput) //constructor for userrequest

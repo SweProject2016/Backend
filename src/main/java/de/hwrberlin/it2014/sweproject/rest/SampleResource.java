@@ -45,19 +45,21 @@ public class SampleResource extends Resource {
     						   @QueryParam("input") String input,
     						   @QueryParam("delay") int delay) {
     	try{
+    		System.out.println("X-Api-Key: " + apiKey);
+    		System.out.println("X-Access-Token: " + accessToken);
     		Generator generator = new Generator();
     		List<?> output = generator.generate(type, size, input);
     		final String path="/sample/get";
-    		if(!auth(apiKey,accessToken)){
-    			return build(Status.FORBIDDEN);
-    		} else {
+    		//if(!auth(apiKey,accessToken)){
+    		//	return build(Status.FORBIDDEN);
+    		//} else {
 	    		Thread.sleep(delay*1000);
 	    		if(size>1){
 	    			return build(Status.OK,output,path);
 	    		} else {
 	    			return build(Status.OK,output.get(0),path);
 	    		}
-    		} 
+    		//} 
     	} catch(Exception e){
 	    		return build(Status.INTERNAL_SERVER_ERROR);
 	    }

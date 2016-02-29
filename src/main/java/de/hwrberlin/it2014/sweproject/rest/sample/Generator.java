@@ -44,7 +44,7 @@ public class Generator {
 			float similarity = randomFloat();
 			Result result = new Result(userInput, 
 							generateJudgement(1).get(0), 
-							similarity);
+							similarity, getDate());
 			resultList.add(result);
 		}
 		return resultList;

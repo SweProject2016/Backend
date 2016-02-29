@@ -27,6 +27,7 @@ public abstract class Resource {
 	}
 	
 	protected boolean auth(String apiKey, String accessToken){
+		//TODO: Null Check
 		apiKey=normalize(apiKey);
 		accessToken=normalize(accessToken);
 		if(apiKey.equals(API_KEY) && accessToken.equals(ACCESS_TOKEN)){
