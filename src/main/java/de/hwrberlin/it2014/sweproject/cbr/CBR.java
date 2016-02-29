@@ -159,10 +159,22 @@ public class CBR {
 	 * @return count of deleted cases(/requests)
 	 */
 	public int removeOldCases()
+	{	
+		return removeOldCases((int)24);
+	}
+	
+	/**
+	 * löscht alle Fälle aus den activeCases, die älter als hours (Parameter int) sind
+	 * @author Max Bock
+	 * @param hours - int
+	 * @return count of deleted cases(/requests)
+	 */
+	private int removeOldCases(int hours) 
 	{
-		long time = (long) 24 * 60 * 60 * 1000; // 1 day
+		long time = (long) hours * 60 * 60 * 1000;
 		return removeOldCases(time);
 	}
+
 	/**
 	 * löscht alle Fälle aus den active Cases, die älter als der Parameter(miliseconds) sind
 	 * sollte regelmäßig benutzt werden, damit nicht komplett bewertete Anfragen gelöscht werden

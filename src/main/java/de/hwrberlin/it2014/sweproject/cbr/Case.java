@@ -86,7 +86,7 @@ public class Case {
 				this.getDescription(), 
 				j, 
 				(float) scoreProc.getCachedScore(j), 
-				j.getDate());
+				this.dateOfRequest);
 		return r;
 	}
 	
