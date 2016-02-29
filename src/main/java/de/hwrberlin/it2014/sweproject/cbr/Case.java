@@ -2,6 +2,7 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConfig;
@@ -18,8 +19,10 @@ public class Case {
 	
 	private int id;
 	private ArrayList<String> description;
-	private ArrayList<Judgement> similiarCases;
+	private ArrayList<Judgement> similarCases;
 	private ScoreProcessor<Judgement> scoreProc;
+	private ArrayList<Judgement> evaluatedJudgements;
+	private Date dateOfRequest;
 	
 	/**
 	 * @author Max Bock
@@ -31,6 +34,7 @@ public class Case {
 		description=userInput;
 		this.id=id;
 		scoreProc = new ScoreProcessor<Judgement>();
+		setDateOfRequest(new Date());
 	}
 	
 	/**
@@ -41,37 +45,33 @@ public class Case {
 	 */
 	public ArrayList<Judgement> getSimiliarFromDB(int number) throws SQLException
 	{
-		
-		similiarCases= scoreProc.getBestMatches(description, number, (long) 100, ""); //TODO whats the correct long
-	    return similiarCases;
+		similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
+		//TODO separate the timestamp and lawsector from userinput
+	    return similarCases;
 	}
 	
 	/**
 	 * @author Max Bock
-	 * @param Evaluation 
+	 * @param evaluation
 	 */
-	public void saveEvaluation(float[] evaluation)
+	public void saveEvaluation(int numberOfJudgement, float evaluation)
 	{
-		ArrayList<String> insertQueries=new ArrayList<>(); 
-		for(int i=0; i < similiarCases.size(); i++)
+		DatabaseConnection dbc=new DatabaseConnection();
+		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
+				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		Judgement j = similarCases.get(numberOfJudgement);
+		if(null!=j && !evaluatedJudgements.contains(j))
 		{
-			Judgement j = similiarCases.get(i);
+			evaluatedJudgements.add(j);
 			Result result = newResultFromJudgement(j);
-			result.setEvaluation(evaluation[i]);
-			insertQueries.add(TableResultsSQL.getInsertSQLCode(result));
-		}
-		for(String insertQuery : insertQueries)
-		{
-			DatabaseConnection dbc=new DatabaseConnection();
-			dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
-					DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+			result.setEvaluation(evaluation);
+			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
 			try {
 				dbc.executeUpdate(insertQuery);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	
 	/**
@@ -80,7 +80,8 @@ public class Case {
 	 * @param Judgement
 	 * @return Result
 	 */
-	private Result newResultFromJudgement(Judgement j) {
+	private Result newResultFromJudgement(Judgement j) 
+	{
 		Result r=new Result(
 				this.getDescription(), 
 				j, 
@@ -88,13 +89,22 @@ public class Case {
 				j.getDate());
 		return r;
 	}
-
 	
+	/**
+	 * gibt die Beschreibung (User Input) als ArrayList zurück
+	 * @author Max Bock
+	 * @param asList boolean (wert egal)
+	 * @return UserInput as ArrayList<String>
+	 */
 	public ArrayList<String> getDescription(boolean asList)
 	{
 		return description;
 	}
 	
+	/**
+	 * @author Max Bock
+	 * @return UserInput as String
+	 */
 	public String getDescription()
 	{
 		String sstream="";
@@ -109,19 +119,24 @@ public class Case {
 	{
 		return id;
 	}
-	
+
 	/**
+	 * prüft, ob alle ähnlichen Fälle dieser Anfrage bewertet wurden.
 	 * @author Max Bock
-	 * @param JudgementList from DBQuery
-	 * @return a ArrayList containing Result (userInput, Judgement and similiarity)
-	 *
-	private ArrayList<Result> judgementToResultList(ArrayList<Judgement> judgList) {
-		ArrayList<Result> rl=new ArrayList<Result>();
-		ScoreProcessor<Judgement> sp=new ScoreProcessor<Judgement>();
-		for(Judgement j : judgList)
+	 * @return true, alle bewertet; false, mind. ein Fall nicht bewertet
+	 */
+	public boolean isCompletelyEvaluated() {
+		if(evaluatedJudgements.isEmpty())
+			return false;
+		for(Judgement e : similarCases)
 		{
-			rl.add(new Result(this.getDescription(), j, (float) sp.getDistance(j, description, j.getTimestamp()), j.getDate()));
+			if(!evaluatedJudgements.contains(e))
+				return false;
 		}
-		return rl;
-	}/* */
+		return true;
+	}
+
+	public Date getDateOfRequest() {
+		return dateOfRequest;
+	}
 }
