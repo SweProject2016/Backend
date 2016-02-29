@@ -1,7 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Case;
-import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 import java.sql.SQLException;
@@ -17,15 +16,17 @@ import java.util.Date;
 public class CBR {
 	
 	private ArrayList<Case> activeCases; //all cases from current userRequests
-	DatabaseConnection dbc;
+	private int COUNT_TO_RETURN;
 	
-	/**
-	 * erstellt eine Datenbankverbindung
-	 * @author Max Bock
-	 */
 	public CBR()
 	{
 		activeCases = new ArrayList<Case>();
+		COUNT_TO_RETURN=30;
+	}
+	public CBR(int count)
+	{
+		activeCases = new ArrayList<Case>();
+		COUNT_TO_RETURN=count;
 	}
 	
 	/**
@@ -128,7 +129,7 @@ public class CBR {
 	{
 		Case c = new Case(getHighestID()+1,usersInput);
 		activeCases.add(c);
-		return c.getSimiliarFromDB(30); //change for more cases
+		return c.getSimiliarFromDB(COUNT_TO_RETURN); //change for more cases
 	}
 	
 	/**
