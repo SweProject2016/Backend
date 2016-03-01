@@ -14,7 +14,7 @@ public abstract class Resource {
 	
 	protected Response build(Status status, Object entity, String path){
 		return Response.status(status)
-				.header(ALLOW_ORIGIN_HEADER,WILDCARD)
+				//.header(ALLOW_ORIGIN_HEADER,WILDCARD)
 				.entity(createEntity(path, status, entity))
 				.build();
 	}
@@ -22,12 +22,12 @@ public abstract class Resource {
 	protected Response build(Response.Status status){
 		return Response
 				.status(status)
-				.header(ALLOW_ORIGIN_HEADER,WILDCARD)
+				//.header(ALLOW_ORIGIN_HEADER,WILDCARD)
 				.build();
 	}
 	
 	protected boolean auth(String apiKey, String accessToken){
-		//TODO: Null Check
+		if(apiKey == null || accessToken == null) return false;
 		apiKey=normalize(apiKey);
 		accessToken=normalize(accessToken);
 		if(apiKey.equals(API_KEY) && accessToken.equals(ACCESS_TOKEN)){

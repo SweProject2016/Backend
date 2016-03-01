@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -50,16 +51,16 @@ public class SampleResource extends Resource {
     		Generator generator = new Generator();
     		List<?> output = generator.generate(type, size, input);
     		final String path="/sample/get";
-    		//if(!auth(apiKey,accessToken)){
-    		//	return build(Status.FORBIDDEN);
-    		//} else {
+    		if(!auth(apiKey,accessToken)){
+    			return build(Status.FORBIDDEN);
+    		} else {
 	    		Thread.sleep(delay*1000);
 	    		if(size>1){
 	    			return build(Status.OK,output,path);
 	    		} else {
 	    			return build(Status.OK,output.get(0),path);
 	    		}
-    		//} 
+    		} 
     	} catch(Exception e){
 	    		return build(Status.INTERNAL_SERVER_ERROR);
 	    }
