@@ -31,4 +31,24 @@ public class UserInput {
 		return input.split(regex);
 	}
 
+	/**
+	 * Beschreibung
+	 *
+	 * @author Maximilian Kramp, Paul Piske
+	 * @since 01.03.2016 18:00:00
+	 * @param input URL String
+	 * @return 
+	 */
+	public ArrayList<String> getLawTermsFromInput(String[] input){
+		ArrayList<String> lawTerms = new ArrayList<String>();
+		LawTester lt = new LawTester();
+		
+		for(String term : input){
+			if(lt.testIfWordIsLawTerm(term)){
+				lawTerms.add(term);
+			}
+		}
+		return lawTerms;
+	}
+
 }

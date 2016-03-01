@@ -26,7 +26,24 @@ public class LawTester {
 	 * @return ArrayList<String> aList mit Inhalt eines Lexikons
 	 */
 	private static ArrayList<String> getLexiEntries(){
-		return null;
+		ArrayList<String> entries = new ArrayList<String>();
+		String line = null;
+		FileReader fileReader;
+		try {
+			fileReader = new FileReader("lawwordsExtended.txt");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			while ((line = bufferedReader.readLine()) != null) {
+				entries.add(line);
+			}
+			bufferedReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return entries;
 	}
 	
 	
