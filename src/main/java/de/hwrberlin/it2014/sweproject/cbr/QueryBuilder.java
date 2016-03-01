@@ -15,7 +15,7 @@ public class QueryBuilder {
 	/**
 	 * 
 	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlüsselwörter(ohne synonyme)
-	 * @param lawsector TODO
+	 * @param lawsector Der Rechtsbereich aus welchem die gefundenen Fälle stammen sollen
 	 * @return Als Rückgabe erhält man die Datenbankanfrage, die die Zeilen nach den Schlüsselworttreffern auswählt
 	 */
 	public static String buildQuery(ArrayList<String> keywords, String lawsector){
@@ -33,8 +33,14 @@ public class QueryBuilder {
 			int len = 0;
 			len = queryKeywords.length();
 			queryKeywords = queryKeywords.substring(0, len - 3);
-			queryKeywords += "');";
+			if(!lawsector.isEmpty()){
+				queryKeywords += "') AND law_sector LIKE '" + lawsector + "';";
+			}else{
+				queryKeywords += "');";	
+			}
 		}
+		
+		query += queryKeywords;
 
 		return query;
 	}
