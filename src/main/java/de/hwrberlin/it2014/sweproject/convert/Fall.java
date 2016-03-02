@@ -1,4 +1,4 @@
-package bghimport.convert;
+package de.hwrberlin.it2014.sweproject.convert;
 
 public class Fall {
 

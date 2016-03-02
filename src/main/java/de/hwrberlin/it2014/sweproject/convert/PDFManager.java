@@ -1,4 +1,4 @@
-package bghimport.convert;
+package de.hwrberlin.it2014.sweproject.convert;
 
 import java.io.File;
 import java.io.FileNotFoundException;
