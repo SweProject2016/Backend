@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class LawTester {
 	
+	private static ArrayList<String> lexiEntries = getLexiEntries();
+	
 	/**
 	 * Die Methode bekommt ein Schluesselwort und ueberprueft ob dieses ein juristischer Ausdruck ist 
 	 * @param keyword ein Schluesselwort zur Ueberpruefung
@@ -13,7 +15,7 @@ public class LawTester {
 		boolean result = false;
 		
 		//TODO test in multiple lexi wether keyword is an existing lawterm
-		for(String entry : getLexiEntries()){
+		for(String entry : lexiEntries){
 			if(keyword == entry){
 				return result = true;
 			}
@@ -30,7 +32,7 @@ public class LawTester {
 		String line = null;
 		FileReader fileReader;
 		try {
-			fileReader = new FileReader("lawwordsExtended.txt");
+			fileReader = new FileReader("lawTermsExtended.txt");
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			
 			while ((line = bufferedReader.readLine()) != null) {
