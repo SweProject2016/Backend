@@ -1,24 +1,24 @@
-Ã„nderungskÃ¼ndigung
-Ã–ffentlichkeit
-Ãœberbau
-Ãœberfall
-Ãœbergangsvorschriften
-Ãœberhang
-ÃœbermaÃŸverbot
-Ãœberstunden
-Ãœbertragbarkeit
-Ãœbertretung
-Ã¶ffentliche Sicherheit und Ordnung
-Ã¶ffentlicher Dienst
-Ã¶ffentliches Recht
-Ã¼ble Nachrede
+Änderungskündigung
+Öffentlichkeit
+Überbau
+Überfall
+Übergangsvorschriften
+Überhang
+Übermaßverbot
+Überstunden
+Übertragbarkeit
+Übertretung
+öffentliche Sicherheit und Ordnung
+öffentlicher Dienst
+öffentliches Recht
+üble Nachrede
 Abdingbarkeit
 Abfindung
 Abgaben
 Abgabenordnung
 Abgeordneter
 Abhandenkommen von Sachen
-AbkÃ¶mmling
+Abkömmling
 Ablehnung
 Abmahnung
 Abschiebung
@@ -34,7 +34,7 @@ Abtreibung
 Abtretung
 Abwesenheit
 Abwicklung
-AbzahlungsgeschÃ¤ft
+Abzahlungsgeschäft
 Actio libera in causa
 Adoption
 Affekt
@@ -43,10 +43,10 @@ Aktiengesellschaft
 Aktivlegitimation
 akzessorisch
 Alkoholdelikte
-Allgemeine GeschÃ¤ftsbedingungen
+Allgemeine Geschäftsbedingungen
 Allgemeines Gleichbehandlungsgesetz
-allgemeines PersÃ¶nlichkeitsrecht
-AllgemeinverfÃ¼gung
+allgemeines Persönlichkeitsrecht
+Allgemeinverfügung
 Altersgrenze
 Altersrente
 Altersteilzeit
@@ -59,7 +59,7 @@ Amtsgericht
 Amtsgrundsatz
 Amtshaftung
 Amtshilfe
-AmtstrÃ¤ger
+Amtsträger
 Analogie
 Anderkonto
 Anerkenntnis
@@ -67,17 +67,17 @@ Anfechtung
 Anfechtungsklage
 angeborene Rechte
 Angebot
-AngehÃ¶rige
+Angehörige
 Angeklagter
 Angeschuldigter
-AnhÃ¶rung
+Anhörung
 Anklage
-AnknÃ¼pfung
+Anknüpfung
 Annahme als Kind
 Anscheinsbeweis
 Anschluss- und Benutzungszwang
 Anspruch
-Anstalt des Ã¶ffentlichen Rechts
+Anstalt des öffentlichen Rechts
 Anstiftung
 Antidiskriminierungsgesetz
 Antrag
@@ -87,13 +87,13 @@ Anwaltszwang
 Anwartschaft
 Anzeigepflicht
 Arbeitgeber
-ArbeitnehmerÃ¼berlassung
+Arbeitnehmerüberlassung
 Arbeitnehmer
 Arbeitnehmererfindung
-ArbeitnehmerfreizÃ¼gigkeit
+Arbeitnehmerfreizügigkeit
 Arbeitnehmerhaftung
 Arbeitsagentur
-ArbeitsfÃ¶rderung
+Arbeitsförderung
 Arbeitsgerichtsbarkeit
 Arbeitskampf
 Arbeitslosengeld I
@@ -102,19 +102,19 @@ Arbeitslosenversicherung
 Arbeitsrecht
 Arbeitsschutz
 Arbeitsunfall
-ArbeitsverhÃ¤ltnis
+Arbeitsverhältnis
 Arbeitsvermittlung
 Arbeitsvertrag
 Arbeitsverweigerung
 Arbeitszeit
-arglistige TÃ¤uschung
+arglistige Täuschung
 Arrest
 Arztrecht
 Asylrecht
 Aufenthalt
 Aufgebot
 Aufhebungsvertrag
-AufklÃ¤rungspflicht
+Aufklärungspflicht
 Auflage
 Auflassung
 Aufopferung
@@ -124,7 +124,7 @@ Auftrag
 Auftragsangelegenheiten
 Aufwendungen
 Augenschein
-AusbÃ¼rgerung
+Ausbürgerung
 Ausbildungsbeihilfen
 Ausbildungsfreibetrag
 Ausbildungsfreiheit
@@ -134,7 +134,7 @@ Ausfertigung
 Aushilfe
 Auskunftspflicht
 Auskunftsverweigerungsrecht
-AuslÃ¤nder
+Ausländer
 Auslegung
 Auslieferung
 Auslobung
@@ -142,22 +142,22 @@ Aussage
 Aussagedelikte
 Aussageverweigerungsrecht
 Ausschlagung
-AusschlieÃŸung
+Ausschließung
 Aussetzung
 Aussiedler
 Aussperrung
 Ausweisung
 Autonomie
-bÃ¶ser Glaube
-BÃ¼rgerantrag
-BÃ¼rgerbegehren
-BÃ¼rgerentscheid
-BÃ¼rgerliches Gesetzbuch
-bÃ¼rgerliches Recht
-BÃ¼rgermeister
-BÃ¼rgerrechte
-BÃ¼rgschaft
-BAFÃ¶G
+böser Glaube
+Bürgerantrag
+Bürgerbegehren
+Bürgerentscheid
+Bürgerliches Gesetzbuch
+bürgerliches Recht
+Bürgermeister
+Bürgerrechte
+Bürgschaft
+BAFöG
 Bagatellsachen
 Bankeinlage
 Bankenaufsicht
@@ -168,17 +168,17 @@ Bauleitplanung
 Baurecht
 Beamte
 Bebauungsplan
-BedÃ¼rfnisprÃ¼fung
+Bedürfnisprüfung
 Bedingung
-BefÃ¤higungsnachweis
+Befähigungsnachweis
 Befangenheit
-befristetes ArbeitsverhÃ¤ltnis
+befristetes Arbeitsverhältnis
 Beglaubigung
 Begnadigung
-BehÃ¶rde
+Behörde
 Beherbergungsvertrag
 Beihilfe
-BeitrÃ¤ge
+Beiträge
 Beitragsbemessungsgrenze
 Bekenntnisfreiheit
 Beklagter
@@ -187,36 +187,36 @@ Beliehene
 Beratungshilfe
 Bereicherung
 Berliner Testament
-BerufsausbildungsverhÃ¤ltnis
+Berufsausbildungsverhältnis
 Berufsbildungsgesetz
 Berufsfreiheit
 Berufsverbot
 Berufung
-BeschÃ¤ftigtenschutzgesetz
-BeschÃ¤ftigungsverhÃ¤ltnis
+Beschäftigtenschutzgesetz
+Beschäftigungsverhältnis
 Beschlagnahme
 Beschluss
 Beschlussverfahren
 Beschneidung
-beschrÃ¤nkte GeschÃ¤ftsfÃ¤higkeit
+beschränkte Geschäftsfähigkeit
 Beschuldigter
 Beschwerde
 Besitz
 Bestandteile
 Bestechung
 Bestimmtheit
-BetÃ¤ubungsmittelgesetz
+Betäubungsmittelgesetz
 Betreuung
 Betreuungsgeld
 Betreuungsgericht
 betriebliches Eingliederungsmanagement
-BetriebsÃ¼bergang
+Betriebsübergang
 Betriebsrat
 Betriebsvereinbarung
 Betriebsverfassungsgesetz
 Betrug
-BewÃ¤hrung
-BewÃ¤hrungshilfe
+Bewährung
+Bewährungshilfe
 Beweis
 Beweis des ersten Anscheins
 Beweislast
@@ -231,10 +231,10 @@ Boykott
 Brandstiftung
 Brief-, Post- und Fernmeldegeheimnis
 Bruchteilsgemeinschaft
-BuÃŸgeldverfahren
+Bußgeldverfahren
 Bundesanwalt
 Bundesanzeiger
-BundesbehÃ¶rden
+Bundesbehörden
 Bundesfinanzhof
 Bundesgerichte
 Bundesgerichtshof
@@ -243,9 +243,9 @@ Bundesgrenzschutz
 Bundeskanzler
 Bundeskartellamt
 Bundeskriminalamt
-BundeslÃ¤nder
+Bundesländer
 Bundespolizei
-BundesprÃ¤sident
+Bundespräsident
 Bundesrat
 Bundesregierung
 Bundesrepublik
@@ -262,12 +262,12 @@ Computerstraftaten
 Copyright
 Corpus Delicti
 Culpa
-DÃ¼sseldorfer Tabelle
+Düsseldorfer Tabelle
 Darlehen
 Datenschutz
-DauerschuldverhÃ¤ltnis
+Dauerschuldverhältnis
 deklaratorische Wirkung
-DeliktsfÃ¤higkeit
+Deliktsfähigkeit
 Demonstrationsrecht
 Denkmalschutz
 Deutsche
@@ -299,9 +299,9 @@ E-Commerce
 EEG-Umlage
 Effektivverzinsung
 EG.Recht
-eheÃ¤hnliche Lebensgemeinschaft
-EhefÃ¤higkeitszeugnis
-eheliches GÃ¼terrecht
+eheähnliche Lebensgemeinschaft
+Ehefähigkeitszeugnis
+eheliches Güterrecht
 Eherecht
 Ehrenamt
 ehrenamtliche Richter
@@ -311,7 +311,7 @@ eidesstattliche Versicherung
 Eigenbedarf
 Eigentum
 Eigentumsvorbehalt
-EinbÃ¼rgerung
+Einbürgerung
 Einbruch
 eingetragene Lebenspartnerschaft
 Eingriffsverwaltung
@@ -325,7 +325,7 @@ Einrede
 Einspruch
 Einstellung
 einstweilige Anordnung
-einstweilige VerfÃ¼gung
+einstweilige Verfügung
 Eintragung
 Eintragungsbewilligung
 Einvernehmen
@@ -346,10 +346,10 @@ Empfangsbekenntnis
 Energiewirtschaftsgesetz
 Enteignung
 Entgeltfortzahlung
-EntmÃ¼ndigung
-EntschÃ¤digung
+Entmündigung
+Entschädigung
 Entscheidung
-ErÃ¶ffnungsbeschluss
+Eröffnungsbeschluss
 Erbbaurecht
 Erbengemeinschaft
 Erbfolge
@@ -359,15 +359,15 @@ Erbschaftsteuer
 Erbschein
 Erbvertrag
 Erbverzicht
-ErfÃ¼llung
-ErfÃ¼llungs statt
-ErfÃ¼llungsgehilfe
+Erfüllung
+Erfüllungs statt
+Erfüllungsgehilfe
 Erinnerung
 Erkennungsdienstliche Behandlung
 Erlass
 Erlaubnis
 Erledigung der Hauptsache
-ErmÃ¤chtigung
+Ermächtigung
 Ermessen
 Ermittlungsgrundsatz
 Ermittlungsverfahren
@@ -379,48 +379,48 @@ Ertragswertverfahren
 Erziehungsbeistand
 Erziehungsberechtigter
 Erziehungshilfe
-ErziehungsmaÃŸregeln
+Erziehungsmaßregeln
 Erziehungsregister
 Erziehungsurlaub
 Erziehungszeiten
-EuropÃ¤ische Gemeinschaft
-EuropÃ¤ische Grundrechtecharta
-EuropÃ¤ische Menschenrechtskonvention
-EuropÃ¤ische Sozialcharta
-EuropÃ¤ische Union
-EuropÃ¤ische Zentralbank
-EuropÃ¤ischer Gerichtshof
-EuropÃ¤ischer Gerichtshof fÃ¼r Menschenrechte
-EuropÃ¤isches Parlament
+Europäische Gemeinschaft
+Europäische Grundrechtecharta
+Europäische Menschenrechtskonvention
+Europäische Sozialcharta
+Europäische Union
+Europäische Zentralbank
+Europäischer Gerichtshof
+Europäischer Gerichtshof für Menschenrechte
+Europäisches Parlament
 Europarecht
 Eventualmaxime
 Exekutive
-ExterritorialitÃ¤t
-FÃ¤lligkeit
-FÃ¤lschung technischer Aufzeichnungen
-FÃ¶deralismusreform
-FÃ¼hrerschein
-FÃ¼hrungsaufsicht
-FÃ¼hrungszeugnis
+Exterritorialität
+Fälligkeit
+Fälschung technischer Aufzeichnungen
+Föderalismusreform
+Führerschein
+Führungsaufsicht
+Führungszeugnis
 Fachaufsicht
 Factoring
 Fahndung
 Fahreignungsregister
-Fahren ohne FÃ¼hrerschein
+Fahren ohne Führerschein
 Fahren ohne Fahrerlaubnis
 Fahrerflucht
 Fahrerlaubnis
-FahrlÃ¤ssigkeit
+Fahrlässigkeit
 Fahrverbot
 faktischer Vertrag
 Falschaussage
-falsche VerdÃ¤chtigung
+falsche Verdächtigung
 FamFG
 Familiengericht
 Familienpflegezeit
 Familienrecht
 Feiertage
-FernabsatzvertrÃ¤ge
+Fernabsatzverträge
 Fernmeldegeheimnis
 Festnahme
 Feststellungsklage
@@ -432,7 +432,7 @@ Finanzverfassung
 Finanzverwaltung
 Finderlohn
 Firma
-FlÃ¤chennutzungsplan
+Flächennutzungsplan
 Fluchtgefahr
 Folgenbeseitigung
 Forderung
@@ -444,25 +444,25 @@ Freibetrag
 Freigrenze
 Freiheitsstrafe
 freiwillige Gerichtsbarkeit
-FreizÃ¼gigkeit
+Freizügigkeit
 Freizeitarrest
 Friedenspflicht
 Frist
 Fundrecht
-GÃ¼tergemeinschaft
-GÃ¼teverfahren
+Gütergemeinschaft
+Güteverfahren
 Garantenstellung
 Garantie
-GaststÃ¤tte
+Gaststätte
 GbR
-GebÃ¼hren
-gebÃ¼hrenpflichtige Verwarnung
-GebietskÃ¶rperschaften
+Gebühren
+gebührenpflichtige Verwarnung
+Gebietskörperschaften
 Gebot
 Gebrauchsmuster
-GefÃ¤hrdungshaftung
-GefÃ¤lligkeitsfahrt
-GefÃ¤lligkeitsverhÃ¤ltnis
+Gefährdungshaftung
+Gefälligkeitsfahrt
+Gefälligkeitsverhältnis
 Gefahr
 Gefahr im Verzug
 gefahrgeneigte Arbeit
@@ -470,23 +470,23 @@ Gefahrstoffe
 Gegendarstellung
 Gegenseitigkeit
 Gegenstandswert
-GehaltspfÃ¤ndung
+Gehaltspfändung
 geheimer Vorbehalt
 Geheimnis
 Gehilfe
 Geiselnahme
 geistiges Eigentum
-Geld- und WertzeichenfÃ¤lschung
-GeldbuÃŸe
+Geld- und Wertzeichenfälschung
+Geldbuße
 Geldstrafe
-GeldwÃ¤sche
+Geldwäsche
 geldwerte Vorteile
 GEMA
 Gemeinde
 Gemeindevertretung
 gemeindliche Kreditaufnahme
 Gemeingebrauch
-gemeinnÃ¼tzig
+gemeinnützig
 Gemeinsamer Ausschuss
 Gemeinschaft
 gemeinschaftliches Testament
@@ -496,7 +496,7 @@ Gender.Mainstreaming
 Genehmigung
 Generalbundesanwalt
 Generalklausel
-GeneralprÃ¤vention
+Generalprävention
 Genfer Konventionen
 Genfer Protokolle
 Genfer Vereinbarungen
@@ -514,14 +514,14 @@ Gerichtsvollzieher
 Gesamthandsgemeinschaft
 Gesamtrechtsnachfolge
 Gesamtschuld
-GeschÃ¤ftsbedingungen
-GeschÃ¤ftsbesorgungsvertrag
-GeschÃ¤ftsfÃ¤higkeit
-GeschÃ¤ftsfÃ¼hrung
-GeschÃ¤ftsgrundlage
+Geschäftsbedingungen
+Geschäftsbesorgungsvertrag
+Geschäftsfähigkeit
+Geschäftsführung
+Geschäftsgrundlage
 Geschmacksmuster
-Gesellschaft des bÃ¼rgerlichen Rechts
-Gesellschaft mit beschrÃ¤nkter Haftung
+Gesellschaft des bürgerlichen Rechts
+Gesellschaft mit beschränkter Haftung
 Gesetz
 Gesetzeskonkurrenz
 Gesetzesvorbehalt
@@ -530,27 +530,27 @@ Gesetzgebung
 Gesetzgebungsverfahren
 gesetzlicher Richter
 gesetzlicher Vertreter
-GesetzmÃ¤ÃŸigkeit der Verwaltung
+Gesetzmäßigkeit der Verwaltung
 Gestaltungsklage
 Gesundheitsrecht
 Gesundheitszeugnis
-GewÃ¤hrleistung
-GewÃ¤sserverunreinigung
+Gewährleistung
+Gewässerverunreinigung
 Gewalt
 Gewaltenteilung
 Gewaltmonopol
-GewaltverhÃ¤ltnis
+Gewaltverhältnis
 Gewerbe
 Gewerbefreiheit
 Gewerbesteuer
 gewerblicher Rechtsschutz
-gewerbsmÃ¤ÃŸiges Handeln
+gewerbsmäßiges Handeln
 Gewissensfreiheit
-gewohnheitsmÃ¤ÃŸiges Handeln
+gewohnheitsmäßiges Handeln
 Gewohnheitsrecht
-GlÃ¤ubiger
-GlÃ¤ubigerverzug
-GlÃ¼cksspiel
+Gläubiger
+Gläubigerverzug
+Glücksspiel
 Glaubens-, Gewissens- und Bekenntnisfreiheit
 Glaubhaftmachung
 Gleichbehandlung
@@ -571,12 +571,12 @@ Grundfreiheiten
 Grundgesetz
 Grundrechte
 Grundschuld
-GrundstÃ¼ck
-GrundstÃ¼ckskaufvertrag
+Grundstück
+Grundstückskaufvertrag
 guter Glaube
 Gutglaubensschutz
-hÃ¶chstpersÃ¶nliche Rechte
-hÃ¶here Gewalt
+höchstpersönliche Rechte
+höhere Gewalt
 Haager Abkommen
 Haager Tribunal
 Haft
@@ -585,21 +585,21 @@ Haftpflicht
 Haftung
 Halter
 Halterkostenhaftung
-HandelsgeschÃ¤ft
+Handelsgeschäft
 Handelsgesellschaft
 Handelsgewerbe
 Handelskauf
 Handelsrecht
 Handelsregister
 Handelsvertreter
-HandlungsfÃ¤higkeit
+Handlungsfähigkeit
 Handwerk
 Handwerksordnung
 Harmonisierung
 Hauptverhandlung
 Hausfrieden
 Haushaltsplan
-HaustÃ¼rgeschÃ¤fte
+Haustürgeschäfte
 Hehlerei
 Heimarbeit
 Heimgesetz
@@ -612,20 +612,20 @@ Hinterbliebenenrente
 Hinterlegung
 Hochverrat
 Hoheitsrechte
-HomosexualitÃ¤t
+Homosexualität
 Hypothek
 Idealkonkurrenz
-ImmaterialgÃ¼terrecht
+Immaterialgüterrecht
 Immissionsschutz
-ImmunitÃ¤t
+Immunität
 in dubio pro reo
-IndemnitÃ¤t
+Indemnität
 indirekte Steuern
 Indiz
 informationelle Selbstbestimmung
 Informationsfreiheit
 Inhaberpapier
-InkompatibilitÃ¤t
+Inkompatibilität
 Inkrafttreten von Gesetzen
 innere Verwaltung
 Inquisitionsprinzip
@@ -648,7 +648,7 @@ Jugendgerichtshilfe
 Jugendhilfe
 Jugendhilferecht
 Jugendkammer
-JugendkriminalitÃ¤t
+Jugendkriminalität
 Jugendliche
 Jugendrecht
 Jugendrichter
@@ -658,22 +658,22 @@ Jugendstrafe
 Jugendstrafrecht
 juristische Person
 Justiz
-JustizgewÃ¤hrungsanspruch
-KÃ¶rperschaft
-KÃ¶rperschaftsteuer
-KÃ¶rperverletzung
-KÃ¼ndigung
-KÃ¼ndigungsschutz
-KÃ¼nstlersozialversicherung
+Justizgewährungsanspruch
+Körperschaft
+Körperschaftsteuer
+Körperverletzung
+Kündigung
+Kündigungsschutz
+Künstlersozialversicherung
 Kapitalgesellschaft
 Kapitalverkehrsfreiheit
 Kartell
 Kauf
 Kaufmann
-KausalitÃ¤t
+Kausalität
 Kaution
 Kerbholz
-KettenarbeitsverhÃ¤ltnis
+Kettenarbeitsverhältnis
 Kind
 Kinder- und Jugendhilfe
 Kinderarbeit
@@ -692,7 +692,7 @@ Kollegialgericht
 Kommanditgesellschaft
 Kommunalaufsicht
 kommunale Selbstverwaltung
-KommunalverbÃ¤nde
+Kommunalverbände
 Kommunalverfassung
 Kompetenzkonflikt
 Konfiskation
@@ -709,7 +709,7 @@ Konzession
 Kraftfahrtbundesamt
 Kraftfahrzeughaftung
 Kraftfahrzeughalter
-KraftloserklÃ¤rung
+Kraftloserklärung
 Krankenversicherung
 Krankenversicherung der Landwirte
 Kreditbetrug
@@ -727,8 +727,8 @@ Kulturhoheit
 Kultusfreiheit
 Kumulation
 Kuppelei
-LÃ¤nder
-LÃ¶schung
+Länder
+Löschung
 Ladendiebstahl
 Ladenschluss
 Ladung
@@ -739,35 +739,35 @@ Landgericht
 Landtag
 Lauschangriff
 Leasing
-Lebensmittel-, BedarfsgegenstÃ¤nde- und Futtermittelgesetzbuch
+Lebensmittel-, Bedarfsgegenstände- und Futtermittelgesetzbuch
 Lebensmittelrecht
 Lebenspartnerschaft
 Legaldefinition
-LegalitÃ¤tsprinzip
+Legalitätsprinzip
 Legislative
 Legitimation
 Legitimationspapier
 Leichtfertigkeit
-LeiharbeitsverhÃ¤ltnis
+Leiharbeitsverhältnis
 Leihe
 Leistung
 Leistungsklage
-LeistungsstÃ¶rungen
+Leistungsstörungen
 Leistungsverwaltung
 Leistungsverweigerungsrecht
 leitende Angestellte
 Liquidation
 Lizenz
 Lohnfortzahlung
-LohnpfÃ¤ndung
+Lohnpfändung
 Lohnsteuer
 Lotterievertrag
 Luftfahrtrecht
 Luftverkehrssteuer
-MÃ¤ngelhaftung
-MÃ¼ndel
-MÃ¼ndlichkeitsprinzip
-MaÃŸregeln der Besserung und Sicherung
+Mängelhaftung
+Mündel
+Mündlichkeitsprinzip
+Maßregeln der Besserung und Sicherung
 Mahnung
 Mahnverfahren
 Makler
@@ -785,19 +785,19 @@ Meldepflicht
 Meldewesen
 Menschenhandel
 Menschenrechte
-MenschenwÃ¼rde
+Menschenwürde
 Mentalreservation
 merkantiler Minderwert
 Miete
-MinderjÃ¤hrige
+Minderjährige
 Minderung
 Mindestlohn
 Mindestunterhalt
 Misshandlung von Schutzbefohlenen
 Mitbestimmung
 Miteigentum
-MittÃ¤terschaft
-mittelbare TÃ¤terschaft
+Mittäterschaft
+mittelbare Täterschaft
 Mobbing
 Mord
 Musterprozess
@@ -805,14 +805,14 @@ Musterschutz
 Mutterschaftsgeld
 Mutterschaftsurlaub
 Mutterschutz
-NÃ¶tigung
+Nötigung
 Nachbarrecht
 Nachbesserung
 Nacherbe
 Nachstellung
 Nachwirkung
 Namensrecht
-natÃ¼rliche Person
+natürliche Person
 Naturalobligation
 Naturalrestitution
 Naturrecht
@@ -820,19 +820,19 @@ Naturschutz
 ne bis in idem
 Nebenklage
 Nebenleistung
-NebentÃ¤terschaft
-NebentÃ¤tigkeit
+Nebentäterschaft
+Nebentätigkeit
 negatives Interesse
 Netzfahndung
-NeutralitÃ¤t
+Neutralität
 nicht eheliche Kinder
 nicht eheliche Lebensgemeinschaft
-NichterfÃ¼llung
+Nichterfüllung
 Nichtigkeit
 Nichtigkeitsklage
 Nichtraucherschutz
 Nichtzulassungsbeschwerde
-NieÃŸbrauch
+Nießbrauch
 Niederlassungsfreiheit
 normative Wirkung
 Normenkontrolle
@@ -849,7 +849,7 @@ nulla poena sine lege
 Nullzone
 Nutzungsausfall
 Nutzungsrecht
-OberbÃ¼rgermeister
+Oberbürgermeister
 Oberlandesgericht
 Oberverwaltungsgericht
 Obhutspflicht
@@ -860,10 +860,10 @@ offene Handelsgesellschaft
 Offizialdelikt
 Offizialprinzip
 Opferanspruchssicherungsgesetz
-OpferentschÃ¤digung
-OpportunitÃ¤tsprinzip
+Opferentschädigung
+Opportunitätsprinzip
 ordentliche Gerichtsbarkeit
-OrdnungsbehÃ¶rden
+Ordnungsbehörden
 Ordnungsmittel
 Ordnungswidrigkeiten
 Ordre public
@@ -876,14 +876,14 @@ Paraphierung
 Parlament
 Partei
 Parteibetrieb
-ParteifÃ¤higkeit
+Parteifähigkeit
 Parteiverrat
 Partnerschaftsgesellschaft
 Pass
 Passivlegitimation
 Patent
-PatientenverfÃ¼gung
-PersÃ¶nlichkeitsrecht
+Patientenverfügung
+Persönlichkeitsrecht
 Personalausweis
 Personalrat
 Personalvertretung
@@ -891,15 +891,15 @@ Personen der Zeitgeschichte
 Personengesellschaft
 Personenstand
 Petition
-PfÃ¤ndung
-PfÃ¤ndungsschutz
+Pfändung
+Pfändungsschutz
 Pfandrecht
 Pflegekind
 Pflegeversicherung
 Pflegschaft
 Pflichtteil
 Pflichtverteidiger
-PlÃ¤doyer
+Plädoyer
 Planfeststellung
 Planungshoheit
 politische Beamte
@@ -909,12 +909,12 @@ Polizeistunde
 Pornografie
 positive Vertragsverletzung
 Postgeheimnis
-PostulationsfÃ¤higkeit
+Postulationsfähigkeit
 pp
-PrÃ¤judiz
-PrÃ¤klusion
-PrÃ¤vention
-PrÃ¤zedenz
+Präjudiz
+Präklusion
+Prävention
+Präzedenz
 Preisausschreiben
 Preisauszeichnung
 Pressefreiheit
@@ -922,8 +922,8 @@ Prima-facie-Beweis
 Privatautonomie
 Privatklage
 Privatrecht
-PrivatsphÃ¤re
-ProbearbeitsverhÃ¤ltnis
+Privatsphäre
+Probearbeitsverhältnis
 Probezeit
 Produkthaftung
 Prokura
@@ -931,7 +931,7 @@ Prospekt
 Prostitution
 Protokoll
 Prozess
-ProzessfÃ¤higkeit
+Prozessfähigkeit
 Prozesskostenhilfe
 Prozessmaximen
 Prozessstandschaft
@@ -941,13 +941,13 @@ Punktekatalog
 putativ
 Quellensteuern
 Quittung
-rÃ¤uberische Erpressung
-RÃ¤umung
-RÃ¼ckfall
-RÃ¼ckgriff
-RÃ¼cktritt
-RÃ¼ckwirkung
-RÃ¼ckwirkungsverbot
+räuberische Erpressung
+Räumung
+Rückfall
+Rückgriff
+Rücktritt
+Rückwirkung
+Rückwirkungsverbot
 Radikalenerlass
 Rang
 Rasterfahndung
@@ -964,21 +964,21 @@ Realrechte
 Recht
 Recht am eigenen Bild
 Recht auf Arbeit
-RechtfertigungsgrÃ¼nde
-rechtliches GehÃ¶r
-RechtmÃ¤ÃŸigkeit der Verwaltung
+Rechtfertigungsgründe
+rechtliches Gehör
+Rechtmäßigkeit der Verwaltung
 Rechtsanwalt
-RechtsanwaltsvergÃ¼tung
+Rechtsanwaltsvergütung
 Rechtsaufsicht
 Rechtsbehelf
 Rechtsberatung
 Rechtsbeschwerde
 Rechtsbeugung
 Rechtsdienstleistung
-RechtsfÃ¤higkeit
-RechtsgeschÃ¤ft
+Rechtsfähigkeit
+Rechtsgeschäft
 Rechtsgeschichte
-RechtshÃ¤ngigkeit
+Rechtshängigkeit
 Rechtshandlung
 Rechtshilfe
 Rechtskraft
@@ -994,11 +994,11 @@ Rechtspositivismus
 Rechtsprechung
 Rechtsquelle
 Rechtsschein
-RechtsschutzbedÃ¼rfnis
+Rechtsschutzbedürfnis
 Rechtssicherheit
 Rechtsstaat
 Rechtssubjekt
-RechtsverhÃ¤ltnis
+Rechtsverhältnis
 Rechtsverordnung
 Rechtsweg
 Rechtswidrigkeit
@@ -1022,56 +1022,56 @@ Richter
 Richtlinien
 Rubrum
 Ruhen des Verfahrens
-RuhestÃ¶rung
-SÃ¼hneversuch
-SachbeschÃ¤digung
+Ruhestörung
+Sühneversuch
+Sachbeschädigung
 Sache
 Sachenrecht
 Sachlegitimation
 salvatorische Klausel
 Satzung
-SchÃ¶ffen
-SchÃ¶ffengericht
-SchÃ¶nheitsreparaturen
+Schöffen
+Schöffengericht
+Schönheitsreparaturen
 Schadensersatz
 Schatzfund
 Scheck- und Kreditkartenmissbrauch
 Scheidung
 Scheidungs- und Trennungsfolgenvereinbarung
-ScheingeschÃ¤ft
+Scheingeschäft
 Schengener Abkommen
 Schenkung
 Schenkungsteuer
 Schiedsgerichtsbarkeit
 Schikane
-SchlÃ¤gerei
-SchlÃ¼ssigkeit
+Schlägerei
+Schlüssigkeit
 Schleppnetzfahndung
 Schlichtung
 Schmerzensgeld
 Schriftform
 schriftliches Verfahren
-SchuldÃ¼bernahme
+Schuldübernahme
 Schuld
 Schuldanerkenntnis
 Schuldner
 Schuldnerverzug
 Schuldrecht
 Schuldschein
-SchuldunfÃ¤higkeit
-SchuldverhÃ¤ltnis
+Schuldunfähigkeit
+Schuldverhältnis
 Schuldversprechen
 Schulpflicht
 Schusswaffengebrauch
-SchwÃ¤gerschaft
+Schwägerschaft
 Schwangerschaftsabbruch
 Schwarzarbeit
 Schwarzfahrer
-schwebendes GeschÃ¤ft
+schwebendes Geschäft
 Schweigen
 Schweigepflicht
 Schwerbehinderte
-SchwerbeschÃ¤digte
+Schwerbeschädigte
 Schwurgericht
 Selbstbestimmungsrecht
 Selbstbindung der Verwaltung
@@ -1085,7 +1085,7 @@ sexueller Missbrauch von Jugendlichen
 sexueller Missbrauch von Kindern
 Shitstorm
 Sicherheitsleistung
-SicherungsÃ¼bereignung
+Sicherungsübereignung
 Sicherungsverwahrung
 Siegelbruch
 Sittenwidrigkeit
@@ -1098,8 +1098,8 @@ Sonntagsarbeit
 Sonntagsfahrverbot
 Sorgerecht
 Sorgfaltspflicht
-SouverÃ¤nitÃ¤t
-SozialadÃ¤quanz
+Souveränität
+Sozialadäquanz
 Sozialauswahl
 Sozialgerichtsbarkeit
 Sozialgesetzbuch
@@ -1111,15 +1111,15 @@ Sozialstaat
 Sozialversicherung
 Sozialversicherungsausweis
 Spediteur
-SpezialprÃ¤vention
+Spezialprävention
 Spiel
 Sportgerichte
-SpruchkÃ¶rper
-StÃ¶rer
+Spruchkörper
+Störer
 Staat
-StaatsangehÃ¶rigkeit
+Staatsangehörigkeit
 Staatsanwaltschaft
-StaatsbÃ¼rger
+Staatsbürger
 Staatshaftung
 Staatsnotrecht
 Staatsrecht
@@ -1134,19 +1134,19 @@ Steuerrecht
 Stiftung
 stille Gesellschaft
 StPO
-StraÃŸenverkehrsgefÃ¤hrdung
-StraÃŸenverkehrshaftung
-StraÃŸenverkehrsrecht
-StraÃŸenverkehrssanktionenrecht
+Straßenverkehrsgefährdung
+Straßenverkehrshaftung
+Straßenverkehrsrecht
+Straßenverkehrssanktionenrecht
 Strafantrag
-StrafaufhebungsgrÃ¼nde
-Strafaussetzung zur BewÃ¤hrung
+Strafaufhebungsgründe
+Strafaussetzung zur Bewährung
 Strafbefehl
 Strafe
 Strafgerichtsbarkeit
 Strafgesetzbuch
 Strafklageverbrauch
-StrafmÃ¼ndigkeit
+Strafmündigkeit
 Strafprozess
 Strafrecht
 Strafregister
@@ -1157,22 +1157,22 @@ Strafvollzug
 Streik
 Streitgegenstand
 Streitgenossenschaft
-StreitverkÃ¼ndung
+Streitverkündung
 Streitwert
 Stufenklage
 Stundung
-subjektives Ã¶ffentliches Recht
+subjektives öffentliches Recht
 subjektives Recht
-SubsidiaritÃ¤tsprinzip
+Subsidiaritätsprinzip
 Subsumtion
-SupranationalitÃ¤t
+Supranationalität
 Surrogation
 Suspensiveffekt
-TÃ¤ter-Opfer-Ausgleich
-tÃ¤tige Reue
-TÃ¤uschung
-TÃ¶tung auf Verlangen
-TÃ¶tungsdelikte
+Täter-Opfer-Ausgleich
+tätige Reue
+Täuschung
+Tötung auf Verlangen
+Tötungsdelikte
 Tabularersitzung
 Tagessatz
 Tarifautonomie
@@ -1187,8 +1187,8 @@ Teilnahme
 Teilungsanordnung
 Teilzahlung
 Teilzahlungspreis
-TeilzeitbeschÃ¤ftigung
-TelefonÃ¼berwachung
+Teilzeitbeschäftigung
+Telefonüberwachung
 Telefon
 Telekommunikationsgesetz
 Tendenzbetriebe
@@ -1197,12 +1197,12 @@ Termin
 terroristische Vereinigungen
 Testament
 Testamentsvollstrecker
-TestierfÃ¤higkeit
+Testierfähigkeit
 Tierhalter
 Tierschutz
 Titel
 Tod
-TodeserklÃ¤rung
+Todeserklärung
 Todesstrafe
 Tonbandprotokolle
 Totschlag
@@ -1215,7 +1215,7 @@ Umdeutung
 Umweltbundesamt
 Umwelthaftung
 Umweltinformationsgesetz
-UmweltkriminalitÃ¤t
+Umweltkriminalität
 Umweltrecht
 Umweltstrafrecht
 Unabdingbarkeit
@@ -1227,12 +1227,12 @@ unerlaubtes Entfernen vom Unfallort
 Unfallflucht
 Unfallversicherung
 ungerechtfertigte Bereicherung
-UnionsbÃ¼rgerschaft
+Unionsbürgerschaft
 unlauterer Wettbewerb
-UnmÃ¶glichkeit
+Unmöglichkeit
 unmittelbarer Zwang
 Unmittelbarkeit
-UntÃ¤tigkeitsklage
+Untätigkeitsklage
 Unterbrechung
 Unterbringung
 Unterhalt
@@ -1249,24 +1249,24 @@ Untersuchungsausschuss
 Untersuchungsgrundsatz
 Untersuchungshaft
 Untreue
-unverÃ¤uÃŸerliche Rechte
+unveräußerliche Rechte
 Unverletzlichkeit der Wohnung
-unverzÃ¼glich
+unverzüglich
 Unwirksamkeit
 Unzumutbarkeit
-UnzurechnungsfÃ¤higkeit
+Unzurechnungsfähigkeit
 Urheberrecht
 Urkunde
 Urkundendelikte
-UrkundenfÃ¤lschung
+Urkundenfälschung
 Urkundsbeamte
 Urlaub
 Urteil
-VÃ¶lkerrecht
+Völkerrecht
 V-Leute
 V-Mann
 Vaterschaft
-VerbÃ¶serung
+Verböserung
 Verbandsklage
 Verbindung
 verbotene Eigenmacht
@@ -1274,19 +1274,19 @@ Verbotsirrtum
 Verbraucher
 Verbraucherinsolvenzverfahren
 Verbraucherkredit
-VerbrauchsgÃ¼terkauf
+Verbrauchsgüterkauf
 Verbrauchsteuern
 Verbrechen
-VerdÃ¤chtigung
+Verdächtigung
 verdeckter Ermittler
 Verdunkelungsgefahr
 Verein
 vereinfachtes Jugendverfahren
 vereinfachtes Verfahren
 Vereinigungsfreiheit
-VerfÃ¼gung
-VerfÃ¼gung eines Nichtberechtigten
-VerfÃ¼hrung
+Verfügung
+Verfügung eines Nichtberechtigten
+Verführung
 Verfall
 Verfassung
 Verfassungsbeschwerde
@@ -1299,38 +1299,38 @@ Vergehen
 Vergesellschaftung
 Vergewaltigung
 Vergleich
-VerhÃ¤ltnismÃ¤ÃŸigkeit
-VerhÃ¤ltnismÃ¤ÃŸigkeitsprinzip
-VerhandlungsfÃ¤higkeit
+Verhältnismäßigkeit
+Verhältnismäßigkeitsprinzip
+Verhandlungsfähigkeit
 Verhandlungsgrundsatz
-VerjÃ¤hrung
+Verjährung
 Verkehrssicherungspflicht
 Verkehrssitte
 Verkehrsteuern
 Verkehrsunfallflucht
 Verkehrsvergehen
-VerkehrsverstÃ¶ÃŸe
+Verkehrsverstöße
 Verkehrszentralregister
-VerlÃ¶bnis
+Verlöbnis
 Verlagsrecht
 Verletzter
 Verleumdung
-VermÃ¤chtnis
-VermÃ¶gen
-VermÃ¶gensauskunft
-VermÃ¶gensschaden
-VermÃ¶gensstrafe
-VermÃ¶gensteuer
+Vermächtnis
+Vermögen
+Vermögensauskunft
+Vermögensschaden
+Vermögensstrafe
+Vermögensteuer
 Vermieterpfandrecht
 Vermummung
 Vermutung
 Vernehmung
 Verordnung
-VerpflichtungsgeschÃ¤ft
+Verpflichtungsgeschäft
 Verpflichtungsklage
 Verrichtungsgehilfe
-VersÃ¤umnisurteil
-VersÃ¤umnisverfahren
+Versäumnisurteil
+Versäumnisverfahren
 Versammlungsfreiheit
 Verschollenheit
 Verschulden
@@ -1340,7 +1340,7 @@ Versetzung
 Versicherungsbetrug
 Versicherungspflicht
 Versorgungsausgleich
-VerstÃ¤ndigung
+Verständigung
 Versteigerung
 Verstrickung
 Verstrickungsbruch
@@ -1380,10 +1380,10 @@ Volksabstimmung
 Volksbegehren
 Volksentscheid
 Volksinitiative
-VolkssouverÃ¤nitÃ¤t
+Volkssouveränität
 Volksverhetzung
 Volksvertretung
-VolljÃ¤hrigkeit
+Volljährigkeit
 Vollmacht
 vollstreckbare Urkunde
 Vollstreckung
@@ -1397,7 +1397,7 @@ Vorbehalt
 Vorbereitungshandlungen
 Vorerbe
 Vorkaufsrecht
-vorlÃ¤ufige Vollstreckbarkeit
+vorläufige Vollstreckbarkeit
 Vormerkung
 Vormundschaft
 Vornahmeklage
@@ -1406,7 +1406,7 @@ Vorsatz
 Vorsorgeaufwendungen
 Vorsorgevollmacht
 Vorstrafe
-VortÃ¤uschen einer Straftat
+Vortäuschen einer Straftat
 Vorteilsannahme
 Vorteilsausgleichung
 Waffengebrauch
@@ -1422,7 +1422,7 @@ Wechsel
 Wegerecht
 Wehrdienstverweigerung
 Wehrrecht
-WeiterbeschÃ¤ftigungsanspruch
+Weiterbeschäftigungsanspruch
 Werklieferungsvertrag
 Werkvertrag
 Wertsicherungsklausel
@@ -1439,9 +1439,9 @@ Widerstandsrecht
 Widmung
 Wiederaufnahme des Verfahrens
 Wiedereinsetzung in den vorigen Stand
-WillenserklÃ¤rung
-WillkÃ¼rverbot
-WirtschaftskriminalitÃ¤t
+Willenserklärung
+Willkürverbot
+Wirtschaftskriminalität
 Wirtschaftsrecht
 Witwenrente
 Wohngeld
@@ -1449,7 +1449,7 @@ Wohnsitz
 Wohnung
 Wohnungseigentum
 Wucher
-ZÃ¼chtigungsrecht
+Züchtigungsrecht
 Zechprellerei
 Zensur
 Zentrales Vollstreckungsgericht
@@ -1457,21 +1457,21 @@ Zession
 Zeuge
 Zeugnis
 Zeugnisverweigerungsrecht
-ZinshÃ¶he
+Zinshöhe
 Zitiergebot
 Zivildienst
 Zivilgericht
 Zivilprozess
 Zivilrecht
-ZubehÃ¶r
+Zubehör
 Zuchtmittel
 Zug-um-Zug-Leistung
 Zugewinngemeinschaft
-ZuhÃ¤lter
+Zuhälter
 Zumutbarkeit
-ZurÃ¼ckbehaltungsrecht
-ZurÃ¼ckverweisung
-ZustÃ¤ndigkeit
+Zurückbehaltungsrecht
+Zurückverweisung
+Zuständigkeit
 Zustellung
 Zustimmung
 Zwang
@@ -1480,5 +1480,5 @@ Zwangsversteigerung
 Zwangsverwaltung
 Zwangsvollstreckung
 Zweckbindung
-ZweckvermÃ¶gen
+Zweckvermögen
 zwingendes Recht
