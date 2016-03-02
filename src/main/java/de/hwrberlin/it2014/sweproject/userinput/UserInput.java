@@ -1,10 +1,11 @@
 package de.hwrberlin.it2014.sweproject.userinput;
 
-import de.hwrberlin.it2014.sweproject.synonymysationing.LawTester;
 import java.util.ArrayList;
 
+import de.hwrberlin.it2014.sweproject.synonym.LawTester;
+
 /**
- * Klasse für Nutzereingabe
+ * Klasse fï¿½r Nutzereingabe
  *
  * @author Maximilian Kramp, Paul Piske
  * @since 14.02.2016 12:00:00

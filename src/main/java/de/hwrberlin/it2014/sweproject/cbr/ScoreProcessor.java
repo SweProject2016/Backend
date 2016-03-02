@@ -7,10 +7,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
+import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
 /**
- * Klasse für Ähnlichkeitsanalyse
+ * Klasse fï¿½r ï¿½hnlichkeitsanalyse
  * 
  * @author Tobias Glaeser
  * @since 11.02.2016 09:43:34
@@ -29,12 +29,12 @@ public class ScoreProcessor<T extends Scoreable> {
 	/**
 	 * @author Tobias Glaeser
 	 * @since 11.02.2016 09:45:21
-	 * @param weights Gewichte für Scoring:
+	 * @param weights Gewichte fï¿½r Scoring:
 	 *            [0] : keyword (normal)
 	 *            [1] : keyword (jura)
 	 *            [2] : Weight pro Tag Unterschied
 	 * 
-	 * @param sortWeights Gewichte für Sortierung
+	 * @param sortWeights Gewichte fï¿½r Sortierung
 	 *            [0] : -score
 	 *            [1] : pagerank value
 	 */
@@ -97,10 +97,10 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @author Tobias Glaeser
 	 * @since 08.02.2016 11:33:09
 	 * @param queryKeywords Raw query keywords (ungefiltert)
-	 * @param number Anzahl der Fälle die max. zurückgegeben werden sollen
+	 * @param number Anzahl der Fï¿½lle die max. zurï¿½ckgegeben werden sollen
 	 * @param timestamp Zeitangabe im query (in ms)
 	 * @param lawsector Rechtsbereich (prefilter exclude only)
-	 * @return liste mit ähnlichen Fällen (absteigende Ähnlichkeit)
+	 * @return liste mit ï¿½hnlichen Fï¿½llen (absteigende ï¿½hnlichkeit)
 	 * @throws SQLException db error
 	 */
 	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector) throws SQLException{
@@ -140,12 +140,12 @@ public class ScoreProcessor<T extends Scoreable> {
 	}
 
 	/**
-	 * gibt gecachten score wert zurück
-	 * achtung: vorher muss getBestMatches() ausgeführt worden sein.
+	 * gibt gecachten score wert zurï¿½ck
+	 * achtung: vorher muss getBestMatches() ausgefï¿½hrt worden sein.
 	 * 
 	 * @author Tobias Glaeser
 	 * @param t case/judgement
-	 * @return ähnlichkeitswert der für diesen fall berechnet wurde
+	 * @return ï¿½hnlichkeitswert der fï¿½r diesen fall berechnet wurde
 	 */
 	public double getCachedScore(T t){
 		return scoreCache.get(t);

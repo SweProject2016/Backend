@@ -44,12 +44,13 @@ public class SampleResource extends Resource {
     						   @QueryParam("type") String type,
     						   @QueryParam("size") int size,
     						   @QueryParam("input") String input,
-    						   @QueryParam("delay") int delay) {
+    						   @QueryParam("delay") int delay,
+    						   @QueryParam("start") int start) {
     	try{
     		System.out.println("X-Api-Key: " + apiKey);
     		System.out.println("X-Access-Token: " + accessToken);
     		Generator generator = new Generator();
-    		List<?> output = generator.generate(type, size, input);
+    		List<?> output = generator.generate(type, size, input, start);
     		final String path="/sample/get";
     		if(!auth(apiKey,accessToken)){
     			return build(Status.FORBIDDEN);

@@ -2,21 +2,21 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import java.util.ArrayList;
 
-import de.hwrberlin.it2014.sweproject.synonymysationing.ThesaurusLoader;
+import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
 /**
- * die Klasse baut eine SQL-Anfrage mit der die vom Nutzer eingegebenen Keywords mit der Datenbank verglichen werden können
+ * die Klasse baut eine SQL-Anfrage mit der die vom Nutzer eingegebenen Keywords mit der Datenbank verglichen werden kï¿½nnen
  * 
- * @author Danilo Günzel
+ * @author Danilo Gï¿½nzel
  *
  */
 public class QueryBuilder {
 
 	/**
 	 * 
-	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlüsselwörter(ohne synonyme)
-	 * @param lawsector Der Rechtsbereich aus welchem die gefundenen Fälle stammen sollen
-	 * @return Als Rückgabe erhält man die Datenbankanfrage, die die Zeilen nach den Schlüsselworttreffern auswählt
+	 * @param keywords Sind die von der Nutzereingabe erhaltenen Schlï¿½sselwï¿½rter(ohne synonyme)
+	 * @param lawsector Der Rechtsbereich aus welchem die gefundenen Fï¿½lle stammen sollen
+	 * @return Als Rï¿½ckgabe erhï¿½lt man die Datenbankanfrage, die die Zeilen nach den Schlï¿½sselworttreffern auswï¿½hlt
 	 */
 	public static String buildQuery(ArrayList<String> keywords, String lawsector){
 		String query = "SELECT * FROM tbl_judgement WHERE CONTAINS((sentence, offence, keywords),";

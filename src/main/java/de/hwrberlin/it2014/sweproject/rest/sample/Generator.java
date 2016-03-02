@@ -22,7 +22,7 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  */
 public class Generator {
 
-	public List<?> generate(String type, int entries, String userInput){
+	public List<?> generate(String type, int entries, String userInput, int startindex){
 		switch(type.toLowerCase()){
 		case "committee":
 			return generateCommittee(entries);
@@ -31,23 +31,30 @@ public class Generator {
 		case "lawsector":
 			return generateLawSector(entries);
 		case "result":
-			return generateResult(entries, userInput);
+			return generateResult(entries, userInput,startindex);
 		default:
 			break;
 		}
 		return null;
 	}
 
-	private List<Result> generateResult(int entries, String userInput) {
+	private List<Result> generateResult(int entries, String userInput, int startindex) {
 		List<Result> resultList = new ArrayList<>();
 		for(int i=0;i<entries;i++){
-			float similarity = randomFloat();
+			float similarity = generateSimilarity(i,startindex);
 			Result result = new Result(userInput, 
 							generateJudgement(1).get(0), 
 							similarity, getDate());
 			resultList.add(result);
 		}
 		return resultList;
+	}
+
+	private float generateSimilarity(int entry, int startindex) {
+		float range = 0.1f;
+		int size = 5;
+
+	    return (float) (1 - (range * (startindex/size)) + range * Math.random());
 	}
 
 	private String createPdfFileName() {

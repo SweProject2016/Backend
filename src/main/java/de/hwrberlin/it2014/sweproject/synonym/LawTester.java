@@ -1,5 +1,9 @@
-package de.hwrberlin.it2014.sweproject.synonymysationing;
+package de.hwrberlin.it2014.sweproject.synonym;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LawTester {
@@ -22,7 +26,7 @@ public class LawTester {
 	}
 	
 	/**
-	 * Die interne Methode nimmt eines der juristischen Lexika und fügt dessen Inhalt in eine ArrayList ein 
+	 * Die interne Methode nimmt eines der juristischen Lexika und fï¿½gt dessen Inhalt in eine ArrayList ein 
 	 * @return ArrayList<String> aList mit Inhalt eines Lexikons
 	 */
 	private static ArrayList<String> getLexiEntries(){
@@ -50,7 +54,7 @@ public class LawTester {
 	/**
 	 * 
 	 * @param Der Ausrdruck der geprueft werden soll, ob dieser ein juristicher Begriff ist.
-	 * @return gibt true zurück wenn der Begriff aus der juristischen Sprache stammt
+	 * @return gibt true zurï¿½ck wenn der Begriff aus der juristischen Sprache stammt
 	 */
 	private static boolean testIfLawTermOnline(String term){
 		boolean result = false;

@@ -53,27 +53,29 @@ public class ResultResource extends Resource {
 	}
 	
 	/**
-	 * REST Resource um 
+	 * REST Resource um einen Fall zu bewerten
+	 * 
 	 * @param apiKey der API-Key
 	 * @param accessToken der Access-Token
 	 * @param id Result ID
 	 * @param rating Die Bewertung des Results
 	 * @param delay Verzögerung
-	 * @return
+	 * @return Response 201, wenn erfolgreich, 400/403 bei Fehlern
 	 */
 	@POST
 	@Path("rate")
 	public Response rateResult(@HeaderParam("X-Api-Key") String apiKey,
 			   				   @HeaderParam("X-Access-Token") String accessToken,
 			   				   @QueryParam("id") int id,
-							   @QueryParam("rating") float[] rating,
+							   @QueryParam("rating") float rating,
+							   @QueryParam("index") int index,
 							   @QueryParam("delay") int delay){
 		try{
 			if(!auth(apiKey,accessToken)){
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
-				cbr.saveUserEvaluate(id, rating);
+				cbr.saveUserEvaluate(id, index, rating);
 				return build(Status.CREATED);
 			}
 		} catch(Exception e){
