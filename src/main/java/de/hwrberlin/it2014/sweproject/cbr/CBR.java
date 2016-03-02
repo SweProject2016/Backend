@@ -30,9 +30,10 @@ public class CBR {
 	}
 	
 	/**
+	 * leitet Nutzeranfrage weiter und gibt aehnliche Faelle zurueck
 	 * @author Max Bock
 	 * @param usersInput (String[])
-	 * @return ï¿½hnliche Fï¿½lle
+	 * @return aehnliche Faelle
 	 */
 	public ArrayList<Judgement> startCBR(String[] usersInput)
 	{
@@ -42,9 +43,10 @@ public class CBR {
 	}
 	
 	/**
+	 * leitet Nutzeranfrage weiter und gibt aehnliche Faelle zurueck
 	 * @author Max Bock
 	 * @param usersInput (String)
-	 * @return ï¿½hnliche Fï¿½lle
+	 * @return aehnliche Faelle
 	 */
 	public ArrayList<Judgement> startCBR(String usersInput)
 	{
@@ -53,9 +55,10 @@ public class CBR {
 	}
 	
 	/**
+	 * leitet Nutzeranfrage weiter und gibt aehnliche Faelle zurueck
 	 * @author Max Bock
 	 * @param usersInput (ArrayList<String>)
-	 * @return ï¿½hnliche Fï¿½lle
+	 * @return aehnliche Faelle
 	 */
 	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
 	{
@@ -86,7 +89,7 @@ public class CBR {
 	}
 
 	/**
-	 * Lï¿½scht einen Fall aus den activeCases
+	 * Loescht einen Fall aus den activeCases
 	 * @author Max Bock
 	 * @param CaseID
 	 * @return boolean
@@ -101,7 +104,7 @@ public class CBR {
 	}
 	
 	/**
-	 * liefert fï¿½r die Bewertung anhand der ID den Case zurï¿½ck
+	 * liefert fuer die Bewertung anhand der ID den Case zurueck
 	 * @author Max Bock
 	 * @param interne Case ID
 	 * @return Case
@@ -119,10 +122,10 @@ public class CBR {
 	}
 	
 	/**
-	 * interne Methode fï¿½r den CBR-Zyklus
+	 * interne Methode fuer den CBR-Zyklus
 	 * @author Max Bock
 	 * @param usersInput
-	 * @return ï¿½hnliche Fï¿½lle
+	 * @return aehnliche Faelle
 	 * @throws SQLException
 	 */
 	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
@@ -177,7 +180,7 @@ public class CBR {
 	}
 
 	/**
-	 * löscht alle Fälle aus den active Cases, die älter als der Parameter(miliseconds) sind
+	 * löscht alle Fälle aus den active Cases (sind eigentlich die Nutzeranfragen!), die älter als der Parameter(miliseconds) sind
 	 * sollte regelmäßig benutzt werden, damit nicht komplett bewertete Anfragen gelöscht werden
 	 * miliseconds <= 1 löscht alle Fälle
 	 * @author Max Bock
@@ -205,7 +208,6 @@ public class CBR {
 				}
 			}
 		}
-		
 		return count;
 	}
 }

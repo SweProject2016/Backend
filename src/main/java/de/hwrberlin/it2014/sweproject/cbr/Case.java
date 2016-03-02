@@ -26,7 +26,7 @@ public class Case {
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um sp�ter die evaluation zur Anfrage zu zu ordnen
+	 * @param interne id, um spaeter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
 	public Case(int id, ArrayList<String> userInput)
