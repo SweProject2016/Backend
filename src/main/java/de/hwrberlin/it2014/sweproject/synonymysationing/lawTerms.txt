@@ -1,5 +1,5 @@
-bleiben unberührt
-bleibt unberührt
+bleiben unberÃ¼hrt
+bleibt unberÃ¼hrt
 Recht
 Gesetze
 erledigt
@@ -17,25 +17,25 @@ AGG
 Akkusationsprinzip
 Aktivlegitimation
 Allgemeines Gleichbehandlungsgesetz
-alt genug, um juristisch belangt werden zu können
+alt genug, um juristisch belangt werden zu kÃ¶nnen
 Amt
 Amtei
-amtsärztliche Leichenschau
+amtsÃ¤rztliche Leichenschau
 Amtsbezirk
 Amtsermittlungsgrundsatz
 Anderkonto
-Änderungsgesetz
-Änderungswidmung
+Ã„nderungsgesetz
+Ã„nderungswidmung
 angeklagt werden
-Anhörungsrüge
+AnhÃ¶rungsrÃ¼ge
 Anklage
-Anklagebehörde
+AnklagebehÃ¶rde
 Anklagegrundsatz
-Ankläger
+AnklÃ¤ger
 Annahme
 Anscheinsbeweis
 Antidiskriminierungsgesetz
-Anwaltsbüro
+AnwaltsbÃ¼ro
 Anwaltsfirma
 Anwaltskanzlei
 Appellation
@@ -44,12 +44,12 @@ Ariergesetze
 Artikel
 Aufgabe
 Auseinandersetzungsversteigerung
-außer Obligo
-außerordentliche Kündigung
+auÃŸer Obligo
+auÃŸerordentliche KÃ¼ndigung
 Auskulator
 Auskultant
 Auskultator
-Bad-Säckingen-Vergleich
+Bad-SÃ¤ckingen-Vergleich
 BDSG
 Bearbeitung
 Begnadigungsrecht
@@ -57,11 +57,11 @@ Beibringungsgrundsatz
 Berufung
 Berufungsgericht
 Besatzungsrecht
-Beschränkung
-Beschwerdeführer
+BeschrÃ¤nkung
+BeschwerdefÃ¼hrer
 Besitzstand der Gemeinschaft
 Besitzstandswahrung
-Besitzstörung
+BesitzstÃ¶rung
 Besserungsanstalt
 Bestandsgarantie
 Bestandsschutz
@@ -70,7 +70,7 @@ Bestimmtheitsgrundsatz
 Bestimmung
 Beweis des ersten Anscheins
 BGB
-Biodiversitäts-Konvention
+BiodiversitÃ¤ts-Konvention
 Bittleihe
 Bittleihvertrag
 Blutbann
@@ -80,12 +80,12 @@ Braugerechtsame
 Braurecht
 Britenrabatt
 Britenscheck
-Brückenklausel
+BrÃ¼ckenklausel
 Bundesdatenschutzgesetz
 Bundesverfassungsgericht
-Bürgerliches Gesetzbuch
-bürgerliches Recht
-Bürgerort
+BÃ¼rgerliches Gesetzbuch
+bÃ¼rgerliches Recht
+BÃ¼rgerort
 BVG
 Cartagena-Protokoll
 Charta der Vereinten Nationen
@@ -93,13 +93,13 @@ Chicago-Vergleich
 Compositio
 Danziger Recht
 Danziger Verfassung
-Danziger Willkür
+Danziger WillkÃ¼r
 Dauerdelikt
 de jure
-deliktfähig
+deliktfÃ¤hig
 deliktische Haftung
 Designpatent
-deutschblütig
+deutschblÃ¼tig
 Deutsche Justizverwaltung
 Deutsche Zentralverwaltung der Justiz
 deutschen Blutes
@@ -107,7 +107,7 @@ deviant
 Dienstbarkeit
 Digesten
 Ding
-diplomatische Immunität
+diplomatische ImmunitÃ¤t
 diplomatische Vorrechte
 Disclaimer
 Dispositionsmaxime
@@ -120,10 +120,10 @@ Ehrverletzungsdelikt
 einen Termin festlegen
 Einholung
 Einnahmen-Ausgaben-Rechnung
-Einnahmenüberschussrechnung
-Einschränkung
+EinnahmenÃ¼berschussrechnung
+EinschrÃ¤nkung
 einstweiliger Rechtsschutz
-Einwilligung nach erfolgter Aufklärung
+Einwilligung nach erfolgter AufklÃ¤rung
 Einziehung
 Entlastung
 Entwidmung
@@ -134,11 +134,11 @@ Erbpacht
 Erbpacht
 Erbzinsleihe
 Erfindungspatent
-Erfüllungsort
+ErfÃ¼llungsort
 Erholung
 Erledigung
 Erschleichen einer Leistung
-Erschöpfung des Rechtswegs
+ErschÃ¶pfung des Rechtswegs
 ex aequo et bono
 Exkulpation
 Fahreignungsregister
@@ -148,7 +148,7 @@ Fehlurteil
 Feme
 Festlandsockelkommission
 Firmenanwalt
-Forderungsübergang
+ForderungsÃ¼bergang
 formaljuristisch
 formalrechtlich
 formelles Recht
@@ -156,18 +156,18 @@ Frankfurter Reichsverfassung
 Freiheitsentzug
 Freiheitsstrafe
 Friedegeld
-fristlose Kündigung
-Fruchtgenußrecht
-Führererlass
-Führerflucht
-Führerverordnung
+fristlose KÃ¼ndigung
+FruchtgenuÃŸrecht
+FÃ¼hrererlass
+FÃ¼hrerflucht
+FÃ¼hrerverordnung
 Geburtsortprinzip
 Geburtsortsprinzip
-Gefängnisstrafe
+GefÃ¤ngnisstrafe
 gegenstandslos
-Gehörsrüge
+GehÃ¶rsrÃ¼ge
 Geiselmord-Prozess
-Geldbuße
+GeldbuÃŸe
 Gemeindeautonomie
 Gemeindefreiheit
 gemeinschaftlicher Besitzstand
@@ -177,7 +177,7 @@ Genugtuung
 Gericht
 gerichtlich
 gerichtlich entscheidbar
-gerichtlich überprüfbar
+gerichtlich Ã¼berprÃ¼fbar
 gerichtliche Auseinandersetzung
 gerichtlicher Zweikampf
 Gerichtsbezirk
@@ -188,14 +188,14 @@ Gerichtsverfahren
 geschichtliche Schule der Rechtswissenschaft
 Geschmackmuster
 Geschmacksmuster
-Gesetz über das Treuunternehmen
+Gesetz Ã¼ber das Treuunternehmen
 Gesetz zur Modernisierung des Schuldrechts
 Gesetzbuch
 Gesetzeskommentar
 Gesetzessammlung
 Gesetzgebungsverfahren
-Gestaltungshöhe
-Gläubigerübergang
+GestaltungshÃ¶he
+GlÃ¤ubigerÃ¼bergang
 Gnadenbefugnis
 Gnadenrecht
 Gogericht
@@ -203,10 +203,10 @@ Gohgericht
 Gottesurteil
 Gowgericht
 Grafschaftsrecht
-Großvaterrechte
+GroÃŸvaterrechte
 Grundgesetz
-Grundsatz der Nichtzurückweisung
-Grundsatz der Verhältnismäßigkeit
+Grundsatz der NichtzurÃ¼ckweisung
+Grundsatz der VerhÃ¤ltnismÃ¤ÃŸigkeit
 Grutrecht
 Haager Abkommen
 Haager Konventionen
@@ -216,19 +216,19 @@ Halsgerichtsbarkeit
 haltlos
 Hausfriedensbruch
 Heimatort
-hinfällig
+hinfÃ¤llig
 historische Rechtsschule
 Hochgerichtsbarkeit
 hochnotpeinliche Befragung
 hohe Gerichtsbarkeit
 Hubengericht
-Hüter der deutschen Verfassung
+HÃ¼ter der deutschen Verfassung
 Hypothese
 illegale Einwanderung
 illegale Migration
-im Zweifel für den Angeklagten
-Immaterialgüterrecht
-Impunität
+im Zweifel fÃ¼r den Angeklagten
+ImmaterialgÃ¼terrecht
+ImpunitÃ¤t
 in dubio pro reo
 Informationstechnologierecht
 informierte Einwilligung
@@ -237,11 +237,11 @@ Insolvenzverschleppung
 Instanz
 Instanzenzug
 Internationales Privatrecht
-Internationales Protokoll über die biologische Sicherheit
+Internationales Protokoll Ã¼ber die biologische Sicherheit
 Internetrecht
-inzidente Prüfung
+inzidente PrÃ¼fung
 Inzidentkontrolle
-irreguläre Migration
+irregulÃ¤re Migration
 IT-Recht
 Judiz
 Judizium
@@ -268,7 +268,7 @@ Kassierung
 Kautel
 Klage
 Klagedrohung
-Kläger
+KlÃ¤ger
 Klagsdrohung
 Klausel
 Kodex
@@ -298,7 +298,7 @@ Kreuzbergurteil
 Kriegsverbrecherprozesse
 Kriegsverbrechertribunal
 Kriminalrecht
-Kündigung aus wichtigem Grund
+KÃ¼ndigung aus wichtigem Grund
 Las-Vegas-Vergleich
 laut Gesetz
 Legalinspektion
@@ -308,14 +308,14 @@ Leichenbeschau
 Leichenschau
 Leistungserschleichung
 Leistungsort
-Lübeck-Entscheidung
-Lübeck-Urteil
-Lübisches Recht
-Lübsches Recht
+LÃ¼beck-Entscheidung
+LÃ¼beck-Urteil
+LÃ¼bisches Recht
+LÃ¼bsches Recht
 Lynchjustiz
 Manngeld
-Militärgericht
-Militärtribunal
+MilitÃ¤rgericht
+MilitÃ¤rtribunal
 Missbrauch
 Monaco-Vergleich
 Monte-Carlo-Vergleich
@@ -331,21 +331,21 @@ nicht mehr erforderlich
 nicht weiter beachtenswert
 nichtig
 Nichtveranlagungsbescheinigung
-Nichtzurückweisungsprinzip
+NichtzurÃ¼ckweisungsprinzip
 niedere Gerichtsbarkeit
 Niedergerichtsbarkeit
 Niederlagsrecht
-Nießbrauch
+NieÃŸbrauch
 nordischer Rechtskreis
 Notar
 Notariat
 Notzucht
 Novelle
-Nürnberger Gesetze
-Nürnberger Hauptkriegsverbrecherprozess
-Nürnberger Prozess gegen die Hauptkriegsverbrecher
-Nürnberger Prozesse
-Nürnberger Rassengesetze
+NÃ¼rnberger Gesetze
+NÃ¼rnberger Hauptkriegsverbrecherprozess
+NÃ¼rnberger Prozess gegen die Hauptkriegsverbrecher
+NÃ¼rnberger Prozesse
+NÃ¼rnberger Rassengesetze
 Nutzniessung
 NV-Bescheinigung
 oberstes deutsches Gericht
@@ -353,8 +353,8 @@ Obligationenrecht
 obsolet
 Offizialmaxime
 Offizialprinzip
-ohnezu beeinträchtigen
-ohnezu schmälern
+ohnezu beeintrÃ¤chtigen
+ohnezu schmÃ¤lern
 ohne dadurch aufzu verzichten
 ohne Obligo
 ohne Regressanspruch
@@ -363,7 +363,7 @@ Okkupationsrecht
 Onlinerecht
 Ordal
 Organmandat
-Organstrafverfügung
+OrganstrafverfÃ¼gung
 Pandekten
 Pandektenwissenschaft
 Pandektistik
@@ -382,23 +382,23 @@ Pauschalabgabe
 peinliche Befragung
 Polenstrafrechtsverordnung
 politischer Gefangener
-politischer Häftling
-Pönale
-Präjudiz
+politischer HÃ¤ftling
+PÃ¶nale
+PrÃ¤judiz
 Pranger
-Präsumption
-Präsumtion
-Präzedenz
-Präzedenzfall
+PrÃ¤sumption
+PrÃ¤sumtion
+PrÃ¤zedenz
+PrÃ¤zedenzfall
 Preisgabe
 Prima-facie-Beweis
-Prioritätsgrundsatz
-Prioritätsprinzip
+PrioritÃ¤tsgrundsatz
+PrioritÃ¤tsprinzip
 Privatgutachten
 Privatinsolvenz
 Privatinsolvenzverfahren
 Prozess
-Prozess Generäle in Südosteuropa
+Prozess GenerÃ¤le in SÃ¼dosteuropa
 Prozessgrundsatz
 Prozessmaxime
 Realerbteilungsrecht
@@ -407,11 +407,11 @@ Recht auf Eigenauskunft
 Recht auf Selbstauskunft
 Recht des geistigen Eigentums
 rechtlich
-rechtlich durch ein Patent schützen
+rechtlich durch ein Patent schÃ¼tzen
 Rechtsbehelf
 Rechtsetzung
 Rechtsfirma
-Rechtsförmlichkeit
+RechtsfÃ¶rmlichkeit
 Rechtsgang
 Rechtsirrtum
 Rechtsirrtum
@@ -421,7 +421,7 @@ Rechtsnachfolger
 Rechtsstreit
 Rechtsverdreher
 Rechtsvergleichung
-Rechtswegserschöpfung
+RechtswegserschÃ¶pfung
 Rechtswissenschaft
 Rechtszug
 Regelung
@@ -435,42 +435,42 @@ Revision
 Richter
 Richterspruch
 Roerich-Pakt
-Rückgängigmachung
-Rücktritt
+RÃ¼ckgÃ¤ngigmachung
+RÃ¼cktritt
 Ruhen des Verfahrens
 Sachbefugnis
 Sachbefugnis
 Satzung der Vereinten Nationen
-Schachty-Affäre
+Schachty-AffÃ¤re
 Schachty-Prozess
 Schadenersatz
 Schadensersatz
 Schandpfahl
 scharfe Frage
-schlüssig
-schlüssiges Verhalten
+schlÃ¼ssig
+schlÃ¼ssiges Verhalten
 Schmerzengeld
 Schmerzensgeld
-Schöpfungshöhe
+SchÃ¶pfungshÃ¶he
 Schuldenregulierungsverfahren
-schuldfähig
+schuldfÃ¤hig
 Schuldrecht
 Schuldrechtsmodernisierungsgesetz
-Schuldunfähigkeit
+SchuldunfÃ¤higkeit
 Schweigepflicht
 Selbstjustiz
 Servitut
 sexueller Missbrauch
 Sistierung
 skandinavischer Rechtskreis
-Spezialitätsprinzip
+SpezialitÃ¤tsprinzip
 Sprengel
 Staatsanwalt
 Staatsanwaltschaft
 Staatsverfassung
 Stapelrecht
 StGB
-stillschweigende Willenserklärung
+stillschweigende WillenserklÃ¤rung
 Strafanspruch des Staates
 Straffreiheit
 Strafgericht
@@ -480,11 +480,11 @@ Strafhaft
 Straflosigkeit
 Strafmandat
 Strafmonopol des Staates
-strafmündig
+strafmÃ¼ndig
 Strafprozess
 Strafrecht
 Strafverfahren
-Straßenbildfreiheit
+StraÃŸenbildfreiheit
 Streithilfe
 Streitsache
 Syndikus
@@ -493,9 +493,9 @@ Teilungsversteigerung
 Telekommunikationsgesetz
 Telemediengesetz
 terminieren
-territoriale Integrität
+territoriale IntegritÃ¤t
 territoriale Unversehrtheit
-Territorialitätsprinzip
+TerritorialitÃ¤tsprinzip
 Territorialprinzip
 Territorialprinzip
 Thaiding
@@ -508,24 +508,24 @@ Totenbeschau
 Treuhandanderkonto
 Treuunternehmensgesetz
 Tribunal
-Tribunal von Nürnberg
-Übereinkommen über die biologische Vielfalt
-Übertragung
+Tribunal von NÃ¼rnberg
+Ãœbereinkommen Ã¼ber die biologische Vielfalt
+Ãœbertragung
 Umstufung
 Umwidmung
-unabhängig von
+unabhÃ¤ngig von
 unbefugtes Betreten
-unbegründet
+unbegrÃ¼ndet
 unbeschadet
-uneingeschränktes Recht
+uneingeschrÃ¤nktes Recht
 Unfallflucht
 unhaltbar
 Unrechtshaftung
 unter Anklage stehen
-Unterlassungserklärung
+UnterlassungserklÃ¤rung
 Untersuchungsgrundsatz
-Unterwerfungserklärung
-Unzurechnungsfähigkeit
+UnterwerfungserklÃ¤rung
+UnzurechnungsfÃ¤higkeit
 Urheberrechtsabgabe
 Urteil
 Urteilsaufhebung
@@ -539,27 +539,27 @@ Verdunkelungsgefahr
 Verfahren
 Verfahrensrecht
 Verfassung
-Verfassungshüter
-Verfügungsgrundsatz
+VerfassungshÃ¼ter
+VerfÃ¼gungsgrundsatz
 Vergewaltigung
-Vergewohltätigung
+VergewohltÃ¤tigung
 vergleichende Rechtswissenschaft
 vergleichendes Recht
-Verhältnismäßigkeitsprinzip
+VerhÃ¤ltnismÃ¤ÃŸigkeitsprinzip
 Verhandlungsgrundsatz
-Verkehrssünderkartei
+VerkehrssÃ¼nderkartei
 Verkehrszentralregister
 Vermutung
 Vernehmlassung
 Vernehmlassungsverfahren
-Verordnung über die Strafrechtspflege gegen Polen und Juden in den
+Verordnung Ã¼ber die Strafrechtspflege gegen Polen und Juden in den
 eingegliederten Ostgebieten
 Verpflichtung
-Versäumnisurteil
-Versäumungsurteil
+VersÃ¤umnisurteil
+VersÃ¤umungsurteil
 Verschwiegenheitspflicht
 Versteckspiel
-Vertrag mit Schutzwirkung für Dritte
+Vertrag mit Schutzwirkung fÃ¼r Dritte
 Vertrag mit Schutzwirkung zugunsten Dritter
 Vertragsstrafe
 Verwaltungsgemeinschaft
@@ -571,16 +571,16 @@ von Rechts wegen
 Voraussetzung
 Vorbehalt
 Vorkasse
-vorläufiger Rechtsschutz
+vorlÃ¤ufiger Rechtsschutz
 Wandlung
 Washingtoner Vertrag von 1935
-Wegfall der Geschäftsgrundlage
+Wegfall der GeschÃ¤ftsgrundlage
 Wehrgeld
-Weltbühne-Prozess
-Weltbühnenprozess
+WeltbÃ¼hne-Prozess
+WeltbÃ¼hnenprozess
 Weregildus
 Wergeld
-Werkhöhe
+WerkhÃ¶he
 Widum
 Wiedergeld
 Wiedergutmachung
@@ -594,6 +594,6 @@ Zivilprozessrecht
 Zivilrecht
 Zivilverfahren
 Zivilverfahrensrecht
-Zurechnungsunfähigkeit
+ZurechnungsunfÃ¤higkeit
 Zustandsdelikt
 zweite Leichenschau
