@@ -271,6 +271,19 @@ public class DatabaseConnection {
 	}
 	
 	/**
+	 * @author Max Bock
+	 * @param query
+	 * @return hopefully the ID of the inserted Set
+	 * @throws SQLException
+	 */
+	public int executeUpdateRetrieveID(String query) throws SQLException{
+		Statement st = con.createStatement();
+		st.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+		ResultSet rs = st.getGeneratedKeys();
+		return rs.getInt("id");
+	}
+	
+	/**
 	 * Closes database connection
 	 * @author Dominik Habel
 	 *

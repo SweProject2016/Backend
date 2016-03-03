@@ -59,13 +59,15 @@ public class Request {
 		for(Judgement j : judgList)
 		{
 			Result r = newResultFromJudgement(j);
+			int id=0;
 			String sql = TableResultsSQL.getInsertSQLCode(r);
 			try { //write to DB
-				dbc.executeUpdate(sql);
+				id = dbc.executeUpdateRetrieveID(sql);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			//read the id, r.setID()
+			r.setID(id);
 			resList.add(r);
 		}
 		return resList;
