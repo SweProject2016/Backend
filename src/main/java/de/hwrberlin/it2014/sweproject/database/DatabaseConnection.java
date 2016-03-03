@@ -162,6 +162,7 @@ public class DatabaseConnection {
 		HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
 		while(rs.next()){
 			Result result = new Result(null, null, 0, null);
+			result.setID(rs.getInt("id"));
 			result.setUserInput(rs.getString("user_input"));
 			result.setSimilarity(rs.getFloat("similarity"));
 			result.setDate(rs.getDate("date"));

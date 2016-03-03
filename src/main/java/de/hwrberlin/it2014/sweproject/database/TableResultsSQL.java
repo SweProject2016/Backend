@@ -12,4 +12,11 @@ public class TableResultsSQL {
 		sql+=" FROM tbl_judgement j WHERE j.file_reference = '"+result.getJudgement().getFileReference()+"';";
 		return sql;
 	}
+	
+	public static String getUpdateSQLCodeForUserRating(Result result){
+		//TODO
+		//update the userRating
+		String sql="";
+		return sql;
+	}
 }

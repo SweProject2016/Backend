@@ -15,24 +15,19 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  * @author Max Bock & Felix Lehmann
  *
  */
-public class Case {
+public class Request {
 	
-	private int id;
 	private ArrayList<String> description;
-	private ArrayList<Judgement> similarCases;
 	private ScoreProcessor<Judgement> scoreProc;
-	private ArrayList<Judgement> evaluatedJudgements;
 	private Date dateOfRequest;
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um spaeter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
-	public Case(int id, ArrayList<String> userInput)
+	public Request(ArrayList<String> userInput)
 	{
 		description=userInput;
-		this.id=id;
 		scoreProc = new ScoreProcessor<Judgement>();
 		dateOfRequest=new Date();
 	}
@@ -43,35 +38,37 @@ public class Case {
 	 * @return ArrayList of Sets containing all similiar cases from DB
 	 * @throws SQLException
 	 */
-	public ArrayList<Judgement> getSimiliarFromDB(int number) throws SQLException
+	public ArrayList<Result> getSimiliarFromDB(int number) throws SQLException
 	{
-		similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
+		ArrayList<Judgement> similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
 		//TODO separate the timestamp and lawsector from userinput
-	    return similarCases;
+	    return writeJudgementToDBAsResult(similarCases);
 	}
 	
 	/**
 	 * @author Max Bock
-	 * @param evaluation
+	 * @param judgList
+	 * @return
 	 */
-	public void saveEvaluation(int numberOfJudgement, float evaluation)
+	private ArrayList<Result> writeJudgementToDBAsResult(ArrayList<Judgement> judgList)
 	{
 		DatabaseConnection dbc=new DatabaseConnection();
 		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
 				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
-		Judgement j = similarCases.get(numberOfJudgement);
-		if(null!=j && !evaluatedJudgements.contains(j))
+		ArrayList<Result> resList = new ArrayList<>();
+		for(Judgement j : judgList)
 		{
-			evaluatedJudgements.add(j);
-			Result result = newResultFromJudgement(j);
-			result.setUserRating(evaluation);
-			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
-			try {
-				dbc.executeUpdate(insertQuery);
+			Result r = newResultFromJudgement(j);
+			String sql = TableResultsSQL.getInsertSQLCode(r);
+			try { //write to DB
+				dbc.executeUpdate(sql);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			//read the id, r.setID()
+			resList.add(r);
 		}
+		return resList;
 	}
 	
 	/**
@@ -114,17 +111,40 @@ public class Case {
 		}
 		return sstream;
 	}
-	
-	public int getID()
-	{
-		return id;
-	}
 
+	public Date getDateOfRequest() {
+		return dateOfRequest;
+	}
+	
+	/**
+	 * @author Max Bock
+	 * @param evaluation
+	 *
+	public void saveEvaluation(int numberOfJudgement, float evaluation)
+	{
+		DatabaseConnection dbc=new DatabaseConnection();
+		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
+				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		Judgement j = similarCases.get(numberOfJudgement);
+		if(null!=j && !evaluatedJudgements.contains(j))
+		{
+			evaluatedJudgements.add(j);
+			Result result = newResultFromJudgement(j);
+			result.setUserRating(evaluation);
+			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
+			try {
+				dbc.executeUpdate(insertQuery);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	/**
 	 * prüft, ob alle ähnlichen Fälle dieser Anfrage bewertet wurden.
 	 * @author Max Bock
 	 * @return true, alle bewertet; false, mind. ein Fall nicht bewertet
-	 */
+	 *
 	public boolean isCompletelyEvaluated() {
 		if(evaluatedJudgements.isEmpty())
 			return false;
@@ -134,9 +154,5 @@ public class Case {
 				return false;
 		}
 		return true;
-	}
-
-	public Date getDateOfRequest() {
-		return dateOfRequest;
-	}
+	}*/
 }

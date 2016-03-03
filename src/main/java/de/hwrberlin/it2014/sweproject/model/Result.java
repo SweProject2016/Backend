@@ -3,6 +3,7 @@ package de.hwrberlin.it2014.sweproject.model;
 import java.util.Date;
 
 public class Result {
+	private int id; //soll der ID in der DB entsprechen
 	private String userInput;
 	private Judgement judgement;
 	private float similarity;
@@ -16,6 +17,14 @@ public class Result {
 		this.date = date;
 	}
 	
+	public int getID() {
+		return id;
+	}
+
+	public void setID(int id) {
+		this.id = id;
+	}
+
 	public float getUserRating(){
 		return userRating;
 	}
