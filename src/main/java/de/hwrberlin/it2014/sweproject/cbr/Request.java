@@ -98,6 +98,10 @@ public class Request {
 		return id;
 	}
 
+	public Date getDateOfRequest() {
+		return dateOfRequest;
+	}
+	
 	/**
 	 * @author Max Bock
 	 * @param evaluation
@@ -136,9 +140,5 @@ public class Request {
 				return false;
 		}
 		return true;
-	}
-
-	public Date getDateOfRequest() {
-		return dateOfRequest;
 	}*/
 }
