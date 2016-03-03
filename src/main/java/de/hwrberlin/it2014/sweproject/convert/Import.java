@@ -20,8 +20,8 @@ public class Import {
 
 	}
 
-	public void importCases() throws IOException{
-		File[] files = new File("imports\\").listFiles();
+	public void importCases(String filePath) throws IOException{
+		File[] files = new File(filePath).listFiles();
 		for(File file : files){
 			if(file.isFile()){
 				Path path = Paths.get(file.getAbsolutePath());
