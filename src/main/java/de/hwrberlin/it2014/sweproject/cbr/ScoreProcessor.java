@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+import de.hwrberlin.it2014.sweproject.synonym.LawTester;
 import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
 /**
@@ -70,7 +71,7 @@ public class ScoreProcessor<T extends Scoreable> {
 		for(String keyword : filteredKeywords) {
 			ArrayList<String> synynoms = expandSynonyms(keyword);
 			boolean found = false;
-			boolean isJura = false; // TODO check keyword ist Rechtsbegriff
+			boolean isJura = LawTester.testIfWordIsLawTerm(keyword);
 			check: for(String sy : synynoms) {
 				if(s.getKeywordsAsList().contains(sy.toLowerCase())) {
 					found = true;
