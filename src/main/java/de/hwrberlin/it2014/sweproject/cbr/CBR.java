@@ -1,6 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
-import de.hwrberlin.it2014.sweproject.cbr.Case;
+import de.hwrberlin.it2014.sweproject.cbr.Request;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 import java.sql.SQLException;
@@ -15,17 +15,17 @@ import java.util.Date;
  */
 public class CBR {
 	
-	private ArrayList<Case> activeCases; //all cases from current userRequests
+	//private ArrayList<Case> activeCases; //all cases from current userRequests
 	private int COUNT_TO_RETURN;
 	
 	public CBR()
 	{
-		activeCases = new ArrayList<Case>();
+		//activeCases = new ArrayList<Case>();
 		COUNT_TO_RETURN=30;
 	}
 	public CBR(int count)
 	{
-		activeCases = new ArrayList<Case>();
+		//activeCases = new ArrayList<Case>();
 		COUNT_TO_RETURN=count;
 	}
 	
@@ -81,19 +81,33 @@ public class CBR {
 	 */
 	public String saveUserEvaluate(int id, int numberOfJudgement, float evaluation)
 	{
-		Case c = getCaseByID(id);
-		c.saveEvaluation(numberOfJudgement, evaluation);
-		if(c.isCompletelyEvaluated())
-			removeCaseByID(c.getID());
+		//Case c = getCaseByID(id);
+		//c.saveEvaluation(numberOfJudgement, evaluation);
+		//if(c.isCompletelyEvaluated())
+		//	removeCaseByID(c.getID());
 		return null;
 	}
 
+	/**
+	 * interne Methode fuer den CBR-Zyklus
+	 * @author Max Bock
+	 * @param usersInput
+	 * @return aehnliche Faelle
+	 * @throws SQLException
+	 */
+	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
+	{
+		Request c = new Request(usersInput);
+		//activeCases.add(c);
+		return c.getSimiliarFromDB(COUNT_TO_RETURN); //change for more cases
+	}
+	
 	/**
 	 * Loescht einen Fall aus den activeCases
 	 * @author Max Bock
 	 * @param CaseID
 	 * @return boolean
-	 */
+	 *
 	private boolean removeCaseByID(int id)
 	{
 		Case c = getCaseByID(id);
@@ -108,7 +122,7 @@ public class CBR {
 	 * @author Max Bock
 	 * @param interne Case ID
 	 * @return Case
-	 */
+	 *
 	private Case getCaseByID(int id) 
 	{
 		for(Case c :activeCases)
@@ -121,24 +135,12 @@ public class CBR {
 		return null;
 	}
 	
-	/**
-	 * interne Methode fuer den CBR-Zyklus
-	 * @author Max Bock
-	 * @param usersInput
-	 * @return aehnliche Faelle
-	 * @throws SQLException
-	 */
-	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
-	{
-		Case c = new Case(getHighestID()+1,usersInput);
-		activeCases.add(c);
-		return c.getSimiliarFromDB(COUNT_TO_RETURN); //change for more cases
-	}
+	
 	
 	/**
 	 * @author Max Bock
 	 * @return highest ID in activeCases
-	 */
+	 *
 	private int getHighestID()
 	{
 		int id=0;
@@ -161,7 +163,7 @@ public class CBR {
 	 * löscht alle Fälle aus den activeCases, die älter als ein Tag sind
 	 * @author Max Bock
 	 * @return count of deleted cases(/requests)
-	 */
+	 *
 	public int removeOldCases()
 	{	
 		return removeOldCases((int)24);
@@ -172,7 +174,7 @@ public class CBR {
 	 * @author Max Bock
 	 * @param hours - int
 	 * @return count of deleted cases(/requests)
-	 */
+	 *
 	private int removeOldCases(int hours) 
 	{
 		long time = (long) hours * 60 * 60 * 1000;
@@ -186,7 +188,7 @@ public class CBR {
 	 * @author Max Bock
 	 * @param miliseconds
 	 * @return count of deleted cases(/requests)
-	 */
+	 *
 	public int removeOldCases(long miliseconds)
 	{
 		int count = 0;
@@ -209,5 +211,5 @@ public class CBR {
 			}
 		}
 		return count;
-	}
+	}*/
 }

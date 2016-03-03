@@ -15,13 +15,13 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  * @author Max Bock & Felix Lehmann
  *
  */
-public class Case {
+public class Request {
 	
 	private int id;
 	private ArrayList<String> description;
 	private ArrayList<Judgement> similarCases;
 	private ScoreProcessor<Judgement> scoreProc;
-	private ArrayList<Judgement> evaluatedJudgements;
+	//private ArrayList<Judgement> evaluatedJudgements;
 	private Date dateOfRequest;
 	
 	/**
@@ -29,10 +29,10 @@ public class Case {
 	 * @param interne id, um spaeter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
-	public Case(int id, ArrayList<String> userInput)
+	public Request(ArrayList<String> userInput)
 	{
 		description=userInput;
-		this.id=id;
+		//this.id=id;
 		scoreProc = new ScoreProcessor<Judgement>();
 		dateOfRequest=new Date();
 	}
@@ -50,29 +50,7 @@ public class Case {
 	    return similarCases;
 	}
 	
-	/**
-	 * @author Max Bock
-	 * @param evaluation
-	 */
-	public void saveEvaluation(int numberOfJudgement, float evaluation)
-	{
-		DatabaseConnection dbc=new DatabaseConnection();
-		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
-				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
-		Judgement j = similarCases.get(numberOfJudgement);
-		if(null!=j && !evaluatedJudgements.contains(j))
-		{
-			evaluatedJudgements.add(j);
-			Result result = newResultFromJudgement(j);
-			result.setUserRating(evaluation);
-			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
-			try {
-				dbc.executeUpdate(insertQuery);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 	
 	/**
 	 * erzeugt ein Resultobjekt aus einem Judgement für diesen Fall(also mit der aktuellen Useranfrage)
@@ -121,10 +99,34 @@ public class Case {
 	}
 
 	/**
+	 * @author Max Bock
+	 * @param evaluation
+	 *
+	public void saveEvaluation(int numberOfJudgement, float evaluation)
+	{
+		DatabaseConnection dbc=new DatabaseConnection();
+		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
+				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		Judgement j = similarCases.get(numberOfJudgement);
+		if(null!=j && !evaluatedJudgements.contains(j))
+		{
+			evaluatedJudgements.add(j);
+			Result result = newResultFromJudgement(j);
+			result.setUserRating(evaluation);
+			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
+			try {
+				dbc.executeUpdate(insertQuery);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
 	 * prüft, ob alle ähnlichen Fälle dieser Anfrage bewertet wurden.
 	 * @author Max Bock
 	 * @return true, alle bewertet; false, mind. ein Fall nicht bewertet
-	 */
+	 *
 	public boolean isCompletelyEvaluated() {
 		if(evaluatedJudgements.isEmpty())
 			return false;
@@ -138,5 +140,5 @@ public class Case {
 
 	public Date getDateOfRequest() {
 		return dateOfRequest;
-	}
+	}*/
 }
