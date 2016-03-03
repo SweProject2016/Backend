@@ -79,7 +79,7 @@ public class CBR {
 	 * @param evaluation Bewertung
 	 * @return
 	 */
-	public String saveUserEvaluate(int id, int numberOfJudgement, float evaluation)
+	public String saveUserRating(int id, int numberOfJudgement, float evaluation)
 	{
 		//Case c = getCaseByID(id);
 		//c.saveEvaluation(numberOfJudgement, evaluation);
