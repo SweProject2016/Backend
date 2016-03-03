@@ -1,7 +1,5 @@
 package de.hwrberlin.it2014.sweproject.convert;
 
-import org.apache.commons.codec.binary.StringUtils;
-
 public class Fall {
 
     private String ueberschrift;

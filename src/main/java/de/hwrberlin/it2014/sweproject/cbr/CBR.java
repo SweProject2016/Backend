@@ -1,7 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Request;
-import de.hwrberlin.it2014.sweproject.database.DatabaseConfig;
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
 import de.hwrberlin.it2014.sweproject.model.Result;

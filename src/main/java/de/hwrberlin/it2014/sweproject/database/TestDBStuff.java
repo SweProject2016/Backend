@@ -1,11 +1,7 @@
 package de.hwrberlin.it2014.sweproject.database;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;

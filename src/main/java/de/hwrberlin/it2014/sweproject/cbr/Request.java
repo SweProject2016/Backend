@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.database.DatabaseConfig;
 import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.Result;
@@ -73,7 +72,7 @@ public class Request {
 	}
 	
 	/**
-	 * erzeugt ein Resultobjekt aus einem Judgement für diesen Fall(also mit der aktuellen Useranfrage)
+	 * erzeugt ein Resultobjekt aus einem Judgement fï¿½r diesen Fall(also mit der aktuellen Useranfrage)
 	 * @author Max Bock
 	 * @param Judgement
 	 * @return Result
@@ -89,7 +88,7 @@ public class Request {
 	}
 	
 	/**
-	 * gibt die Beschreibung (User Input) als ArrayList zurück
+	 * gibt die Beschreibung (User Input) als ArrayList zurï¿½ck
 	 * @author Max Bock
 	 * @param asList boolean (wert egal)
 	 * @return UserInput as ArrayList<String>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -47,8 +46,6 @@ public class SampleResource extends Resource {
     						   @QueryParam("delay") int delay,
     						   @QueryParam("start") int start) {
     	try{
-    		System.out.println("X-Api-Key: " + apiKey);
-    		System.out.println("X-Access-Token: " + accessToken);
     		Generator generator = new Generator();
     		List<?> output = generator.generate(type, size, input, start);
     		final String path="/sample/get";

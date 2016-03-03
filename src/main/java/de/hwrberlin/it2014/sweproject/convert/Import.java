@@ -48,7 +48,6 @@ public class Import {
 				j.setComittee(new Committee("com2"));
 				j.setFileReference(file.getName());
 
-				TableJudgementSQL t = new TableJudgementSQL();
 				try {
 					con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
 				} catch (SQLException e) {
