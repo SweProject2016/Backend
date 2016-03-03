@@ -1,5 +1,6 @@
 package de.hwrberlin.it2014.sweproject.convert;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.LawSector;
