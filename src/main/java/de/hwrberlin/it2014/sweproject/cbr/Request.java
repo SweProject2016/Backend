@@ -38,7 +38,7 @@ public class Request {
 	 * @return ArrayList of Sets containing all similiar cases from DB
 	 * @throws SQLException
 	 */
-	public ArrayList<Result> getSimiliarFromDB(int number) throws SQLException
+	public ArrayList<Result> getSimilarFromDB(int number) throws SQLException
 	{
 		ArrayList<Judgement> similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
 		//TODO separate the timestamp and lawsector from userinput

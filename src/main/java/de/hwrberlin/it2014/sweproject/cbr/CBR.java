@@ -1,11 +1,11 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Request;
-import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
+import de.hwrberlin.it2014.sweproject.model.Result;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * controls the cbr-cycle. Start the algorithm with startCBR(ArrayList<String>) method.
@@ -35,7 +35,7 @@ public class CBR {
 	 * @param usersInput (String[])
 	 * @return aehnliche Faelle
 	 */
-	public ArrayList<Judgement> startCBR(String[] usersInput)
+	public ArrayList<Result> startCBR(String[] usersInput)
 	{
 		ArrayList<String> al = new ArrayList<>();
 		for(String s : usersInput){ al.add(s); }
@@ -48,7 +48,7 @@ public class CBR {
 	 * @param usersInput (String)
 	 * @return aehnliche Faelle
 	 */
-	public ArrayList<Judgement> startCBR(String usersInput)
+	public ArrayList<Result> startCBR(String usersInput)
 	{
 		String[] ar = usersInput.split(" ");
 		return startCBR(ar);
@@ -60,9 +60,9 @@ public class CBR {
 	 * @param usersInput (ArrayList<String>)
 	 * @return aehnliche Faelle
 	 */
-	public ArrayList<Judgement> startCBR(ArrayList<String> usersInput)
+	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
-		ArrayList<Judgement> judgList;
+		ArrayList<Result> judgList;
 		try {
 			judgList=retrieve(usersInput);
 		} catch (SQLException e) {
@@ -81,11 +81,10 @@ public class CBR {
 	 */
 	public String saveUserRating(int idOfResult, float evaluation)
 	{
-		Request r = new Request();
-		//Case c = getCaseByID(id);
-		//c.saveEvaluation(numberOfJudgement, evaluation);
-		//if(c.isCompletelyEvaluated())
-		//	removeCaseByID(c.getID());
+		//Request r = new Request();
+		TableResultsSQL.getSelectSQLCode(idOfResult);
+		
+		//TableResultsSQL.getUpdateSQLCodeForUserRating(r);
 		return null;
 	}
 
@@ -96,11 +95,11 @@ public class CBR {
 	 * @return aehnliche Faelle
 	 * @throws SQLException
 	 */
-	private ArrayList<Judgement> retrieve(ArrayList<String> usersInput) throws SQLException
+	private ArrayList<Result> retrieve(ArrayList<String> usersInput) throws SQLException
 	{
 		Request c = new Request(usersInput);
 		//activeCases.add(c);
-		return c.getSimiliarFromDB(COUNT_TO_RETURN); //change for more cases
+		return c.getSimilarFromDB(COUNT_TO_RETURN); //change for more cases
 	}
 	
 	/**

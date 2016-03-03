@@ -13,6 +13,13 @@ public class TableResultsSQL {
 		return sql;
 	}
 	
+	public static String getSelectSQLCode(int id){
+		//TODO
+		//get Result From DB by ID
+		String sql="";
+		return sql;
+	}
+	
 	public static String getUpdateSQLCodeForUserRating(Result result){
 		//TODO
 		//update the userRating

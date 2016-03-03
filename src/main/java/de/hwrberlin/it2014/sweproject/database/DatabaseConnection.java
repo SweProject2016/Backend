@@ -272,7 +272,7 @@ public class DatabaseConnection {
 	
 	/**
 	 * @author Max Bock
-	 * @param query
+	 * @param query - SQL-Insert Statement
 	 * @return hopefully the ID of the inserted Set
 	 * @throws SQLException
 	 */
