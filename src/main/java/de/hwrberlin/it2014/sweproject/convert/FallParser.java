@@ -10,8 +10,8 @@ public class FallParser {
 
         Fall f = new Fall();
         if (s.contains("IM NAMEN DES VOLKES")) {
-            f.setAktenzeichen(stringBetween(s, "URTEIL", "Verkündet").trim());
-            f.setDatum(stringBetween(s, "Verkündet am:\n", "\n").trim());
+            f.setAktenzeichen(stringBetween(s, "URTEIL", "VerkÃ¼ndet").trim());
+            f.setDatum(stringBetween(s, "VerkÃ¼ndet am:\n", "\n").trim());
             f.setUeberschrift("BUNDESGERICHTSHOF IM NAMEN DES VOLKES URTEIL");
         } else if (s.contains("BESCHLUSS")) {
             f.setAktenzeichen(stringBetween(s, "BESCHLUSS", "vom").trim());
@@ -41,7 +41,7 @@ public class FallParser {
             f.setStrafmass(getStrafmass(s));
             f.setVergehen(getVergehen(s));
         } else if (f.getUnterueberschrift().contains("Verfahren")) {
-            f.setRechtsbereich("Zivilrecht"); // TODO: Stimmt das oder muss hier nochmal geprüft werden?
+            f.setRechtsbereich("Zivilrecht"); // TODO: Stimmt das oder muss hier nochmal geprï¿½ft werden?
             f.setStrafmass(getStrafmass(s));
             f.setVergehen(getVergehen(s));
         } else {
@@ -50,17 +50,17 @@ public class FallParser {
         }
 
         
-        //Gründe auslessen (bei allen PDF gleich, die Gründe haben)
-        int index1 = s.indexOf( "Gründe" );
+        //Grï¿½nde auslessen (bei allen PDF gleich, die Grï¿½nde haben)
+        int index1 = s.indexOf( "GrÃ¼nde" );
         if (index1==-1) {
-     	   index1 = s.indexOf("G r ü n d e "); // vieleicht falch geschrieben
+     	   index1 = s.indexOf("G r Ã¼ n d e "); // vieleicht falch geschrieben
      	   if(index1!=-1); index1+=7;
      	   if(index1==-1){
-     		  index1 = s.indexOf("Entscheidungsgründe"); // vieleicht falch geschrieben
+     		  index1 = s.indexOf("EntscheidungsgrÃ¼nde"); // vieleicht falch geschrieben
      		 if(index1!=-1); index1+=13;
      	   }
         }
-     	if (index1!=-1) { // Gründe vorhanden
+     	if (index1!=-1) { // Grï¿½nde vorhanden
      		int index2=s.length();
      		 f.setGruende(s.substring( index1+8, index2 ));
     	}
@@ -70,14 +70,14 @@ public class FallParser {
         return f;
     }
 
-    private static String getStrafmass(final String s) { // sucht das Strafmaß bzw. den Beschluss und gibt ihn zurück
-        //strafmaß --> beschlossen:
+    private static String getStrafmass(final String s) { // sucht das Strafmaï¿½ bzw. den Beschluss und gibt ihn zurï¿½ck
+        //strafmaï¿½ --> beschlossen:
         int index1 = s.indexOf("beschlossen:");
-        int index2 = s.indexOf("Gründe");
+        int index2 = s.indexOf("GrÃ¼nde");
         if (index2 == -1) {
-            index2 = s.indexOf("G r ü n d e "); // vieleicht falch geschrieben
+            index2 = s.indexOf("G r Ã¼ n d e "); // vieleicht falch geschrieben
             if(index2==-1){
-       		  index2 = s.indexOf("Entscheidungsgründe"); // vieleicht falch geschrieben
+       		  index2 = s.indexOf("EntscheidungsgrÃ¼nde"); // vieleicht falch geschrieben
        	   }
             if (index2 == -1) { // nicht vorhanden --> bis ende des Dokuments augeben
                 index2 = s.length();

@@ -20,6 +20,13 @@ SET time_zone = "+00:00";
 -- Database: `swe_project`
 --
 
+-- Cleanup
+
+DROP TABLE IF EXISTS `tbl_committee`;
+DROP TABLE IF EXISTS `tbl_judgement`;
+DROP TABLE IF EXISTS `tbl_results`;
+DROP TABLE IF EXISTS `tbl_law_sector`;
+
 -- --------------------------------------------------------
 
 --
@@ -85,7 +92,7 @@ CREATE TABLE `tbl_results` (
 -- Indexes for table `tbl_committee`
 --
 ALTER TABLE `tbl_committee`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
@@ -101,7 +108,7 @@ ALTER TABLE `tbl_judgement`
 -- Indexes for table `tbl_law_sector`
 --
 ALTER TABLE `tbl_law_sector`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --

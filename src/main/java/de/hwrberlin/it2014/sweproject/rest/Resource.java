@@ -5,6 +5,13 @@ import javax.ws.rs.core.Response.Status;
 
 import de.hwrberlin.it2014.sweproject.model.Entity;
 
+/**
+ * 
+ * Abstrakte Vaterklasse fuer alle REST Resourcen
+ * 
+ * @author Christian Schlesing
+ *
+ */
 public abstract class Resource {
 	
 	private final static String API_KEY="$A$9af4d8381781baccb0f915e554f8798d";
