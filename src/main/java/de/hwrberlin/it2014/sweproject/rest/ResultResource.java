@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.Status;
 
 import de.hwrberlin.it2014.sweproject.cbr.CBR;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.Result;
 
 /**
  * Produktive REST Resource, die auf Basis der Nutzereingabe eine Liste an Results
@@ -43,7 +44,7 @@ public class ResultResource extends Resource {
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
-				ArrayList<Judgement> resultList = cbr.startCBR(input);
+				ArrayList<Result> resultList = cbr.startCBR(input);
 				return build(Status.OK,resultList,path);
 			} 
 		} catch(Exception e){
@@ -68,14 +69,13 @@ public class ResultResource extends Resource {
 			   				   @HeaderParam("X-Access-Token") String accessToken,
 			   				   @QueryParam("id") int id,
 							   @QueryParam("rating") float rating,
-							   @QueryParam("index") int index,
 							   @QueryParam("delay") int delay){
 		try{
 			if(!auth(apiKey,accessToken)){
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
-				cbr.saveUserEvaluate(id, index, rating);
+				cbr.saveUserRating(id,rating);
 				return build(Status.CREATED);
 			}
 		} catch(Exception e){
