@@ -32,6 +32,7 @@ public class CBR {
 		COUNT_TO_RETURN=count;
 	}
 	
+	/* ********************** Retrieve ****************************** */
 	/**
 	 * leitet Nutzeranfrage weiter und gibt aehnliche Faelle zurueck
 	 * @author Max Bock
@@ -65,16 +66,19 @@ public class CBR {
 	 */
 	public ArrayList<Result> startCBR(ArrayList<String> usersInput)
 	{
-		ArrayList<Result> judgList;
+		ArrayList<Result> resList;
 		try {
-			judgList=retrieve(usersInput);
+			Request rq = new Request(usersInput);
+			resList=rq.getSimilarFromDB(COUNT_TO_RETURN);
 		} catch (SQLException e) {
-			judgList=new ArrayList<>();
+			resList=new ArrayList<>();
 			e.printStackTrace(); 
 		}
-		return judgList;
+		return resList;
 	}
+	/* ********************** End Retrieve ****************************** */
 	
+	/* ********************** User Rating ****************************** */
 	/**
 	 * speichert die Bewertung zu einem Fall einer Anfrage
 	 * @param id der Anfrage
@@ -97,20 +101,6 @@ public class CBR {
 		return null;
 	}
 
-	/**
-	 * interne Methode fuer den CBR-Zyklus
-	 * @author Max Bock
-	 * @param usersInput
-	 * @return aehnliche Faelle
-	 * @throws SQLException
-	 */
-	private ArrayList<Result> retrieve(ArrayList<String> usersInput) throws SQLException
-	{
-		Request c = new Request(usersInput);
-		//activeCases.add(c);
-		return c.getSimilarFromDB(COUNT_TO_RETURN);
-	}
-	
 	/**
 	 * Loescht einen Fall aus den activeCases
 	 * @author Max Bock
