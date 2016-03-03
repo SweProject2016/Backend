@@ -79,8 +79,9 @@ public class CBR {
 	 * @param evaluation Bewertung
 	 * @return
 	 */
-	public String saveUserRating(int id, int numberOfJudgement, float evaluation)
+	public String saveUserRating(int idOfResult, float evaluation)
 	{
+		Request r = new Request();
 		//Case c = getCaseByID(id);
 		//c.saveEvaluation(numberOfJudgement, evaluation);
 		//if(c.isCompletelyEvaluated())

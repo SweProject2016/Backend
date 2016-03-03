@@ -17,22 +17,17 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  */
 public class Request {
 	
-	private int id;
 	private ArrayList<String> description;
-	private ArrayList<Judgement> similarCases;
 	private ScoreProcessor<Judgement> scoreProc;
-	//private ArrayList<Judgement> evaluatedJudgements;
 	private Date dateOfRequest;
 	
 	/**
 	 * @author Max Bock
-	 * @param interne id, um spaeter die evaluation zur Anfrage zu zu ordnen
 	 * @param userInput
 	 */
 	public Request(ArrayList<String> userInput)
 	{
 		description=userInput;
-		//this.id=id;
 		scoreProc = new ScoreProcessor<Judgement>();
 		dateOfRequest=new Date();
 	}
@@ -43,14 +38,38 @@ public class Request {
 	 * @return ArrayList of Sets containing all similiar cases from DB
 	 * @throws SQLException
 	 */
-	public ArrayList<Judgement> getSimiliarFromDB(int number) throws SQLException
+	public ArrayList<Result> getSimiliarFromDB(int number) throws SQLException
 	{
-		similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
+		ArrayList<Judgement> similarCases = scoreProc.getBestMatches(description, number, (long) -1, null); 
 		//TODO separate the timestamp and lawsector from userinput
-	    return similarCases;
+	    return writeJudgementToDBAsResult(similarCases);
 	}
 	
-	
+	/**
+	 * @author Max Bock
+	 * @param judgList
+	 * @return
+	 */
+	private ArrayList<Result> writeJudgementToDBAsResult(ArrayList<Judgement> judgList)
+	{
+		DatabaseConnection dbc=new DatabaseConnection();
+		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
+				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		ArrayList<Result> resList = new ArrayList<>();
+		for(Judgement j : judgList)
+		{
+			Result r = newResultFromJudgement(j);
+			String sql = TableResultsSQL.getInsertSQLCode(r);
+			try { //write to DB
+				dbc.executeUpdate(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//read the id, r.setID()
+			resList.add(r);
+		}
+		return resList;
+	}
 	
 	/**
 	 * erzeugt ein Resultobjekt aus einem Judgement für diesen Fall(also mit der aktuellen Useranfrage)
@@ -91,11 +110,6 @@ public class Request {
 			sstream+=s+" ";
 		}
 		return sstream;
-	}
-	
-	public int getID()
-	{
-		return id;
 	}
 
 	public Date getDateOfRequest() {

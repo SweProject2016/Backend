@@ -3,7 +3,7 @@ package de.hwrberlin.it2014.sweproject.model;
 import java.util.Date;
 
 public class Result {
-	private int id;
+	private int id; //soll der ID in der DB entsprechen
 	private String userInput;
 	private Judgement judgement;
 	private float similarity;
