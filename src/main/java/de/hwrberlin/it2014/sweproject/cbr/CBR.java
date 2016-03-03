@@ -78,7 +78,6 @@ public class CBR {
 	/**
 	 * speichert die Bewertung zu einem Fall einer Anfrage
 	 * @param id der Anfrage
-	 * @param numberOfJudgement ist die Nummer des Falls in der bestimmten Anfrage
 	 * @param evaluation Bewertung
 	 * @return
 	 * @throws SQLException 
