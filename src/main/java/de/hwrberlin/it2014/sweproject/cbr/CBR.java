@@ -91,124 +91,13 @@ public class CBR {
 		//Request r = new Request();
 		String query = TableResultsSQL.getSelectSQLCode(idOfResult);
 		DatabaseConnection dbc=new DatabaseConnection();
-		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
-				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		dbc.connectToMysql();
 		ResultSet rs = dbc.executeQuery(query);
 		ArrayList<Result> rl = dbc.convertResultSetToResultList(rs);
 		Result result = rl.get(0);
 		result.setUserRating(rating);
-		//TableResultsSQL.getUpdateSQLCodeForUserRating(r);
+		String updateQuery = TableResultsSQL.getUpdateSQLCodeForUserRating(result);
+		dbc.executeUpdate(updateQuery);
 		return null;
 	}
-
-	/**
-	 * Loescht einen Fall aus den activeCases
-	 * @author Max Bock
-	 * @param CaseID
-	 * @return boolean
-	 *
-	private boolean removeCaseByID(int id)
-	{
-		Case c = getCaseByID(id);
-		if(null!=c)
-			return activeCases.remove(c);
-		else
-			return false;
-	}
-	
-	/**
-	 * liefert fuer die Bewertung anhand der ID den Case zurueck
-	 * @author Max Bock
-	 * @param interne Case ID
-	 * @return Case
-	 *
-	private Case getCaseByID(int id) 
-	{
-		for(Case c :activeCases)
-		{
-			if(c.getID()==id)
-			{
-				return c;
-			}
-		}
-		return null;
-	}
-	
-	
-	
-	/**
-	 * @author Max Bock
-	 * @return highest ID in activeCases
-	 *
-	private int getHighestID()
-	{
-		int id=0;
-		for(Case c: activeCases)
-		{
-			if(c.getID()>id)
-			{
-				id=c.getID();
-			}
-		}
-		return id;
-	}
-	
-	public ArrayList<Case> getActiveCases()
-	{
-		return activeCases;
-	}
-	
-	/**
-	 * löscht alle Fälle aus den activeCases, die älter als ein Tag sind
-	 * @author Max Bock
-	 * @return count of deleted cases(/requests)
-	 *
-	public int removeOldCases()
-	{	
-		return removeOldCases((int)24);
-	}
-	
-	/**
-	 * löscht alle Fälle aus den activeCases, die älter als hours (Parameter int) sind
-	 * @author Max Bock
-	 * @param hours - int
-	 * @return count of deleted cases(/requests)
-	 *
-	private int removeOldCases(int hours) 
-	{
-		long time = (long) hours * 60 * 60 * 1000;
-		return removeOldCases(time);
-	}
-
-	/**
-	 * löscht alle Fälle aus den active Cases (sind eigentlich die Nutzeranfragen!), die älter als der Parameter(miliseconds) sind
-	 * sollte regelmäßig benutzt werden, damit nicht komplett bewertete Anfragen gelöscht werden
-	 * miliseconds <= 1 löscht alle Fälle
-	 * @author Max Bock
-	 * @param miliseconds
-	 * @return count of deleted cases(/requests)
-	 *
-	public int removeOldCases(long miliseconds)
-	{
-		int count = 0;
-		if(1>=miliseconds)
-		{
-			count=activeCases.size();
-			activeCases.clear();
-		}
-		else
-		{
-			Date current = new Date();
-			Date before = new Date(current.getTime()-miliseconds);
-			for(Case c : activeCases)
-			{
-				if(c.getDateOfRequest().before(before))
-				{
-					removeCaseByID(c.getID());
-					count++;
-				}
-			}
-		}
-		return count;
-	}*/
 }

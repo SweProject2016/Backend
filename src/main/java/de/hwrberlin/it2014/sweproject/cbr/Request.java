@@ -53,8 +53,7 @@ public class Request {
 	private ArrayList<Result> writeJudgementToDBAsResult(ArrayList<Judgement> judgList)
 	{
 		DatabaseConnection dbc=new DatabaseConnection();
-		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
-				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		dbc.connectToMysql();
 		ArrayList<Result> resList = new ArrayList<>();
 		for(Judgement j : judgList)
 		{
@@ -114,47 +113,8 @@ public class Request {
 		return sstream;
 	}
 
-	public Date getDateOfRequest() {
+	public Date getDateOfRequest() 
+	{
 		return dateOfRequest;
 	}
-	
-	/**
-	 * @author Max Bock
-	 * @param evaluation
-	 *
-	public void saveEvaluation(int numberOfJudgement, float evaluation)
-	{
-		DatabaseConnection dbc=new DatabaseConnection();
-		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
-				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
-		Judgement j = similarCases.get(numberOfJudgement);
-		if(null!=j && !evaluatedJudgements.contains(j))
-		{
-			evaluatedJudgements.add(j);
-			Result result = newResultFromJudgement(j);
-			result.setUserRating(evaluation);
-			String insertQuery=TableResultsSQL.getInsertSQLCode(result);
-			try {
-				dbc.executeUpdate(insertQuery);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	/**
-	 * prüft, ob alle ähnlichen Fälle dieser Anfrage bewertet wurden.
-	 * @author Max Bock
-	 * @return true, alle bewertet; false, mind. ein Fall nicht bewertet
-	 *
-	public boolean isCompletelyEvaluated() {
-		if(evaluatedJudgements.isEmpty())
-			return false;
-		for(Judgement e : similarCases)
-		{
-			if(!evaluatedJudgements.contains(e))
-				return false;
-		}
-		return true;
-	}*/
 }
