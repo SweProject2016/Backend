@@ -13,6 +13,11 @@ public class TableResultsSQL {
 		return sql;
 	}
 	
+	/**
+	 * @author Max Bock
+	 * @param id
+	 * @return
+	 */
 	public static String getSelectSQLCode(int id){
 		//TODO
 		//get Result From DB by ID
@@ -20,6 +25,11 @@ public class TableResultsSQL {
 		return sql;
 	}
 	
+	/**
+	 * @author Max Bock
+	 * @param result
+	 * @return
+	 */
 	public static String getUpdateSQLCodeForUserRating(Result result){
 		//TODO
 		//update the userRating

@@ -7,7 +7,7 @@ public class Result {
 	private String userInput;
 	private Judgement judgement;
 	private float similarity;
-	private Date date;
+	private Date date; //Datum der NutzerAnfrage
 	private float userRating;
 	
 	public Result(String userInput, Judgement judgement, float similarity, Date date){

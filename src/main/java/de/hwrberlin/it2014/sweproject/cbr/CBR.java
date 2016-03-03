@@ -1,9 +1,12 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
 import de.hwrberlin.it2014.sweproject.cbr.Request;
+import de.hwrberlin.it2014.sweproject.database.DatabaseConfig;
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.TableResultsSQL;
 import de.hwrberlin.it2014.sweproject.model.Result;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -78,12 +81,19 @@ public class CBR {
 	 * @param numberOfJudgement ist die Nummer des Falls in der bestimmten Anfrage
 	 * @param evaluation Bewertung
 	 * @return
+	 * @throws SQLException 
 	 */
-	public String saveUserRating(int idOfResult, float evaluation)
+	public String saveUserRating(int idOfResult, float rating) throws SQLException
 	{
 		//Request r = new Request();
-		TableResultsSQL.getSelectSQLCode(idOfResult);
-		
+		String query = TableResultsSQL.getSelectSQLCode(idOfResult);
+		DatabaseConnection dbc=new DatabaseConnection();
+		dbc.connectToMysql(DatabaseConfig.DB_HOST, DatabaseConfig.DB_NAME, 
+				DatabaseConfig.DB_USER, DatabaseConfig.DB_PASSWORD);
+		ResultSet rs = dbc.executeQuery(query);
+		ArrayList<Result> rl = dbc.convertResultSetToResultList(rs);
+		Result result = rl.get(0);
+		result.setUserRating(rating);
 		//TableResultsSQL.getUpdateSQLCodeForUserRating(r);
 		return null;
 	}
@@ -99,7 +109,7 @@ public class CBR {
 	{
 		Request c = new Request(usersInput);
 		//activeCases.add(c);
-		return c.getSimilarFromDB(COUNT_TO_RETURN); //change for more cases
+		return c.getSimilarFromDB(COUNT_TO_RETURN);
 	}
 	
 	/**
