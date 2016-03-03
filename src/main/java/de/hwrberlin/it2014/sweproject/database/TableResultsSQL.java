@@ -13,7 +13,9 @@ public class TableResultsSQL {
 		return sql;
 	}
 	
-	public static String getUpdateSQLCode(Result result){
+	public static String getUpdateSQLCodeForUserRating(Result result){
+		//TODO
+		//update the userRating
 		String sql="";
 		return sql;
 	}
