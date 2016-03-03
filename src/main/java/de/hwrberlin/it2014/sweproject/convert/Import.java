@@ -22,7 +22,7 @@ public class Import {
 		File[] files = new File("imports\\").listFiles();
 		for(File file : files){
 			if(file.isFile()){
-				Fall fall = new FallParser.getFromPdf(file.getAbsolutePath());
+				Fall fall =  FallParser.getFromPdf(file.getAbsolutePath());
 				String text = "";
 				text+=fall.getGruende()+" ";
 				text+=fall.getVergehen()+" ";

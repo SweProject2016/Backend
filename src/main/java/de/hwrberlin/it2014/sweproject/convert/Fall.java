@@ -1,5 +1,7 @@
 package de.hwrberlin.it2014.sweproject.convert;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 public class Fall {
 
     private String ueberschrift;
@@ -81,7 +83,7 @@ public class Fall {
 
     @Override
     public String toString() {
-        return String.join("\n", this.ueberschrift, this.unterueberschrift, "AKZ: " + this.aktenzeichen, "Datum: " + this.datum, "Rechtsbereich: " + this.rechtsbereich, "Vergehen: " + this.vergehen, "Strafmass: " + this.strafmass, "Gruende: " + this.gruende);
+        return "\n"+ this.ueberschrift + this.unterueberschrift + "AKZ: " + this.aktenzeichen + "Datum: " + this.datum + "Rechtsbereich: " + this.rechtsbereich + "Vergehen: " + this.vergehen + "Strafmass: " + this.strafmass +  "Gruende: " + this.gruende;
     }
 
 	
