@@ -2,6 +2,8 @@ package de.hwrberlin.it2014.sweproject.convert;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -22,7 +24,8 @@ public class Import {
 		File[] files = new File("imports\\").listFiles();
 		for(File file : files){
 			if(file.isFile()){
-				Fall fall = new FallParser.getFromPdf(file.getAbsolutePath());
+				Path path = Paths.get(file.getAbsolutePath());
+				Fall fall = FallParser.getFromPdf(path);
 				String text = "";
 				text+=fall.getGruende()+" ";
 				text+=fall.getVergehen()+" ";
