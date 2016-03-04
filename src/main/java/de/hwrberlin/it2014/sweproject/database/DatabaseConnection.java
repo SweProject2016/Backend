@@ -271,9 +271,11 @@ public class DatabaseConnection {
 	}
 	
 	/**
+	 * Execute Update on database (SQL-Insert) for a single dataset only
+	 * not tested
 	 * @author Max Bock
 	 * @param query - SQL-Insert Statement
-	 * @return hopefully the ID of the inserted Set
+	 * @return (hopefully) the ID of the inserted Set
 	 * @throws SQLException
 	 */
 	public int executeUpdateRetrieveID(String query) throws SQLException{

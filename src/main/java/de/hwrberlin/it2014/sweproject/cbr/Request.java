@@ -38,7 +38,7 @@ public class Request {
 	
 	/**
 	 * @author Max Bock
-	 * @return UserInput as String
+	 * @return UserInput as String - Stringwords separated by Space
 	 */
 	public String getDescription()
 	{
@@ -86,7 +86,7 @@ public class Request {
 	{
 		Result r=new Result(
 				this.getDescription(), //String: userInput
-				j, //Judgement: 1 similarCase
+				j, //Judgement: a single similarCase
 				(float) scoreProc.getCachedScore(j), //float: similarity
 				this.dateOfRequest); //Date: Date of request
 		return r;
