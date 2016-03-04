@@ -14,26 +14,32 @@ public class TableResultsSQL {
 	}
 	
 	/**
-	 * @author Max Bock
+	 * @author Max Bock & Nico Pfeiffer
 	 * @param id
 	 * @return
 	 */
 	public static String getSelectSQLCode(int id){
 		//TODO
 		//get Result From DB by ID
-		String sql="";
+		String sql="SELECT * FROM tbl_result WHERE id =" + id;
 		return sql;
 	}
 	
 	/**
-	 * @author Max Bock
+	 * @author Max Bock & Nico Pfeiffer
 	 * @param result
 	 * @return
 	 */
 	public static String getUpdateSQLCodeForUserRating(Result result){
 		//TODO
 		//update the userRating
-		String sql="";
+		String sql="UPDATE tbl_results SET user_rating = '";
+		sql+=result.getUserRating();
+		sql+="' WHERE CustomerID = "+ result.getID();
 		return sql;
 	}
+	/* for the future: 
+	 * after rating you receive the user_input, user_rating and caseID from the frontend 
+	 * it would be better to save the result only after the user rate it or otherwise directly delete it
+	 */
 }
