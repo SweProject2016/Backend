@@ -21,20 +21,24 @@ public class Import {
 	}
 
 	public void importCases(String filePath) throws IOException{
-		File[] files = new File(filePath).listFiles();
+		File f = new File(filePath);
+		File[] files = f.listFiles();
 		DatabaseConnection con = new DatabaseConnection();
-		boolean connected = con.connectToMysql();
 		for(File file : files) {
 			if(file.isFile()) {
 				Path path = Paths.get(file.getAbsolutePath());
-				Fall fall = FallParser.getFromPdf(path);
+				Fall fall = new Fall();
+				try {
+					fall = FallParser.getFromPdf(path);					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}				
 				String text = "";
 				text += fall.getGruende() + " ";
 				text += fall.getVergehen() + " ";
 				text += fall.getRechtsBereich();
 				String keywords = UserInput.getLawTermsFromInput(text);
 
-				System.out.println(connected);
 				Date da = new Date();
 				java.sql.Date d = new java.sql.Date(da.getTime());
 
