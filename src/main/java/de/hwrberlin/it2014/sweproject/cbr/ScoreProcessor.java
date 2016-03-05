@@ -112,6 +112,7 @@ public class ScoreProcessor<T extends Scoreable> {
 		DatabaseConnection con = new DatabaseConnection();
 		con.connectToMysql();
 		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(con.executeQuery(query)); // cast is safe as Judgement implement scoreable
+		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
 		for(T s : prefilter) {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));
