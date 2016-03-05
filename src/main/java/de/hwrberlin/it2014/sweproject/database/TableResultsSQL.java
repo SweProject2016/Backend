@@ -15,27 +15,27 @@ public class TableResultsSQL {
 	
 	/**
 	 * @author Max Bock & Nico Pfeiffer
-	 * @param id
-	 * @return
+	 * @param id of a result which is not rated
+	 * @return Sql-Select-Query
 	 */
 	public static String getSelectSQLCode(int id){
 		//TODO
 		//get Result From DB by ID
-		String sql="SELECT * FROM tbl_result WHERE id =" + id;
+		String sql="SELECT * FROM tbl_result WHERE id = " + id + " LIMIT 1";
 		return sql;
 	}
 	
 	/**
 	 * @author Max Bock & Nico Pfeiffer
-	 * @param result
-	 * @return
+	 * @param rated result
+	 * @return Sql-Update-Query
 	 */
 	public static String getUpdateSQLCodeForUserRating(Result result){
 		//TODO
 		//update the userRating
 		String sql="UPDATE tbl_results SET user_rating = '";
 		sql+=result.getUserRating();
-		sql+="' WHERE CustomerID = "+ result.getID();
+		sql+="' WHERE id = "+ result.getID();
 		return sql;
 	}
 	/* for the future: 
