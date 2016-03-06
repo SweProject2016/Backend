@@ -36,7 +36,7 @@ public class LawTester {
 		String line = null;
 		FileReader fileReader;
 		try {
-			fileReader = new FileReader("lawTermsExtended.txt");
+			fileReader = new FileReader("src/main/java/de/hwrberlin/it2014/sweproject/synonym/lawTermsExtended.txt");
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			
 			while ((line = bufferedReader.readLine()) != null) {

@@ -23,13 +23,16 @@ public class Import {
 	public void importCases(String filePath) throws IOException{
 		File f = new File(filePath);
 		File[] files = f.listFiles();
-		DatabaseConnection con = new DatabaseConnection();
+ 		DatabaseConnection con = new DatabaseConnection();
 		for(File file : files) {
 			if(file.isFile()) {
 				Path path = Paths.get(file.getAbsolutePath());
 				Fall fall = new Fall();
+				Boolean parsed=false;
+				System.out.println("importing "+path);
 				try {
-					fall = FallParser.getFromPdf(path);					
+					fall = FallParser.getFromPdf(path);
+					parsed=true;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}				
@@ -54,8 +57,16 @@ public class Import {
 
 				try {
 					con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
+					if(parsed){
+						try{
+							file.delete();
+							System.out.println(path + " deleted");
+						}catch(Exception e){
+							e.printStackTrace();
+						}						
+					}
 				} catch(SQLException e) {
-					// TODO Auto-generated catch block
+//					 TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
