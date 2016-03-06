@@ -26,7 +26,7 @@ public class Import {
             }
 
             try {
-                Judgement j = JudgementParser.getFromPdf(Paths.get(f.getAbsolutePath()));
+                Judgement j = JudgementParser.getFromPdf(Paths.get(file.getAbsolutePath()));
                 con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
             } catch (IOException | SQLException e) {
                 e.printStackTrace();

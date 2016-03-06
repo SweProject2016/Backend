@@ -25,13 +25,15 @@ public class PDFManager {
         try (RandomAccessFile file = new RandomAccessFile(new File(filePath.toString()), "r")) {
             PDFParser parser = new PDFParser(file);
             parser.parse();
-            COSDocument cosDoc = parser.getDocument();
-            PDFTextStripper pdfStripper = new PDFTextStripper();
-            PDDocument pdDoc = new PDDocument(cosDoc);
-            pdfStripper.setStartPage(1);
-            pdfStripper.setEndPage(pdDoc.getNumberOfPages());
+            try (COSDocument cosDoc = parser.getDocument()) {
+                PDFTextStripper pdfStripper = new PDFTextStripper();
+                try (PDDocument pdDoc = new PDDocument(cosDoc)) {
+                    pdfStripper.setStartPage(1);
+                    pdfStripper.setEndPage(pdDoc.getNumberOfPages());
 
-            return pdfStripper.getText(pdDoc);
+                    return pdfStripper.getText(pdDoc);
+                }
+            }
         }
     }
 }
