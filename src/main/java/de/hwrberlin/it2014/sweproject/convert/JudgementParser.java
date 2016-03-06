@@ -11,7 +11,7 @@ import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.userinput.UserInput;
 
-public class FallParser {
+public class JudgementParser {
     private static final String BGH_FILE_URL = "http://juris.bundesgerichtshof.de/cgi-bin/rechtsprechung/document.py?Gericht=bgh&nr=%d&Frame=0";
 
     /**
@@ -33,7 +33,7 @@ public class FallParser {
             System.err.println("Dateiname in falschem Format.");
             return null;
         }
-        Judgement j = new Judgement(String.format(FallParser.BGH_FILE_URL, id), pdfName);
+        Judgement j = new Judgement(String.format(JudgementParser.BGH_FILE_URL, id), pdfName);
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String dateStr;
         if (s.contains("IM NAMEN DES VOLKES")) {
