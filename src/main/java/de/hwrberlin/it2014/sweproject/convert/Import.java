@@ -12,7 +12,7 @@ import de.hwrberlin.it2014.sweproject.model.Judgement;
 
 public class Import {
     /**
-     * Importiert alle PDFs aus dem �bergebenen Ordner.
+     * Importiert alle PDFs aus dem übergebenen Ordner.
      *
      * @param directory
      * @throws IOException
