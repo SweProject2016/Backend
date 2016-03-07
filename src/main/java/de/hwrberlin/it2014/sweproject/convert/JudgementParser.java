@@ -70,7 +70,12 @@ public class JudgementParser {
         } else {
             j.setSector(new LawSector("Zivilrecht"));
         }
-        j.setSentence(parseSentence(s));
+        String sentence = parseSentence(s);
+        if (sentence.isEmpty()) {
+            System.err.println("Beschluss nicht erkannt.");
+            return null;
+        }
+        j.setSentence(sentence);
         j.setOffence(parseOffence(s));
 
         j.setKeywords(UserInput.getLawTermsFromInput(removeDuplicateWords(s))); // Keywords aus dem gesamten Text generieren (enthält dann auch ggf. Gründe und Co)
@@ -121,6 +126,6 @@ public class JudgementParser {
         Pattern p = Pattern.compile(regex, Pattern.DOTALL);
         Matcher m = p.matcher(source);
 
-        return m.find() ? m.group(1) : null;
+        return m.find() ? m.group(1) : "";
     }
 }
