@@ -12,7 +12,7 @@ public class LawTester {
 
     /**
      * Die Methode bekommt ein Schluesselwort und ueberprueft ob dieses ein juristischer Ausdruck ist
-     * 
+     *
      * @param keyword
      *            ein Schluesselwort zur Ueberpruefung
      * @return wenn der Schluessel ein juristisches Wort ist, wird true zurueckgegeben, sonst false
@@ -31,7 +31,7 @@ public class LawTester {
 
     /**
      * Die interne Methode nimmt eines der juristischen Lexika und f�gt dessen Inhalt in eine ArrayList ein
-     * 
+     *
      * @return ArrayList<String> aList mit Inhalt eines Lexikons
      */
     private static ArrayList<String> getLexiEntries() {
@@ -39,7 +39,7 @@ public class LawTester {
         String line = null;
         FileReader fileReader;
         try {
-            fileReader = new FileReader("src/main/java/de/hwrberlin/it2014/sweproject/synonym/lawTermsExtended.txt");
+            fileReader = new FileReader("lawTermsExtended.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while ((line = bufferedReader.readLine()) != null) {

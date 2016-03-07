@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS `tbl_law_sector`;
 CREATE TABLE `tbl_committee` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -50,13 +50,13 @@ CREATE TABLE `tbl_judgement` (
   `committee` int(11) NOT NULL,
   `law_sector` int(11) NOT NULL,
   `date` date NOT NULL,
-  `sentence` varchar(1000) NOT NULL,
-  `offence` varchar(1000) NOT NULL,
+  `sentence` blob NOT NULL,
+  `offence` blob NOT NULL,
   `page_rank` float NOT NULL,
   `pdf_filename` varchar(100) NOT NULL,
   `pdf_link` varchar(300) NOT NULL,
   `keywords` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `tbl_judgement` (
 CREATE TABLE `tbl_law_sector` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `tbl_results` (
   `similarity` float NOT NULL,
   `date` date NOT NULL,
   `user_rating` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables

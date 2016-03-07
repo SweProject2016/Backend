@@ -62,8 +62,8 @@ public class JudgementParser {
 
         String subheading = search(s.toLowerCase(), "(in de(m|r) .*(streit|sache|verfahren)|in sachen)");
         if (subheading == null) {
-            System.err.println("Rechtsbereich nicht erkannt.");
-            return null;
+            System.out.println("Rechtsbereich nicht erkannt.");
+            j.setSector(new LawSector("undefined"));
         }
         if (subheading.contains("straf")) {
             j.setSector(new LawSector("Strafrecht"));

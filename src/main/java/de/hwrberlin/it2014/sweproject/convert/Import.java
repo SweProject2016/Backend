@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
@@ -28,7 +29,11 @@ public class Import {
             try {
                 Judgement j = JudgementParser.getFromPdf(Paths.get(file.getAbsolutePath()));
                 if (j != null) {
-                    con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
+                    PreparedStatement stmt = TableJudgementSQL.prepareInsert(j, con);
+                    stmt.addBatch();
+                    int[] rows = stmt.executeBatch();
+                    System.out.println(rows.length + " rows inserted.");
+                    stmt.close();
                     file.delete();
                 }
             } catch (IOException | SQLException e) {
