@@ -29,7 +29,7 @@ public class JudgementParser {
      * @return Judgement-Objekt oder null bei Fehler
      * @throws IOException
      */
-    public static Judgement getFromPdf(final Path pdfPath) throws IOException {
+    public static Judgement getFromPdf(final Path pdfPath) throws IOException, NullPointerException {
         String pdfName = pdfPath.getFileName().toString();
 
         int id;
@@ -64,11 +64,12 @@ public class JudgementParser {
         if (subheading == null) {
             System.out.println("Rechtsbereich nicht erkannt.");
             j.setSector(new LawSector("undefined"));
-        }
-        if (subheading.contains("straf")) {
-            j.setSector(new LawSector("Strafrecht"));
         } else {
-            j.setSector(new LawSector("Zivilrecht"));
+            if (subheading.contains("straf")) {
+                j.setSector(new LawSector("Strafrecht"));
+            } else {
+                j.setSector(new LawSector("Zivilrecht"));
+            }
         }
         j.setSentence(parseSentence(s));
         j.setOffence(parseOffence(s));
