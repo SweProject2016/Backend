@@ -22,7 +22,7 @@ public class ThesaurusLoader {
 	public static ArrayList<String> getSynonyms(String keyword){
 		ArrayList<String> syns = new ArrayList<String>();
 		ArrayList<String> lines = new ArrayList<String>();
-		File thesaurusFile = new File("src/de/hwrberlin/it2014/sweproject/synonym/openthesaurus.txt");
+		File thesaurusFile = new File("src/main/java/de/hwrberlin/it2014/sweproject/synonym/openthesaurus.txt");
 		String thesaurusFilePath = thesaurusFile.getAbsolutePath();
 		String line = null;
 		FileReader fileReader;
