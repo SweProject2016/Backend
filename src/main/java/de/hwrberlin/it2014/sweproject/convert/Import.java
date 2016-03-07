@@ -27,13 +27,14 @@ public class Import {
 
             try {
                 Judgement j = JudgementParser.getFromPdf(Paths.get(file.getAbsolutePath()));
-                con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
+                if (j != null) {
+                    con.executeUpdate(TableJudgementSQL.getInsertSQLCode(j));
+                    file.delete();
+                }
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
                 continue;
             }
-
-            file.delete();
         }
         con.close();
     }

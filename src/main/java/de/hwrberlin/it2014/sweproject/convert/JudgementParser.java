@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.userinput.UserInput;
@@ -74,6 +75,9 @@ public class JudgementParser {
 
         j.setKeywords(UserInput.getLawTermsFromInput(removeDuplicateWords(s))); // Keywords aus dem gesamten Text generieren (enthält dann auch ggf. Gründe und Co)
 
+        j.setPageRank(0);
+        j.setComittee(new Committee("bgh"));
+
         return j;
     }
 
@@ -84,7 +88,7 @@ public class JudgementParser {
     private static String parseOffence(final String source) {
         String firstPage = source.split(JudgementParser.NEW_PAGE_MARKER)[0] + JudgementParser.NEW_PAGE_MARKER;
         if (!firstPage.contains("\nwegen")) {
-            return null;
+            return "";
         }
         return stringBetween(firstPage, "\nwegen", JudgementParser.NEW_PAGE_MARKER).replace(JudgementParser.NEW_PAGE_MARKER, "").replace(JudgementParser.EOF_MARKER, "").replace("\n", " ").trim();
     }
