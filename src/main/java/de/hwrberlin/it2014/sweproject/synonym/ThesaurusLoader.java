@@ -1,6 +1,7 @@
 package de.hwrberlin.it2014.sweproject.synonym;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,10 +22,13 @@ public class ThesaurusLoader {
 	public static ArrayList<String> getSynonyms(String keyword){
 		ArrayList<String> syns = new ArrayList<String>();
 		ArrayList<String> lines = new ArrayList<String>();
+		File thesaurusFile = new File("src/de/hwrberlin/it2014/sweproject/synonym/openthesaurus.txt");
+		String thesaurusFilePath = thesaurusFile.getAbsolutePath();
 		String line = null;
 		FileReader fileReader;
 		try {
-			fileReader = new FileReader("openthesaurus.txt");
+			//fileReader = new FileReader("openthesaurus.txt");
+			fileReader = new FileReader(thesaurusFilePath);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			
 			while ((line = bufferedReader.readLine()) != null) {
