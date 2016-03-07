@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import de.hwrberlin.it2014.sweproject.model.Judgement;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 
 public class TableJudgementSQL {
 
@@ -68,29 +69,37 @@ public class TableJudgementSQL {
     /**
      * die Funktion baut eine SQL-Anfrage mit der die vom Nutzer eingegebenen Keywords mit der Datenbank verglichen werden kï¿½nnen
      *
-     * @author Danilo Gï¿½nzel
+     * @author Danilo Günzel
      * @param keywords Sind die von der Nutzereingabe erhaltenen Schlï¿½sselwï¿½rter(ohne synonyme)
      * @param lawsector Der Rechtsbereich aus welchem die gefundenen Fï¿½lle stammen sollen
      * @return Als Rï¿½ckgabe erhï¿½lt man die Datenbankanfrage, die die Zeilen nach den Schlï¿½sselworttreffern auswï¿½hlt
      */
-    public static String getSelectSQLCode(final ArrayList<String> keywords, final String lawsector){
-        String query = "SELECT * FROM tbl_judgement WHERE CONTAINS((sentence, offence, keywords),";
-        String queryKeywords = new String();
+    public static String getSelectSQLCode(final ArrayList<String> keywords, final LawSector lawsector){
+        //String query = "SELECT * FROM tbl_judgement WHERE CONTAINS((sentence, offence, keywords),";
+        String query = "SELECT * FROM tbl_judgement WHERE ";
+        //String queryKeywords = new String();
 
         for(String key : keywords) {
-            queryKeywords += "'" + key.toLowerCase() + "' or ";
+            //queryKeywords += "'" + key.toLowerCase() + "' or ";
+            query += "sentence LIKE [^a-Z]'" + key.toLowerCase() + "' OR ";
+            query += "offence LIKE [^a-Z]'" + key.toLowerCase() + "' OR ";
+            query += "keywords LIKE [^a-Z]'" + key.toLowerCase() + "' OR ";
         }
 
         int len = 0;
-        len = queryKeywords.length();
-        queryKeywords = queryKeywords.substring(0, len - 3);
-        if(lawsector != null && !lawsector.isEmpty()) {
-            queryKeywords += ") AND LOWER(law_sector) = LOWER('" + lawsector + "');";
+        //len = queryKeywords.length();
+        len = query.length();
+        //queryKeywords = queryKeywords.substring(0, len - 3);
+        query = query.substring(0, len - 3);
+        if(lawsector != null) {
+            //queryKeywords += ") AND LOWER(law_sector) = LOWER('" + lawsector + "');";
+            query += " AND LOWER(law_sector) = LOWER('" + lawsector + "');";
         } else {
-            queryKeywords += ");";
+            //queryKeywords += ");";
+            query += ";";
         }
 
-        query += queryKeywords;
+        //query += queryKeywords;
 
         return query;
     }
