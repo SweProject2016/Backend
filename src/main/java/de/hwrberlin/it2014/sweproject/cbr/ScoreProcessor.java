@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+import de.hwrberlin.it2014.sweproject.database.TableJudgementSQL;
 import de.hwrberlin.it2014.sweproject.synonym.LawTester;
 import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
@@ -107,10 +108,11 @@ public class ScoreProcessor<T extends Scoreable> {
 	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector) throws SQLException{
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
-		String query = QueryBuilder.buildQuery(allKeywords, lawsector);
+		String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
 		DatabaseConnection con = new DatabaseConnection();
 		con.connectToMysql();
 		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(con.executeQuery(query)); // cast is safe as Judgement implement scoreable
+		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
 		for(T s : prefilter) {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));

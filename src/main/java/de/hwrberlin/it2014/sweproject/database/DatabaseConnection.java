@@ -2,6 +2,7 @@ package de.hwrberlin.it2014.sweproject.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -271,16 +272,28 @@ public class DatabaseConnection {
 	}
 	
 	/**
+	 * Execute Update on database (SQL-Insert) for a single dataset only
+	 * not tested
 	 * @author Max Bock
-	 * @param query - SQL-Insert Statement
-	 * @return hopefully the ID of the inserted Set
+	 * @param query - SQL-Insert Statement only
+	 * @return (hopefully) the ID of the inserted Set; -1 if something went wrong
 	 * @throws SQLException
 	 */
-	public int executeUpdateRetrieveID(String query) throws SQLException{
-		Statement st = con.createStatement();
-		st.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+	public int executeUpdateRetrieveID(String query) throws SQLException
+	{
+		PreparedStatement st = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		st.executeUpdate();
 		ResultSet rs = st.getGeneratedKeys();
-		return rs.getInt("id");
+		int id;
+		if(rs.next())
+		{
+			id = rs.getInt("id");
+		}
+		else
+		{
+			id = -1;
+		}
+		return id;
 	}
 	
 	/**

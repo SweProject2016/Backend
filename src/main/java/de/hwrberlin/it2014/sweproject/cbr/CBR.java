@@ -93,9 +93,15 @@ public class CBR {
 		ResultSet rs = dbc.executeQuery(query);
 		ArrayList<Result> rl = dbc.convertResultSetToResultList(rs);
 		Result result = rl.get(0);
-		result.setUserRating(rating);
-		String updateQuery = TableResultsSQL.getUpdateSQLCodeForUserRating(result);
-		dbc.executeUpdate(updateQuery);
-		return null;
+		if(result.getUserRating()!=0.0f){
+			result.setUserRating(rating);
+			String updateQuery = TableResultsSQL.getUpdateSQLCodeForUserRating(result);
+			dbc.executeUpdate(updateQuery);
+			return "success";
+		}
+		else
+		{
+			return "fail: is already rated";
+		}
 	}
 }
