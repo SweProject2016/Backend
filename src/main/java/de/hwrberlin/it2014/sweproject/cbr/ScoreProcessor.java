@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.TableJudgementSQL;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 import de.hwrberlin.it2014.sweproject.synonym.LawTester;
 import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
@@ -105,7 +106,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @return liste mit �hnlichen F�llen (absteigende �hnlichkeit)
 	 * @throws SQLException db error
 	 */
-	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, String lawsector) throws SQLException{
+	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, LawSector lawsector) throws SQLException{
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
 		String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
