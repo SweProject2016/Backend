@@ -18,6 +18,14 @@ public class TableJudgementSQL {
 
     public static final String SELECT_BY_FILE_REFERENCE_QUERY_STRING = "SELECT * FROM tbl_judgement WHERE file_reference = ?";
     
+    /**
+     * Findet die ID eines Judgements anhand des Aktenzeichens heraus
+     * @author Dominik Habel
+     *
+     * @param fileRef das Aktenzeichen
+     * @param con die Datenbank-Verbindung
+     * @return die Datenbank ID zum übergebenen Aktenzeichen
+     */
     public static int getJudgementIdByFileReference(final String fileRef, final DatabaseConnection con){
         Connection c =  con.getConnection();
         Integer id = null;
@@ -34,6 +42,13 @@ public class TableJudgementSQL {
         return id;
     }
     
+    /**
+     * Generiert SQL-Insert-Code zu einem Judgement
+     * @author Dominik Habel
+     *
+     * @param judgement das einzufügende Judgement
+     * @return der SQL-Code
+     */
     public static String getInsertSQLCode(final Judgement judgement){
         String sql = "INSERT INTO tbl_judgement (file_reference, committee, law_sector," + "date, sentence, offence, page_rank, pdf_filename," + "pdf_link, keywords) SELECT ";
         sql += "'" + judgement.getFileReference() + "',";

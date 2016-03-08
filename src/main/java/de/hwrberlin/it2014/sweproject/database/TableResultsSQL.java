@@ -14,12 +14,12 @@ public class TableResultsSQL {
 	            + "VALUES (?,?,?,?,?)";
 	 
 	 /**
-	  * Builds a PreparedStatement for an Insert into tbl_results
+	  * Generiert ein PreparedStatement für ein Insert in tbl_results
 	  * @author Dominik Habel
 	  *
-	  * @param res the result that will be inserted
-	  * @param con database connection
-	  * @return generated PreparedStatement
+	  * @param res das Result, das eingefügt werden soll
+	  * @param con Datenbank-Verbindung
+	  * @return das generierte PreparedStatement
 	  * @throws SQLException
 	  */
 	 public static PreparedStatement prepareInsert(final Result res, final DatabaseConnection con) throws SQLException{
@@ -42,6 +42,13 @@ public class TableResultsSQL {
 	        return stmt;
 	    }
 	
+	 /**
+	  * Generiert SQL-Insert-Code zu einem Result
+	  * @author Dominik Habel
+	  *
+	  * @param result das einzufügende Result
+	  * @return der SQL-Code
+	  */
 	public static String getInsertSQLCode(Result result){
 		String sql = "INSERT INTO tbl_results (user_input, picked_file, similarity, date, user_rating) SELECT ";
 		sql+="'"+result.getUserInput()+"',";

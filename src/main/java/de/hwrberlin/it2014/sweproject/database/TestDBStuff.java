@@ -8,6 +8,11 @@ import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.Result;
 
+/**
+ * --- Reine Test-Klasse ---
+ * @author Dominik Habel
+ *
+ */
 public class TestDBStuff {
 
 	public static void main(String[] args) throws ParseException {
