@@ -42,7 +42,8 @@ public class ThesaurusLoader {
 		}
 	     
 		for(String entry : lines){
-			if(entry.contains(keyword)){
+			if(entry.split(";").equals(keyword)){
+			//if(entry.contains(keyword)){
 				for(String singleWord : entry.split(";")){
 					singleWord.replaceAll(";", "");
 					singleWord.trim();
