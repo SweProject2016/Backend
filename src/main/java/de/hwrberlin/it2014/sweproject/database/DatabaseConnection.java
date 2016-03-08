@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.model.Result;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 
 public class DatabaseConnection {
     private Connection con;
@@ -114,7 +114,6 @@ public class DatabaseConnection {
      */
     public ArrayList<Judgement> convertResultSetToJudgementList(final ResultSet rs) throws SQLException{
         ArrayList<Judgement> list = new ArrayList<Judgement>();
-        HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
         HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
         while(rs.next()){
             Judgement judge = new Judgement(null, null);
@@ -128,16 +127,7 @@ public class DatabaseConnection {
             judge.setPageRank(rs.getFloat("page_rank"));
 
             int id = rs.getInt("law_sector");
-            LawSector sector = ls.get(id);
-            if(sector==null){
-                ResultSet newLS = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id+";");
-                newLS.next();
-                LawSector dummy = new LawSector(newLS.getString("name"));
-                ls.put(id, dummy);
-                judge.setSector(dummy);
-            }else{
-                judge.setSector(sector);
-            }
+            judge.setLawSector(LawSector.values()[id]);
 
             int id2=rs.getInt("committee");
             Committee committee = c.get(id2);
@@ -168,7 +158,6 @@ public class DatabaseConnection {
     public ArrayList<Result> convertResultSetToResultList(final ResultSet rs) throws SQLException{
         ArrayList<Result> list = new ArrayList<Result>();
         HashMap<Integer, Judgement> j = new HashMap<Integer, Judgement>();
-        HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
         HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
         while(rs.next()){
             Result result = new Result(null, null, 0, null);
@@ -195,16 +184,7 @@ public class DatabaseConnection {
                 dummy.setPageRank(newLS.getFloat("page_rank"));
 
                 int id2 = newLS.getInt("law_sector");
-                LawSector sector = ls.get(id2);
-                if(sector==null){
-                    ResultSet newLS2 = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id2+";");
-                    newLS2.next();
-                    LawSector dummy2 = new LawSector(newLS2.getString("name"));
-                    ls.put(id2, dummy2);
-                    dummy.setSector(dummy2);
-                }else{
-                    dummy.setSector(sector);
-                }
+                dummy.setLawSector(LawSector.values()[id]);
 
                 id2=newLS.getInt("committee");
                 Committee committee = c.get(id2);
@@ -226,24 +206,6 @@ public class DatabaseConnection {
                 result.setJudgement(judge);
             }
             list.add(result);
-        }
-        return list;
-    }
-
-    /**
-     * Converts a ResultSet into an ArrayList of LawSector
-     *
-     * @author Dominik Habel
-     *
-     * @param rs result of a query (query must be SELECT * [...])
-     * @return ArrayList of LawSector
-     * @throws SQLException
-     */
-    public ArrayList<LawSector> convertResultSetToLawSectorList(final ResultSet rs) throws SQLException{
-        ArrayList<LawSector> list = new ArrayList<LawSector>();
-        while(rs.next()){
-            LawSector dummy = new LawSector(rs.getString("name"));
-            list.add(dummy);
         }
         return list;
     }

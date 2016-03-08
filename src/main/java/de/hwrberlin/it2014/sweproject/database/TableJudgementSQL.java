@@ -3,6 +3,7 @@ package de.hwrberlin.it2014.sweproject.database;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,17 +12,33 @@ import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 
 public class TableJudgementSQL {
 
-    private final static String QUERY_STRING = "INSERT INTO tbl_judgement "
+    private final static String INSERT_QUERY_STRING = "INSERT INTO tbl_judgement "
             + "(file_reference, committee, law_sector, tbl_judgement.date, sentence, offence, page_rank, pdf_filename,pdf_link, keywords)"
             + "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-
-
+    public static final String SELECT_BY_FILE_REFERENCE_QUERY_STRING = "SELECT * FROM tbl_judgement WHERE file_reference = ?";
+    
+    public static int getJudgementIdByFileReference(final String fileRef, final DatabaseConnection con){
+        Connection c =  con.getConnection();
+        Integer id = null;
+        try {
+            PreparedStatement stmt = c.prepareStatement(TableJudgementSQL.SELECT_BY_FILE_REFERENCE_QUERY_STRING);
+            stmt.setString(1,fileRef);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
     public static String getInsertSQLCode(final Judgement judgement){
         String sql = "INSERT INTO tbl_judgement (file_reference, committee, law_sector," + "date, sentence, offence, page_rank, pdf_filename," + "pdf_link, keywords) SELECT ";
         sql += "'" + judgement.getFileReference() + "',";
-        // TODO: committee+law_sector-parse
-        sql += "c.id,ls.id,";
+        sql += "c.id,";
+        sql += judgement.getLawSector().ordinal()+",";
         sql += "'" + judgement.getDate() + "',";
         sql += "'" + judgement.getSentence() + "',";
         sql += "'" + judgement.getOffence() + "',";
@@ -29,9 +46,7 @@ public class TableJudgementSQL {
         sql += "'" + judgement.getPdfFileName() + "',";
         sql += "'" + judgement.getPdfLink() + "',";
         sql += "'" + judgement.getKeywords();
-        sql += "' FROM tbl_committee c, tbl_law_sector ls WHERE c.name='" + judgement.getComittee().getName();
-        sql += "' AND ls.name='" + judgement.getSector().getName() + "';";
-        System.out.println(sql);
+        sql += "' FROM tbl_committee c WHERE c.name='" + judgement.getComittee().getName()+ "';";
         return sql;
     }
 
@@ -48,10 +63,10 @@ public class TableJudgementSQL {
         PreparedStatement stmt = null;
         try {
             Connection c = con.getConnection();
-            stmt = c.prepareStatement(TableJudgementSQL.QUERY_STRING);
+            stmt = c.prepareStatement(TableJudgementSQL.INSERT_QUERY_STRING);
             stmt.setString(1,j.getFileReference());
-            stmt.setInt(2, 1);
-            stmt.setInt(3, TableLawSectorSQL.getLawSectorIdByName(j.getSector(), con));
+            stmt.setInt(2, TableCommitteeSQL.getCommitteeIdByName(j.getComittee(), con));
+            stmt.setInt(3, j.getLawSector().ordinal());
             stmt.setDate(4, new Date(j.getDate().getTime()));
             stmt.setString(5, j.getSentence());
             stmt.setString(6, j.getOffence());
