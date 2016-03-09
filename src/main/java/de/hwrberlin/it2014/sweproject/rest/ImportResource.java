@@ -2,6 +2,7 @@ package de.hwrberlin.it2014.sweproject.rest;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,7 +21,8 @@ public class ImportResource extends Resource {
         try {
             Import.importCases(Paths.get(path));
             return build(Status.OK);
-        } catch (InvalidPathException e) {
+        } catch (InvalidPathException | SQLException e) {
+        	e.printStackTrace();
             return build(Status.BAD_REQUEST);
         }
     }

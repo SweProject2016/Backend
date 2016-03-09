@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
+import de.hwrberlin.it2014.sweproject.synonym.LawTester;
 
 /**
  * Created by csc on 13.01.16. Sample Resource für den REST-WS
@@ -62,5 +63,18 @@ public class SampleResource extends Resource {
         } catch(Exception e){
             return build(Status.INTERNAL_SERVER_ERROR);
         }
+    }
+    
+    @GET
+    @Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response generalTestMethod(@QueryParam("input") String input){
+    	try{
+    		boolean res = LawTester.testIfWordIsLawTerm(input);
+    		return build(Status.OK,res,"/sample/test");
+    	} catch(Exception e){
+    		e.printStackTrace();
+    		return build(Status.INTERNAL_SERVER_ERROR);
+    	}
     }
 }
