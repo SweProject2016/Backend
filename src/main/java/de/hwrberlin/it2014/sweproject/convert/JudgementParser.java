@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.LawSector;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 import de.hwrberlin.it2014.sweproject.userinput.UserInput;
 
 public class JudgementParser {
@@ -63,12 +63,12 @@ public class JudgementParser {
         String subheading = search(s.toLowerCase(), "(in de(m|r) .*(streit|sache|verfahren)|in sachen)");
         if (subheading == null) {
             System.out.println("Rechtsbereich nicht erkannt.");
-            j.setSector(new LawSector("undefined"));
+            j.setLawSector(LawSector.UNDEFINED);
         } else {
             if (subheading.contains("straf")) {
-                j.setSector(new LawSector("Strafrecht"));
+                j.setLawSector(LawSector.STRAFRECHT);
             } else {
-                j.setSector(new LawSector("Zivilrecht"));
+                j.setLawSector(LawSector.ZIVILRECHT);
             }
         }
         String sentence = parseSentence(s);
