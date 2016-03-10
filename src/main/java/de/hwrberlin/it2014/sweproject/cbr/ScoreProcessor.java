@@ -53,7 +53,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @since 11.02.2016 09:46:36
 	 */
 	public ScoreProcessor(){
-		this(new double[]{10, 20, 2, 0}, new double[]{1, 0.2d});
+		this(new double[]{10, 20, 0.2}, new double[]{1, 0.2d});
 	}
 
 	/**
