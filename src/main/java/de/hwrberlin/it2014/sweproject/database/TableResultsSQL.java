@@ -1,8 +1,54 @@
 package de.hwrberlin.it2014.sweproject.database;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import de.hwrberlin.it2014.sweproject.model.Result;
 
 public class TableResultsSQL {
+	
+	 private final static String INSERT_QUERY_STRING = "INSERT INTO tbl_results "
+	            + "(user_input, picked_file, similarity, date, user_rating)"
+	            + "VALUES (?,?,?,?,?)";
+	 
+	 /**
+	  * Generiert ein PreparedStatement für ein Insert in tbl_results
+	  * @author Dominik Habel
+	  *
+	  * @param res das Result, das eingefügt werden soll
+	  * @param con Datenbank-Verbindung
+	  * @return das generierte PreparedStatement
+	  * @throws SQLException
+	  */
+	 public static PreparedStatement prepareInsert(final Result res, final DatabaseConnection con) throws SQLException{
+	        PreparedStatement stmt = null;
+	        try {
+	            Connection c = con.getConnection();
+	            stmt = c.prepareStatement(TableResultsSQL.INSERT_QUERY_STRING);
+	            stmt.setString(1,res.getUserInput());
+	            stmt.setInt(2, TableJudgementSQL.getJudgementIdByFileReference(res.getJudgement().getFileReference(), con));
+	            stmt.setFloat(3, res.getSimilarity());
+	            stmt.setDate(4, new Date(res.getDate().getTime()));
+	            if(res.getUserRating()==0.0f){
+	            	stmt.setNull(5, java.sql.Types.FLOAT);
+	            }else{
+	            	stmt.setFloat(5, res.getUserRating());
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return stmt;
+	    }
+	
+	 /**
+	  * Generiert SQL-Insert-Code zu einem Result
+	  * @author Dominik Habel
+	  *
+	  * @param result das einzufügende Result
+	  * @return der SQL-Code
+	  */
 	public static String getInsertSQLCode(Result result){
 		String sql = "INSERT INTO tbl_results (user_input, picked_file, similarity, date, user_rating) SELECT ";
 		sql+="'"+result.getUserInput()+"',";

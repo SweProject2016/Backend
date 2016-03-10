@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.model.Result;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 
 public class DatabaseConnection {
     private Connection con;
@@ -27,15 +27,14 @@ public class DatabaseConnection {
 
 
     /**
-     * Connects to MySQL-DB using JDBC Driver using parameters
-     *
+     * Stellt eine Verbindung zu einer MySQL-Datenbank über einen JDBC-Driver mit Parametern
      * @author Dominik Habel
      *
-     * @param host Host IP or Domain
-     * @param database DB name
-     * @param user user name
-     * @param pwd password as plain text
-     * @return true if successfully connected, false if not
+     * @param host Host IP oder Domain
+     * @param database Name der Datenbank
+     * @param user Nutzername
+     * @param pwd Passwort als Plain-Text
+     * @return true, wenn erfolgreich verbunden - false, wenn nicht
      */
     public boolean connectToMysql(final String host, final String database, final String user, final String pwd){
         assert this.con == null;
@@ -52,11 +51,11 @@ public class DatabaseConnection {
     }
 
     /**
-     * Connects to MySQL-DB using JDBC Driver using DatabaseConfig
+     * Stellt eine Verbindung zu einer MySQL-Datenbank über einen JDBC-Driver mit der DatabaseConfig
      *
      * @author Dominik Habel
      *
-     * @return true if successfully connected, false if not
+     * @return true, wenn erfolgreich verbunden - false, wenn nicht
      */
     public boolean connectToMysql(){
         assert this.con == null;
@@ -73,11 +72,11 @@ public class DatabaseConnection {
     }
 
     /**
-     * Tests if connection still connected
+     * Testet, ob die Verbindung noch besteht
      *
      * @author Dominik Habel
      *
-     * @return true if connected, false if not
+     * @return true, wenn verbunden - false, wenn nicht
      */
     public boolean isConnected(){
         try {
@@ -89,12 +88,12 @@ public class DatabaseConnection {
     }
 
     /**
-     * Execute query on database (SQL-Select)
+     * Ausführen einer Abfrage (SQL-Select)
      *
      * @author Dominik Habel
      *
      * @param query SQL code
-     * @return ResultSet of query result
+     * @return ResultSet der Abfrage
      * @throws SQLException
      */
     public ResultSet executeQuery(final String query) throws SQLException{
@@ -104,17 +103,16 @@ public class DatabaseConnection {
     }
 
     /**
-     * Converts a ResultSet into an ArrayList of Judgements
+     * Konvertiert ein ResultSet in eine ArrayList von Judgements
      *
      * @author Dominik Habel
      *
-     * @param rs result of a query (query must be SELECT * [...])
-     * @return ArrayList of Judgement
+     * @param rs ResultSet einer Abfrage (Abfrage muss folgendes Schema haben SELECT * [...])
+     * @return ArrayList von Judgement
      * @throws SQLException
      */
     public ArrayList<Judgement> convertResultSetToJudgementList(final ResultSet rs) throws SQLException{
         ArrayList<Judgement> list = new ArrayList<Judgement>();
-        HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
         HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
         while(rs.next()){
             Judgement judge = new Judgement(null, null);
@@ -128,16 +126,7 @@ public class DatabaseConnection {
             judge.setPageRank(rs.getFloat("page_rank"));
 
             int id = rs.getInt("law_sector");
-            LawSector sector = ls.get(id);
-            if(sector==null){
-                ResultSet newLS = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id+";");
-                newLS.next();
-                LawSector dummy = new LawSector(newLS.getString("name"));
-                ls.put(id, dummy);
-                judge.setSector(dummy);
-            }else{
-                judge.setSector(sector);
-            }
+            judge.setLawSector(LawSector.values()[id]);
 
             int id2=rs.getInt("committee");
             Committee committee = c.get(id2);
@@ -157,18 +146,17 @@ public class DatabaseConnection {
     }
 
     /**
-     * Converts a ResultSet into an ArrayList of Result
+     * Konvertiert ein ResultSet in eine ArrayList von Result
      *
      * @author Dominik Habel
      *
-     * @param rs result of a query (query must be SELECT * [...])
-     * @return ArrayList of Result
+     * @param rs ResultSet einer Abfrage (Abfrage muss folgendes Schema haben SELECT * [...])
+     * @return ArrayList von Result
      * @throws SQLException
      */
     public ArrayList<Result> convertResultSetToResultList(final ResultSet rs) throws SQLException{
         ArrayList<Result> list = new ArrayList<Result>();
         HashMap<Integer, Judgement> j = new HashMap<Integer, Judgement>();
-        HashMap<Integer, LawSector> ls = new HashMap<Integer, LawSector>();
         HashMap<Integer, Committee> c = new HashMap<Integer, Committee>();
         while(rs.next()){
             Result result = new Result(null, null, 0, null);
@@ -195,16 +183,7 @@ public class DatabaseConnection {
                 dummy.setPageRank(newLS.getFloat("page_rank"));
 
                 int id2 = newLS.getInt("law_sector");
-                LawSector sector = ls.get(id2);
-                if(sector==null){
-                    ResultSet newLS2 = executeQuery("SELECT name FROM tbl_law_sector WHERE id="+id2+";");
-                    newLS2.next();
-                    LawSector dummy2 = new LawSector(newLS2.getString("name"));
-                    ls.put(id2, dummy2);
-                    dummy.setSector(dummy2);
-                }else{
-                    dummy.setSector(sector);
-                }
+                dummy.setLawSector(LawSector.values()[id]);
 
                 id2=newLS.getInt("committee");
                 Committee committee = c.get(id2);
@@ -231,30 +210,12 @@ public class DatabaseConnection {
     }
 
     /**
-     * Converts a ResultSet into an ArrayList of LawSector
+     * Konvertiert ein ResultSet in eine ArrayList von Committee
      *
      * @author Dominik Habel
      *
-     * @param rs result of a query (query must be SELECT * [...])
-     * @return ArrayList of LawSector
-     * @throws SQLException
-     */
-    public ArrayList<LawSector> convertResultSetToLawSectorList(final ResultSet rs) throws SQLException{
-        ArrayList<LawSector> list = new ArrayList<LawSector>();
-        while(rs.next()){
-            LawSector dummy = new LawSector(rs.getString("name"));
-            list.add(dummy);
-        }
-        return list;
-    }
-
-    /**
-     * Converts a ResultSet into an ArrayList of Committee
-     *
-     * @author Dominik Habel
-     *
-     * @param rs result of a query (query must be SELECT * [...])
-     * @return ArrayList of Committee
+     * @param ResultSet einer Abfrage (Abfrage muss folgendes Schema haben SELECT * [...])
+     * @return ArrayList von Committee
      * @throws SQLException
      */
     public ArrayList<Committee> convertResultSetToCommitteeList(final ResultSet rs) throws SQLException{
@@ -267,12 +228,12 @@ public class DatabaseConnection {
     }
 
     /**
-     * Execute Update on database (SQL-Update, -Delete, -Insert)
+     * Ausführen eines Updates (SQL-Update, -Delete, -Insert)
      *
      * @author Dominik Habel
      *
-     * @param query SQL code
-     * @return either (1) the row count for SQL Data Manipulation Language (DML) statements or (2) 0 for SQL statements that return nothing
+     * @param query SQL Code
+     * @return entweder (1) die Anzahl der Zeilen für die SQL Data Manipulation Language (DML) Statements oder (2) 0 für SQL Statements die nichts zurückgeben
      * @throws SQLException
      */
     public synchronized int executeUpdate(final String query) throws SQLException{
@@ -306,7 +267,7 @@ public class DatabaseConnection {
     }
 
     /**
-     * Closes database connection
+     * Schließt die Datenbank-Verbindung
      * @author Dominik Habel
      *
      */

@@ -21,7 +21,7 @@ import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 public class ScoreProcessor<T extends Scoreable> {
 
 	/**
-	 * ignore timestamp flag
+	 * flag zum ignorieren der zeit
 	 */
 	public static final long IGNORE_TIMESTAMP = -1;
 
@@ -107,6 +107,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @throws SQLException db error
 	 */
 	public ArrayList<T> getBestMatches(ArrayList<String> queryKeywords, int number, long timestamp, LawSector lawsector) throws SQLException{
+		// alle keywords fuer query, gefilterte fuer distanz-berechnung
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
 		String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
@@ -119,7 +120,7 @@ public class ScoreProcessor<T extends Scoreable> {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));
 		}
 		scoreCache.putAll(scores);
-		// sort
+		// sortieren
 		ArrayList<T> ordered = new ArrayList<>(prefilter);
 		Collections.sort(ordered, new Comparator<T>(){
 

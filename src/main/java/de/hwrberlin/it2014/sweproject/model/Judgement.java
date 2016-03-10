@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.cbr.Scoreable;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 
 public class Judgement implements Scoreable {
 
@@ -12,7 +13,7 @@ public class Judgement implements Scoreable {
 	private String fileReference, sentence, offence, pdfLink, pdfFileName,
 			keywords;
 	private Committee comittee;
-	private LawSector sector;
+	private LawSector lawSector;
 	private Date date;
 	private float pageRank;
 
@@ -20,7 +21,15 @@ public class Judgement implements Scoreable {
 		this.pdfLink = pdfLink;
 		this.pdfFileName = pdfFileName;
 	}
-
+	
+	public LawSector getLawSector(){
+		return lawSector;
+	}
+	
+	public void setLawSector(LawSector sector){
+		this.lawSector=sector;
+	}
+	
 	public String getKeywords(){
 		return keywords;
 	}
@@ -59,14 +68,6 @@ public class Judgement implements Scoreable {
 
 	public void setComittee(Committee comittee){
 		this.comittee = comittee;
-	}
-
-	public LawSector getSector(){
-		return sector;
-	}
-
-	public void setSector(LawSector sector){
-		this.sector = sector;
 	}
 
 	public Date getDate(){

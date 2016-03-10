@@ -25,7 +25,6 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `tbl_committee`;
 DROP TABLE IF EXISTS `tbl_judgement`;
 DROP TABLE IF EXISTS `tbl_results`;
-DROP TABLE IF EXISTS `tbl_law_sector`;
 
 -- --------------------------------------------------------
 
@@ -50,23 +49,12 @@ CREATE TABLE `tbl_judgement` (
   `committee` int(11) NOT NULL,
   `law_sector` int(11) NOT NULL,
   `date` date NOT NULL,
-  `sentence` blob NOT NULL,
-  `offence` blob NOT NULL,
+  `sentence` varchar(21000) DEFAULT NULL,
+  `offence` varchar(21000) DEFAULT NULL,
   `page_rank` float NOT NULL,
   `pdf_filename` varchar(100) NOT NULL,
   `pdf_link` varchar(300) NOT NULL,
   `keywords` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_law_sector`
---
-
-CREATE TABLE `tbl_law_sector` (
-  `id` int(11) NOT NULL,
-  `name` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,14 +90,6 @@ ALTER TABLE `tbl_judgement`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `file_reference` (`file_reference`),
   ADD KEY `committee` (`committee`),
-  ADD KEY `law_sector` (`law_sector`);
-
---
--- Indexes for table `tbl_law_sector`
---
-ALTER TABLE `tbl_law_sector`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `tbl_results`
@@ -133,11 +113,6 @@ ALTER TABLE `tbl_committee`
 ALTER TABLE `tbl_judgement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tbl_law_sector`
---
-ALTER TABLE `tbl_law_sector`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `tbl_results`
 --
 ALTER TABLE `tbl_results`
@@ -151,7 +126,6 @@ ALTER TABLE `tbl_results`
 --
 ALTER TABLE `tbl_judgement`
   ADD CONSTRAINT `tbl_judgement_ibfk_1` FOREIGN KEY (`committee`) REFERENCES `tbl_committee` (`id`),
-  ADD CONSTRAINT `tbl_judgement_ibfk_2` FOREIGN KEY (`law_sector`) REFERENCES `tbl_law_sector` (`id`);
 
 --
 -- Constraints for table `tbl_results`

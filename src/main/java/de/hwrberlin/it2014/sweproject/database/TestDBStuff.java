@@ -6,9 +6,13 @@ import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.model.Result;
 
+/**
+ * --- Reine Test-Klasse ---
+ * @author Dominik Habel
+ *
+ */
 public class TestDBStuff {
 
 	public static void main(String[] args) throws ParseException {
@@ -23,7 +27,7 @@ public class TestDBStuff {
 		j.setKeywords("keys");
 		j.setOffence("totschlag");
 		j.setPageRank(1.231f);
-		j.setSector(new LawSector("zivilzeug"));
+//		j.setSector(new LawSector("zivilzeug"));
 		j.setSentence("30 Jahre im Bau");
 		j.setComittee(new Committee("com2"));
 		j.setFileReference("pdf2");

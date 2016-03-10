@@ -26,7 +26,7 @@ public interface Scoreable {
 
 	/**
 	 * @author Tobias Glaeser
-	 * @return page rank value
+	 * @return page rank wert
 	 */
 	public float getPageRank();
 

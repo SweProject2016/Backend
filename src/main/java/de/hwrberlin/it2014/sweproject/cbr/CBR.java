@@ -87,6 +87,8 @@ public class CBR {
 	 */
 	public String saveUserRating(int idOfResult, float rating) throws SQLException
 	{
+		if(idOfResult<=-1)
+			return "invalid id";
 		String query = TableResultsSQL.getSelectSQLCode(idOfResult);
 		DatabaseConnection dbc=new DatabaseConnection();
 		dbc.connectToMysql();

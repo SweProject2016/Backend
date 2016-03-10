@@ -1,10 +1,9 @@
 package de.hwrberlin.it2014.sweproject.synonym;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LawTester {
 
@@ -30,25 +29,26 @@ public class LawTester {
     }
 
     /**
-     * Die interne Methode nimmt eines der juristischen Lexika und f�gt dessen Inhalt in eine ArrayList ein
+     * Die interne Methode nimmt eines der juristischen Lexika und fügt dessen Inhalt in eine ArrayList ein
      *
      * @return ArrayList<String> aList mit Inhalt eines Lexikons
      */
     private static ArrayList<String> getLexiEntries() {
         ArrayList<String> entries = new ArrayList<String>();
-        String line = null;
-        FileReader fileReader;
         try {
-            fileReader = new FileReader("lawTermsExtended.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-            while ((line = bufferedReader.readLine()) != null) {
-                entries.add(line);
-            }
-            bufferedReader.close();
+            
+            ClassLoader classLoader = LawTester.class.getClassLoader();
+        	File file = new File(classLoader.getResource("files/lawTermsExtended.txt").getFile());
+            
+        	Scanner scan = new Scanner(file);
+        	
+        	while(scan.hasNextLine()){
+        		String aLine = scan.nextLine();
+        		entries.add(aLine);
+        	}
+        	System.out.println("Entries: " + entries.size());
+        	
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -58,7 +58,7 @@ public class LawTester {
     /**
      * @param Der
      *            Ausrdruck der geprueft werden soll, ob dieser ein juristicher Begriff ist.
-     * @return gibt true zur�ck wenn der Begriff aus der juristischen Sprache stammt
+     * @return gibt true zurück wenn der Begriff aus der juristischen Sprache stammt
      */
     private static boolean testIfLawTermOnline(final String term) {
         boolean result = false;

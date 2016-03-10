@@ -18,9 +18,10 @@ public class Import {
      * @param directory
      * @throws IOException
      */
-    public static void importCases(final Path directory) {
+    public static void importCases(final Path directory) throws SQLException {
         File f = new File(directory.toString());
         DatabaseConnection con = new DatabaseConnection();
+        PreparedStatement stmt = null;
         for (File file : f.listFiles()) {
             if (!file.isFile() || !file.getName().toLowerCase().endsWith(".pdf")) {
                 continue;
@@ -29,10 +30,10 @@ public class Import {
             try {
                 Judgement j = JudgementParser.getFromPdf(Paths.get(file.getAbsolutePath()));
                 if (j != null) {
-                    PreparedStatement stmt = TableJudgementSQL.prepareInsert(j, con);
+                    stmt = TableJudgementSQL.prepareInsert(j, con);
                     stmt.addBatch();
                     int[] rows = stmt.executeBatch();
-                    System.out.println(rows.length + " rows inserted.");
+                    System.out.println(rows.length + " Zeilen eingefügt");
                     stmt.close();
                     file.delete();
                 }
@@ -41,6 +42,7 @@ public class Import {
                 continue;
             }
         }
+
         con.close();
     }
 }
