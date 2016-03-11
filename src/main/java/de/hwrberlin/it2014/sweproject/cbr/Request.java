@@ -38,7 +38,7 @@ public class Request {
 	
 	/**
 	 * @author Max Bock
-	 * @return UserInput as String - Stringwords separated by Space
+	 * @return UserInput as String - einzelne Wörter durch Leerzeichen getrennt
 	 */
 	public String getDescription()
 	{
@@ -65,8 +65,8 @@ public class Request {
 	 * Fragt die DB nach ähnlichen Fällen, konvertiert sie in Results und speichert diese erneut in der DB,
 	 * 	sodass später die Nutzerwertung eingetragen werden kann
 	 * @author Max Bock
-	 * @param count of sets to return 
-	 * @return ArrayList<Result> containing all similiar cases from DB
+	 * @param Anzahl der Ergebnisse die zurückgegeben werden in der Liste
+	 * @return ArrayList<Result> enthält alle ähnlichen Fälle aus der Datenbank
 	 * @throws SQLException
 	 */
 	public ArrayList<Result> getSimilarFromDB(int number) throws SQLException
