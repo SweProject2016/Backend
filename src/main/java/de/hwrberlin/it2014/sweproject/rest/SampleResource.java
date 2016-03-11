@@ -1,5 +1,7 @@
 package de.hwrberlin.it2014.sweproject.rest;
 
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -11,8 +13,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+import de.hwrberlin.it2014.sweproject.database.TableJudgementSQL;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
-import de.hwrberlin.it2014.sweproject.synonym.LawTester;
 
 /**
  * Created by csc on 13.01.16. Sample Resource für den REST-WS
@@ -70,8 +74,12 @@ public class SampleResource extends Resource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response generalTestMethod(@QueryParam("input") String input){
     	try{
-    		boolean res = LawTester.testIfWordIsLawTerm(input);
-    		return build(Status.OK,res,"/sample/test");
+    		ArrayList<String> keywords = new ArrayList<>();
+    		keywords.add("offence");
+    		keywords.add("sentence");
+    		DatabaseConnection dbc = new DatabaseConnection();
+    		TableJudgementSQL.prepareSelect(keywords, LawSector.STRAFRECHT, dbc);
+    		return build(Status.OK);
     	} catch(Exception e){
     		e.printStackTrace();
     		return build(Status.INTERNAL_SERVER_ERROR);

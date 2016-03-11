@@ -10,8 +10,8 @@ import java.util.List;
 
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
-import de.hwrberlin.it2014.sweproject.model.LawSector;
 import de.hwrberlin.it2014.sweproject.model.Result;
+import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 /**
  * Generator Klasse für Sample REST API
  * 
@@ -28,8 +28,8 @@ public class Generator {
 			return generateCommittee(entries);
 		case "judgement":
 			return generateJudgement(entries);
-		case "lawsector":
-			return generateLawSector(entries);
+		/*case "lawsector":
+			return generateLawSector(entries);*/
 		case "result":
 			return generateResult(entries, userInput,startindex);
 		default:
@@ -72,7 +72,11 @@ public class Generator {
 	private int randomInt() {
 		return 10000 + (int)(Math.random() * 99999);
 	}
-
+	
+	private int randomInt(int min, int max) {
+		return min + (int)(Math.random() * max);
+	}
+	
 	private List<Committee> generateCommittee(int entries) {
 		List<Committee> committeeList = new ArrayList<>();
 		for(int i=0;i<entries;i++){
@@ -82,13 +86,13 @@ public class Generator {
 		return committeeList;
 	}
 
-	private List<LawSector> generateLawSector(int entries) {
-		List<LawSector> lawSectorList = new ArrayList<>();
-		for(int i=0;i<entries;i++){
-			LawSector lawsector = new LawSector("LawSector"+randomInt());
-			lawSectorList.add(lawsector);
-		}
-		return lawSectorList;
+	private LawSector generateLawSector() {
+		List<LawSector> sectors = new ArrayList<>();
+			sectors.add(LawSector.OEFFENTLICHES_RECHT);
+			sectors.add(LawSector.STRAFRECHT);
+			sectors.add(LawSector.ZIVILRECHT);
+			sectors.add(LawSector.UNDEFINED);
+		return sectors.get(randomInt(0,3));
 	}
 
 	private List<Judgement> generateJudgement(int entries) {
@@ -100,7 +104,7 @@ public class Generator {
 			judgement.setSentence("Sentence"+randomInt());
 			judgement.setOffence(generateOffence(20));
 			judgement.setKeywords(generateKeywords(5));
-			judgement.setSector(generateLawSector(1).get(0));
+			judgement.setLawSector(generateLawSector());
 			judgement.setDate(getDate());
 			judgement.setPageRank(randomFloat());
 			judgementList.add(judgement);
