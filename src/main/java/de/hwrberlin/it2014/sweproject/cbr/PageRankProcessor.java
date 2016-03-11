@@ -40,12 +40,12 @@ public class PageRankProcessor {
 	 * @return liste mit pageranks, sortiert nach elementen der eingabeliste
 	 */
 	public ArrayList<Double> recomputePageRanks(ArrayList<PageRankable> rankables, int iterations){
-		// reverse mapping for a->referee relation
+		// rueckwaerts mapping
 		HashMap<PageRankable, ArrayList<PageRankable>> reverseLookup = new HashMap<>();
 		LinkedHashMap<PageRankable, Double> cache = new LinkedHashMap<>();
 		for(PageRankable p : rankables) {
 			reverseLookup.put(p, new ArrayList<PageRankable>());
-			cache.put(p, 1d); // set initial
+			cache.put(p, 1d); // startwerte setzen
 		}
 		for(PageRankable p : rankables) {
 			for(PageRankable r : p.getReferenced()) {
@@ -53,7 +53,7 @@ public class PageRankProcessor {
 			}
 		}
 		for(int i = 0; i < iterations; i++) {
-			LinkedHashMap<PageRankable, Double> newCache = new LinkedHashMap<>(cache); // clone cache temp
+			LinkedHashMap<PageRankable, Double> newCache = new LinkedHashMap<>(cache); // temp cache clonen
 			for(PageRankable site : rankables) {
 				double r = (1d - rankables.size()) / dampingFactor;
 				double r_sum = 0d;
@@ -63,10 +63,10 @@ public class PageRankProcessor {
 				r += dampingFactor * r_sum;
 				newCache.put(site, r);
 			}
-			// set new cache as current
+			// neuen cache als aktuellen setzen
 			cache.putAll(newCache);
 		}
-		// create list
+		// in liste umformen
 		ArrayList<Double> ranks = new ArrayList<>();
 		for(PageRankable p : rankables) {
 			ranks.add(cache.get(p));
