@@ -265,6 +265,21 @@ public class DatabaseConnection {
         }
         return id;
     }
+    public int executeUpdateRetrieveID(PreparedStatement st) throws SQLException
+    {
+        st.executeUpdate();
+        ResultSet rs = st.getGeneratedKeys();
+        int id;
+        if(rs.next())
+        {
+            id = rs.getInt("id");
+        }
+        else
+        {
+            id = -1;
+        }
+        return id;
+    }
 
     /**
      * Schlieﬂt die Datenbank-Verbindung

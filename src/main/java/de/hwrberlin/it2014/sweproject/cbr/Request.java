@@ -1,5 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,8 +110,8 @@ public class Request {
 		{
 			Result r = newResultFromJudgement(j);
 			int id = -1; //will be set later
-			String sql = TableResultsSQL.getInsertSQLCode(r);
 			try { //write to DB; userRating will be updated in CBR.saveUserRating
+				PreparedStatement sql = TableResultsSQL.prepareInsert(r,dbc);
 				id = dbc.executeUpdateRetrieveID(sql); 
 			} catch (SQLException e) {
 				e.printStackTrace();
