@@ -88,7 +88,7 @@ public class Request {
 				this.getDescription(), //String: userInput
 				j, //Judgement: a single similarCase
 				(float) scoreProc.getCachedScore(j), //float: similarity
-				this.dateOfRequest); //Date: Date of request
+				this.getDateOfRequest()); //Date: Date of request
 		return r;
 	}
 
