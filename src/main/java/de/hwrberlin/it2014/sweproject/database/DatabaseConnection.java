@@ -27,7 +27,7 @@ public class DatabaseConnection {
 
 
     /**
-     * Stellt eine Verbindung zu einer MySQL-Datenbank über einen JDBC-Driver mit Parametern
+     * Stellt eine Verbindung zu einer MySQL-Datenbank ï¿½ber einen JDBC-Driver mit Parametern
      * @author Dominik Habel
      *
      * @param host Host IP oder Domain
@@ -51,7 +51,7 @@ public class DatabaseConnection {
     }
 
     /**
-     * Stellt eine Verbindung zu einer MySQL-Datenbank über einen JDBC-Driver mit der DatabaseConfig
+     * Stellt eine Verbindung zu einer MySQL-Datenbank ï¿½ber einen JDBC-Driver mit der DatabaseConfig
      *
      * @author Dominik Habel
      *
@@ -88,7 +88,7 @@ public class DatabaseConnection {
     }
 
     /**
-     * Ausführen einer Abfrage (SQL-Select)
+     * Ausfï¿½hren einer Abfrage (SQL-Select)
      *
      * @author Dominik Habel
      *
@@ -228,12 +228,12 @@ public class DatabaseConnection {
     }
 
     /**
-     * Ausführen eines Updates (SQL-Update, -Delete, -Insert)
+     * Ausfï¿½hren eines Updates (SQL-Update, -Delete, -Insert)
      *
      * @author Dominik Habel
      *
      * @param query SQL Code
-     * @return entweder (1) die Anzahl der Zeilen für die SQL Data Manipulation Language (DML) Statements oder (2) 0 für SQL Statements die nichts zurückgeben
+     * @return entweder (1) die Anzahl der Zeilen fï¿½r die SQL Data Manipulation Language (DML) Statements oder (2) 0 fï¿½r SQL Statements die nichts zurï¿½ckgeben
      * @throws SQLException
      */
     public synchronized int executeUpdate(final String query) throws SQLException{
@@ -272,7 +272,7 @@ public class DatabaseConnection {
         int id;
         if(rs.next())
         {
-            id = rs.getInt("id");
+            id = rs.getInt(1);
         }
         else
         {
@@ -282,7 +282,7 @@ public class DatabaseConnection {
     }
 
     /**
-     * Schließt die Datenbank-Verbindung
+     * Schlieï¿½t die Datenbank-Verbindung
      * @author Dominik Habel
      *
      */

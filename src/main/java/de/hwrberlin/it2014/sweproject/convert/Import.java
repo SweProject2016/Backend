@@ -38,8 +38,8 @@ public class Import {
                     file.delete();
                 }
             } catch (IOException | SQLException e) {
-                e.printStackTrace();
-                continue;
+            	System.out.println(e.getMessage());
+            	continue;
             }
         }
 

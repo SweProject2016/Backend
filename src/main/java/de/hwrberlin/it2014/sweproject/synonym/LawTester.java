@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
+import de.hwrberlin.it2014.sweproject.database.TableLawTermsSQL;
+
 public class LawTester {
 
     private static ArrayList<String> lexiEntries = getLexiEntries();
@@ -34,25 +37,16 @@ public class LawTester {
      * @return ArrayList<String> aList mit Inhalt eines Lexikons
      */
     private static ArrayList<String> getLexiEntries() {
-        ArrayList<String> entries = new ArrayList<String>();
-        try {
-            
-            ClassLoader classLoader = LawTester.class.getClassLoader();
-        	File file = new File(classLoader.getResource("files/lawTermsExtended.txt").getFile());
-            
-        	Scanner scan = new Scanner(file);
-        	
-        	while(scan.hasNextLine()){
-        		String aLine = scan.nextLine();
-        		entries.add(aLine);
-        	}
-        	System.out.println("Entries: " + entries.size());
-        	
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return entries;
+    	DatabaseConnection con = new DatabaseConnection();
+    	ArrayList<String> lexiEntries = null;
+    	try{
+    		lexiEntries = TableLawTermsSQL.getAllLawTerms(con);
+    	} catch(Exception e){
+    		e.printStackTrace();
+    	} finally {
+			con.close();
+		}
+    	return lexiEntries;
     }
 
     /**

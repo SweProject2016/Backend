@@ -1,5 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,10 +111,10 @@ public class ScoreProcessor<T extends Scoreable> {
 		// alle keywords fuer query, gefilterte fuer distanz-berechnung
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
-		String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
+		//String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
 		DatabaseConnection con = new DatabaseConnection();
-		con.connectToMysql();
-		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(con.executeQuery(query)); // cast is safe as Judgement implement scoreable
+		PreparedStatement stmt = TableJudgementSQL.prepareSelect(allKeywords,con);
+		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(stmt.executeQuery()); // cast is safe as Judgement implement scoreable
 		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
 		for(T s : prefilter) {

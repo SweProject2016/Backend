@@ -78,7 +78,7 @@ public class SampleResource extends Resource {
     		keywords.add("offence");
     		keywords.add("sentence");
     		DatabaseConnection dbc = new DatabaseConnection();
-    		TableJudgementSQL.prepareSelect(keywords, LawSector.STRAFRECHT, dbc);
+    		TableJudgementSQL.prepareSelect(keywords, dbc);
     		return build(Status.OK);
     	} catch(Exception e){
     		e.printStackTrace();

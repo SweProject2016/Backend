@@ -83,7 +83,7 @@ public class TableJudgementSQL {
             stmt = c.prepareStatement(TableJudgementSQL.INSERT_QUERY_STRING);
             stmt.setString(1,j.getFileReference());
             stmt.setInt(2, TableCommitteeSQL.getCommitteeIdByName(j.getComittee(), con));
-            stmt.setInt(3, j.getLawSector().ordinal());
+            stmt.setInt(3, TableLawSectorSQL.getLawSectorIdByName(j.getLawSector(),con));
             stmt.setDate(4, new Date(j.getDate().getTime()));
             stmt.setString(5, j.getSentence());
             stmt.setString(6, j.getOffence());
@@ -136,11 +136,11 @@ public class TableJudgementSQL {
         return query;
     }
     
-    public static PreparedStatement prepareSelect(ArrayList<String> keywords, LawSector ls, DatabaseConnection con){
+    public static PreparedStatement prepareSelect(ArrayList<String> keywords, DatabaseConnection con){
     	Connection c = con.getConnection();
     	PreparedStatement stmt = null;
     	try {
-			stmt = createStatement(c, keywords,ls);
+			stmt = createStatement(c, keywords);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -153,7 +153,6 @@ public class TableJudgementSQL {
         String sentence = "";
         String offence = "";
         String keywords = "";
-        final String LAW_SECTOR = "law_sector = ?";
         
         
         //generiere Sentence-Abfrage
@@ -169,15 +168,16 @@ public class TableJudgementSQL {
         //generiere Keywords-Abfrage
         for(int k=0;k<words.size();k++){
         	if(k==words.size()-1){
-        		keywords += "keywords LIKE ? AND ";
+        		keywords += "keywords LIKE ?";
         	} else {
         		keywords += "keywords LIKE ? OR ";
         	}
         }
-        return QUERY + sentence + offence + keywords + LAW_SECTOR;
+     
+        return QUERY + sentence + offence + keywords;
     }
     
-    private static PreparedStatement createStatement(Connection c, ArrayList<String> keywords,LawSector ls) throws SQLException{
+    private static PreparedStatement createStatement(Connection c, ArrayList<String> keywords) throws SQLException{
     	PreparedStatement stmt = c.prepareStatement(generateQuery(keywords));
     	int i=1;
     	while(i<=keywords.size()){
@@ -185,14 +185,17 @@ public class TableJudgementSQL {
 				int sentenceIndex = i;
 				int offenceIndex = i+keywords.size();
 				int keywordsIndex = i+(2*keywords.size());
-				stmt.setString(sentenceIndex,aKeyword);
-				stmt.setString(offenceIndex, aKeyword);
-				stmt.setString(keywordsIndex, aKeyword);
+				stmt.setString(sentenceIndex,like(aKeyword));
+				stmt.setString(offenceIndex, like(aKeyword));
+				stmt.setString(keywordsIndex, like(aKeyword));
 				i++;
 			}
 		}
-		stmt.setInt((3*keywords.size())+1,ls.getDatabaseID());
 		return stmt;
+    }
+    
+    private static String like(String s){
+    	return "%"+s+"%";
     }
     
     

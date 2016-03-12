@@ -19,7 +19,7 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  * Produktive REST Resource, die auf Basis der Nutzereingabe eine Liste an Results
  * zurückgibt
  * 
- * @author csc
+ * @author Christian Schlesing
  *
  */
 @Path("/result")

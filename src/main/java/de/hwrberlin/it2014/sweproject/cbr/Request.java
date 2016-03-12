@@ -2,6 +2,7 @@ package de.hwrberlin.it2014.sweproject.cbr;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -39,7 +40,7 @@ public class Request {
 	
 	/**
 	 * @author Max Bock
-	 * @return UserInput as String - einzelne Wörter durch Leerzeichen getrennt
+	 * @return UserInput as String - einzelne Wï¿½rter durch Leerzeichen getrennt
 	 */
 	public String getDescription()
 	{
@@ -52,7 +53,7 @@ public class Request {
 	}
 	
 	/**
-	 * gibt die Beschreibung (User Input) als ArrayList zurück
+	 * gibt die Beschreibung (User Input) als ArrayList zurï¿½ck
 	 * @author Max Bock
 	 * @param asList boolean (wert egal)
 	 * @return UserInput as ArrayList<String>
@@ -63,11 +64,11 @@ public class Request {
 	}
 	
 	/**
-	 * Fragt die DB nach ähnlichen Fällen, konvertiert sie in Results und speichert diese erneut in der DB,
-	 * 	sodass später die Nutzerwertung eingetragen werden kann
+	 * Fragt die DB nach ï¿½hnlichen Fï¿½llen, konvertiert sie in Results und speichert diese erneut in der DB,
+	 * 	sodass spï¿½ter die Nutzerwertung eingetragen werden kann
 	 * @author Max Bock
-	 * @param Anzahl der Ergebnisse die zurückgegeben werden in der Liste
-	 * @return ArrayList<Result> enthält alle ähnlichen Fälle aus der Datenbank
+	 * @param Anzahl der Ergebnisse die zurï¿½ckgegeben werden in der Liste
+	 * @return ArrayList<Result> enthï¿½lt alle ï¿½hnlichen Fï¿½lle aus der Datenbank
 	 * @throws SQLException
 	 */
 	public ArrayList<Result> getSimilarFromDB(int number) throws SQLException
@@ -78,7 +79,7 @@ public class Request {
 	}
 	
 	/**
-	 * erzeugt ein Resultobjekt aus einem Judgement für diesen Fall(also mit der aktuellen Useranfrage)
+	 * erzeugt ein Resultobjekt aus einem Judgement fï¿½r diesen Fall(also mit der aktuellen Useranfrage)
 	 * @author Max Bock
 	 * @param Judgement
 	 * @return Result
@@ -94,9 +95,9 @@ public class Request {
 	}
 
 	/**
-	 * erzeugt aus der Liste ähnliche Fälle (Judgement) zu dieser Anfrage eine ArrayList<Result>,
+	 * erzeugt aus der Liste ï¿½hnliche Fï¿½lle (Judgement) zu dieser Anfrage eine ArrayList<Result>,
 	 * speichert diese in der Datenbank und schreibt die von der DB vergebenen ID in das jeweilige Result
-	 * und gibt die Liste am Ende zurück
+	 * und gibt die Liste am Ende zurï¿½ck
 	 * @author Max Bock
 	 * @param judgList - ArrayList<Judgement>
 	 * @return ArrayList<Result>
@@ -111,7 +112,7 @@ public class Request {
 			Result r = newResultFromJudgement(j);
 			int id = -1; //will be set later
 			try { //write to DB; userRating will be updated in CBR.saveUserRating
-				PreparedStatement sql = TableResultsSQL.prepareInsert(r,dbc);
+				PreparedStatement sql = TableResultsSQL.prepareInsert(r,dbc,Statement.RETURN_GENERATED_KEYS);
 				id = dbc.executeUpdateRetrieveID(sql); 
 			} catch (SQLException e) {
 				e.printStackTrace();

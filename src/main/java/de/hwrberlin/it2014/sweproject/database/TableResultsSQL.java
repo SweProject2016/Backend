@@ -15,10 +15,10 @@ public class TableResultsSQL {
 	            + "VALUES (?,?,?,?,?)";
 	 
 	 /**
-	  * Generiert ein PreparedStatement für ein Insert in tbl_results
+	  * Generiert ein PreparedStatement fï¿½r ein Insert in tbl_results
 	  * @author Dominik Habel
 	  *
-	  * @param res das Result, das eingefügt werden soll
+	  * @param res das Result, das eingefï¿½gt werden soll
 	  * @param con Datenbank-Verbindung
 	  * @return das generierte PreparedStatement
 	  * @throws SQLException
@@ -42,6 +42,7 @@ public class TableResultsSQL {
         }
         return stmt;
      }
+	 
 	 public static PreparedStatement prepareInsert(final Result res, final DatabaseConnection con) throws SQLException{
 		 return prepareInsert(res,con,Statement.NO_GENERATED_KEYS);
 	 }
@@ -50,7 +51,7 @@ public class TableResultsSQL {
 	  * Generiert SQL-Insert-Code zu einem Result
 	  * @author Dominik Habel
 	  *
-	  * @param result das einzufügende Result
+	  * @param result das einzufï¿½gende Result
 	  * @return der SQL-Code
 	  */
 	public static String getInsertSQLCode(Result result){
