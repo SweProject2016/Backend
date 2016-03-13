@@ -36,7 +36,9 @@ public class ResultResource extends Resource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getResults(@HeaderParam("X-Api-Key") String apiKey,
 			   				   @HeaderParam("X-Access-Token") String accessToken,
-			   				   @QueryParam("input") String input){
+			   				   @QueryParam("input") String input,
+			   				   @QueryParam("size") int size,
+			   				   @QueryParam("startindex") int startIndex){
 		try{
 			final String path = "/result/get";
 			if(!auth(apiKey,accessToken)){
@@ -44,7 +46,7 @@ public class ResultResource extends Resource {
 			} else {
 				CBR cbr = new CBR();
 				ArrayList<Result> resultList = cbr.startCBR(input);
-				return build(Status.OK,resultList,path);
+				return build(Status.OK,resultList.subList(startIndex, startIndex+size),path);
 			} 
 		} catch(Exception e){
 			e.printStackTrace();
