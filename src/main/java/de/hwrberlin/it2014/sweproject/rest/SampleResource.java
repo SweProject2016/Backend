@@ -74,11 +74,14 @@ public class SampleResource extends Resource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response generalTestMethod(@QueryParam("input") String input){
     	try{
-    		ArrayList<String> keywords = new ArrayList<>();
-    		keywords.add("offence");
-    		keywords.add("sentence");
-    		DatabaseConnection dbc = new DatabaseConnection();
-    		TableJudgementSQL.prepareSelect(keywords, dbc);
+    		LawSector zr = LawSector.get("Zivilrecht");
+    		LawSector st = LawSector.get("Strafrecht");
+    		LawSector uf = LawSector.get("undefined");
+    		LawSector or = LawSector.get("öffentliches Recht");
+    		System.out.println("zr: " + zr);
+    		System.out.println("st: " + st);
+    		System.out.println("uf: " + uf);
+    		System.out.println("or: " + or);
     		return build(Status.OK);
     	} catch(Exception e){
     		e.printStackTrace();

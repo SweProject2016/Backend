@@ -10,6 +10,8 @@ import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 public class TableLawSectorSQL {
 	
 	private final static String SELECT_BY_NAME_QUERY = "SELECT * FROM tbl_law_sector WHERE name = ?";
+	private final static String SELECT_BY_ID_QUERY = "SELECT * FROM tbl_law_sector WHERE id = ?";
+
 	
 	public static PreparedStatement prepareSelectByName(LawSector ls, DatabaseConnection con){
 		Connection c = con.getConnection();
@@ -36,6 +38,25 @@ public class TableLawSectorSQL {
 			e.printStackTrace();
 		}
 		return id;
+	}
+	
+	public static LawSector getLawSectorById(int id, DatabaseConnection con){
+		Connection c = con.getConnection();
+		PreparedStatement stmt = null;
+		LawSector ls = null;
+		try{
+			stmt = c.prepareStatement(SELECT_BY_ID_QUERY);
+			stmt.setInt(1,id);
+			ResultSet rs = stmt.executeQuery();
+			String val = null;
+			while(rs.next()){
+				val = rs.getString("name");
+			}
+			ls = LawSector.get(val);
+		} catch(Exception e){
+			e.getMessage();
+		}
+		return ls;
 	}
 
 }

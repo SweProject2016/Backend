@@ -67,14 +67,14 @@ public class ResultResource extends Resource {
 	public Response rateResult(@HeaderParam("X-Api-Key") String apiKey,
 			   				   @HeaderParam("X-Access-Token") String accessToken,
 			   				   @QueryParam("id") int id,
-							   @QueryParam("rating") float rating,
-							   @QueryParam("delay") int delay){
+							   @QueryParam("rating") float rating
+							   ){
 		try{
 			if(!auth(apiKey,accessToken)){
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
-				cbr.saveUserRating(id,rating);
+				cbr.saveRating(id,rating);
 				return build(Status.CREATED);
 			}
 		} catch(Exception e){

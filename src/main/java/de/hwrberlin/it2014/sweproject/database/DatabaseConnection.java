@@ -183,7 +183,7 @@ public class DatabaseConnection {
                 dummy.setPageRank(newLS.getFloat("page_rank"));
 
                 int id2 = newLS.getInt("law_sector");
-                dummy.setLawSector(LawSector.values()[id]);
+                dummy.setLawSector(TableLawSectorSQL.getLawSectorById(id2, this));
 
                 id2=newLS.getInt("committee");
                 Committee committee = c.get(id2);

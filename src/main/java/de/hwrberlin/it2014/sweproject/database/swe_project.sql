@@ -1,138 +1,148 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- MySQL dump 10.14  Distrib 5.5.44-MariaDB, for Linux (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 09, 2016 at 05:41 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.2
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: swe_project
+-- ------------------------------------------------------
+-- Server version	5.5.44-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `swe_project`
---
-
--- Cleanup
-
-DROP TABLE IF EXISTS `tbl_committee`;
-DROP TABLE IF EXISTS `tbl_judgement`;
-DROP TABLE IF EXISTS `tbl_results`;
-
--- --------------------------------------------------------
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `tbl_committee`
 --
 
+DROP TABLE IF EXISTS `tbl_committee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_committee` (
-  `id` int(11) NOT NULL,
-  `name` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `tbl_committee`
+--
+
+LOCK TABLES `tbl_committee` WRITE;
+/*!40000 ALTER TABLE `tbl_committee` DISABLE KEYS */;
+INSERT INTO `tbl_committee` VALUES (1,'bgh');
+/*!40000 ALTER TABLE `tbl_committee` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_judgement`
 --
 
+DROP TABLE IF EXISTS `tbl_judgement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_judgement` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_reference` varchar(100) NOT NULL,
   `committee` int(11) NOT NULL,
   `law_sector` int(11) NOT NULL,
   `date` date NOT NULL,
-  `sentence` varchar(21000) DEFAULT NULL,
-  `offence` varchar(21000) DEFAULT NULL,
+  `sentence` varchar(10000) DEFAULT NULL,
+  `offence` varchar(10000) DEFAULT NULL,
   `page_rank` float NOT NULL,
   `pdf_filename` varchar(100) NOT NULL,
   `pdf_link` varchar(300) NOT NULL,
-  `keywords` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `keywords` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `file_reference` (`file_reference`),
+  KEY `committee` (`committee`),
+  KEY `law_sector` (`law_sector`),
+  CONSTRAINT `tbl_judgement_ibfk_1` FOREIGN KEY (`committee`) REFERENCES `tbl_committee` (`id`),
+  CONSTRAINT `tbl_judgement_ibfk_2` FOREIGN KEY (`law_sector`) REFERENCES `tbl_law_sector` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21398 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `tbl_law_sector`
+--
+
+DROP TABLE IF EXISTS `tbl_law_sector`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_law_sector` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_law_sector`
+--
+
+LOCK TABLES `tbl_law_sector` WRITE;
+/*!40000 ALTER TABLE `tbl_law_sector` DISABLE KEYS */;
+INSERT INTO `tbl_law_sector` VALUES (1,'Strafrecht'),(2,'Zivilrecht'),(3,'Öffentliches Recht'),(4,'undefined');
+/*!40000 ALTER TABLE `tbl_law_sector` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_law_terms`
+--
+
+DROP TABLE IF EXISTS `tbl_law_terms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_law_terms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `term` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `term_UNIQUE` (`term`)
+) ENGINE=InnoDB AUTO_INCREMENT=1485 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_law_terms`
+--
+
+LOCK TABLES `tbl_law_terms` WRITE;
+/*!40000 ALTER TABLE `tbl_law_terms` DISABLE KEYS */;
+INSERT INTO `tbl_law_terms` VALUES (15,'Abdingbarkeit'),(16,'Abfindung'),(17,'Abgaben'),(18,'Abgabenordnung'),(19,'Abgeordneter'),(20,'Abhandenkommen von Sachen'),(21,'Abkömmling'),(22,'Ablehnung'),(23,'Abmahnung'),(24,'Abschiebung'),(25,'Absehen von der Verfolgung'),(26,'Absehen von Strafe'),(27,'Absicht'),(28,'absolutes Recht'),(29,'Absprachen'),(30,'Abstammung'),(31,'Abstimmung'),(32,'Abstraktionsprinzip'),(33,'Abtreibung'),(34,'Abtretung'),(35,'Abwesenheit'),(36,'Abwicklung'),(37,'Abzahlungsgeschäft'),(38,'Actio libera in causa'),(39,'Adoption'),(40,'Affekt'),(41,'Akteneinsicht'),(42,'Aktiengesellschaft'),(43,'Aktivlegitimation'),(44,'akzessorisch'),(45,'Alkoholdelikte'),(46,'Allgemeine Geschäftsbedingungen'),(47,'Allgemeines Gleichbehandlungsgesetz'),(48,'allgemeines Persönlichkeitsrecht'),(49,'Allgemeinverfügung'),(50,'Altersgrenze'),(51,'Altersrente'),(52,'Altersteilzeit'),(53,'Amnestie'),(54,'Amt'),(55,'Amtsbetrieb'),(56,'Amtseid'),(57,'Amtsgeheimnis'),(58,'Amtsgericht'),(59,'Amtsgrundsatz'),(60,'Amtshaftung'),(61,'Amtshilfe'),(62,'Amtsträger'),(63,'Analogie'),(64,'Anderkonto'),(1,'Änderungskündigung'),(65,'Anerkenntnis'),(66,'Anfechtung'),(67,'Anfechtungsklage'),(68,'angeborene Rechte'),(69,'Angebot'),(70,'Angehörige'),(71,'Angeklagter'),(72,'Angeschuldigter'),(73,'Anhörung'),(74,'Anklage'),(75,'Anknüpfung'),(76,'Annahme als Kind'),(77,'Anscheinsbeweis'),(78,'Anschluss- und Benutzungszwang'),(79,'Anspruch'),(80,'Anstalt des öffentlichen Rechts'),(81,'Anstiftung'),(82,'Antidiskriminierungsgesetz'),(83,'Antrag'),(84,'Antragsdelikt'),(85,'Anwalt'),(86,'Anwaltszwang'),(87,'Anwartschaft'),(88,'Anzeigepflicht'),(89,'Arbeitgeber'),(91,'Arbeitnehmer'),(92,'Arbeitnehmererfindung'),(93,'Arbeitnehmerfreizügigkeit'),(94,'Arbeitnehmerhaftung'),(90,'Arbeitnehmerüberlassung'),(95,'Arbeitsagentur'),(96,'Arbeitsförderung'),(97,'Arbeitsgerichtsbarkeit'),(98,'Arbeitskampf'),(99,'Arbeitslosengeld I'),(100,'Arbeitslosengeld II'),(101,'Arbeitslosenversicherung'),(102,'Arbeitsrecht'),(103,'Arbeitsschutz'),(104,'Arbeitsunfall'),(105,'Arbeitsverhältnis'),(106,'Arbeitsvermittlung'),(107,'Arbeitsvertrag'),(108,'Arbeitsverweigerung'),(109,'Arbeitszeit'),(110,'arglistige Täuschung'),(111,'Arrest'),(112,'Arztrecht'),(113,'Asylrecht'),(114,'Aufenthalt'),(115,'Aufgebot'),(116,'Aufhebungsvertrag'),(117,'Aufklärungspflicht'),(118,'Auflage'),(119,'Auflassung'),(120,'Aufopferung'),(121,'Aufrechnung'),(122,'Aufsichtspflicht'),(123,'Auftrag'),(124,'Auftragsangelegenheiten'),(125,'Aufwendungen'),(126,'Augenschein'),(128,'Ausbildungsbeihilfen'),(129,'Ausbildungsfreibetrag'),(130,'Ausbildungsfreiheit'),(131,'Ausbildungsvertrag'),(132,'Ausbleiben des Angeklagten'),(127,'Ausbürgerung'),(133,'Ausfertigung'),(134,'Aushilfe'),(135,'Auskunftspflicht'),(136,'Auskunftsverweigerungsrecht'),(137,'Ausländer'),(138,'Auslegung'),(139,'Auslieferung'),(140,'Auslobung'),(141,'Aussage'),(142,'Aussagedelikte'),(143,'Aussageverweigerungsrecht'),(144,'Ausschlagung'),(145,'Ausschließung'),(146,'Aussetzung'),(147,'Aussiedler'),(148,'Aussperrung'),(149,'Ausweisung'),(150,'Autonomie'),(160,'BAFöG'),(161,'Bagatellsachen'),(162,'Bankeinlage'),(163,'Bankenaufsicht'),(164,'Bankgeheimnis'),(165,'Basiszinssatz'),(166,'Baugenehmigung'),(167,'Bauleitplanung'),(168,'Baurecht'),(169,'Beamte'),(170,'Bebauungsplan'),(172,'Bedingung'),(171,'Bedürfnisprüfung'),(173,'Befähigungsnachweis'),(174,'Befangenheit'),(175,'befristetes Arbeitsverhältnis'),(176,'Beglaubigung'),(177,'Begnadigung'),(179,'Beherbergungsvertrag'),(178,'Behörde'),(180,'Beihilfe'),(181,'Beiträge'),(182,'Beitragsbemessungsgrenze'),(183,'Bekenntnisfreiheit'),(184,'Beklagter'),(185,'Beleidigung'),(186,'Beliehene'),(187,'Beratungshilfe'),(188,'Bereicherung'),(189,'Berliner Testament'),(190,'Berufsausbildungsverhältnis'),(191,'Berufsbildungsgesetz'),(192,'Berufsfreiheit'),(193,'Berufsverbot'),(194,'Berufung'),(195,'Beschäftigtenschutzgesetz'),(196,'Beschäftigungsverhältnis'),(197,'Beschlagnahme'),(198,'Beschluss'),(199,'Beschlussverfahren'),(200,'Beschneidung'),(201,'beschränkte Geschäftsfähigkeit'),(202,'Beschuldigter'),(203,'Beschwerde'),(204,'Besitz'),(205,'Bestandteile'),(206,'Bestechung'),(207,'Bestimmtheit'),(208,'Betäubungsmittelgesetz'),(209,'Betreuung'),(210,'Betreuungsgeld'),(211,'Betreuungsgericht'),(212,'betriebliches Eingliederungsmanagement'),(214,'Betriebsrat'),(213,'Betriebsübergang'),(215,'Betriebsvereinbarung'),(216,'Betriebsverfassungsgesetz'),(217,'Betrug'),(218,'Bewährung'),(219,'Bewährungshilfe'),(220,'Beweis'),(221,'Beweis des ersten Anscheins'),(222,'Beweislast'),(223,'Beweisverbote'),(224,'Bewertungsgesetz'),(225,'Bezirk'),(226,'BGB-Gesellschaft'),(227,'Bildungsurlaub'),(228,'Billigkeit'),(229,'Blutalkoholkonzentration'),(151,'böser Glaube'),(230,'Boykott'),(231,'Brandstiftung'),(232,'Brief-, Post- und Fernmeldegeheimnis'),(233,'Bruchteilsgemeinschaft'),(235,'Bundesanwalt'),(236,'Bundesanzeiger'),(237,'Bundesbehörden'),(238,'Bundesfinanzhof'),(239,'Bundesgerichte'),(240,'Bundesgerichtshof'),(241,'Bundesgesetzblatt'),(242,'Bundesgrenzschutz'),(243,'Bundeskanzler'),(244,'Bundeskartellamt'),(245,'Bundeskriminalamt'),(246,'Bundesländer'),(247,'Bundespolizei'),(248,'Bundespräsident'),(249,'Bundesrat'),(250,'Bundesregierung'),(251,'Bundesrepublik'),(252,'Bundesstaat'),(253,'Bundestag'),(254,'Bundestreue'),(255,'Bundesverfassungsgericht'),(256,'Bundesversammlung'),(257,'Bundeswehr'),(258,'Bundeszentralregister'),(152,'Bürgerantrag'),(153,'Bürgerbegehren'),(154,'Bürgerentscheid'),(155,'Bürgerliches Gesetzbuch'),(156,'bürgerliches Recht'),(157,'Bürgermeister'),(158,'Bürgerrechte'),(159,'Bürgschaft'),(234,'Bußgeldverfahren'),(259,'Case-Law'),(260,'Chemikaliengesetz'),(261,'Computerstraftaten'),(262,'Copyright'),(263,'Corpus Delicti'),(264,'Culpa'),(266,'Darlehen'),(267,'Datenschutz'),(268,'Dauerschuldverhältnis'),(269,'deklaratorische Wirkung'),(270,'Deliktsfähigkeit'),(271,'Demonstrationsrecht'),(272,'Denkmalschutz'),(273,'Deutsche'),(274,'Devolutiveffekt'),(275,'Diebstahl'),(276,'Dienstaufsichtsbeschwerde'),(277,'Dienstbarkeit'),(278,'Dienstgeheimnis'),(279,'Dienstvertrag'),(280,'dingliches Recht'),(281,'direkte Steuern'),(282,'Diskriminierungsverbot'),(283,'Dispens'),(284,'Dispositionsmaxime'),(285,'dispositives Recht'),(286,'Dissens'),(287,'Divergenz gerichtlicher Entscheidungen'),(288,'DNA-Analyse'),(289,'Doppelbesteuerung'),(290,'Doppelbesteuerungsabkommen'),(291,'Drittschadensliquidation'),(292,'Drittschuldner'),(293,'Drittwiderspruchsklage'),(294,'Drogenstrafrecht'),(295,'Drohung'),(296,'Durchsuchung'),(265,'Düsseldorfer Tabelle'),(297,'E-Akte'),(298,'E-Commerce'),(299,'EEG-Umlage'),(300,'Effektivverzinsung'),(301,'EG.Recht'),(302,'eheähnliche Lebensgemeinschaft'),(303,'Ehefähigkeitszeugnis'),(304,'eheliches Güterrecht'),(305,'Eherecht'),(306,'Ehrenamt'),(307,'ehrenamtliche Richter'),(308,'Ehrenschutz'),(309,'Eid'),(310,'eidesstattliche Versicherung'),(311,'Eigenbedarf'),(312,'Eigentum'),(313,'Eigentumsvorbehalt'),(315,'Einbruch'),(314,'Einbürgerung'),(316,'eingetragene Lebenspartnerschaft'),(317,'Eingriffsverwaltung'),(318,'Einheitsstrafe'),(319,'Einheitswert'),(320,'Einigungsstelle'),(321,'Einigungsvertrag'),(322,'Einkommensteuer'),(323,'Einlassung'),(324,'Einrede'),(325,'Einspruch'),(326,'Einstellung'),(327,'einstweilige Anordnung'),(328,'einstweilige Verfügung'),(329,'Eintragung'),(330,'Eintragungsbewilligung'),(331,'Einvernehmen'),(332,'Einwendung'),(333,'Einwilligung'),(334,'Einziehung'),(335,'elektronische Gesundheitskarte'),(336,'elektronische Lohnsteuerkarte'),(337,'elektronische Unterschrift'),(338,'elektronischer Handel'),(339,'elektronischer Rechtsverkehr'),(340,'elterliche Sorge'),(341,'Eltern'),(342,'Elterngeld'),(343,'Elternzeit'),(344,'Embryonenschutzgesetz'),(345,'Empfangsbekenntnis'),(346,'Energiewirtschaftsgesetz'),(347,'Enteignung'),(348,'Entgeltfortzahlung'),(349,'Entmündigung'),(350,'Entschädigung'),(351,'Entscheidung'),(353,'Erbbaurecht'),(354,'Erbengemeinschaft'),(355,'Erbfolge'),(356,'Erbrecht'),(357,'Erbschaftskauf'),(358,'Erbschaftsteuer'),(359,'Erbschein'),(360,'Erbvertrag'),(361,'Erbverzicht'),(362,'Erfüllung'),(363,'Erfüllungs statt'),(364,'Erfüllungsgehilfe'),(365,'Erinnerung'),(366,'Erkennungsdienstliche Behandlung'),(367,'Erlass'),(368,'Erlaubnis'),(369,'Erledigung der Hauptsache'),(370,'Ermächtigung'),(371,'Ermessen'),(372,'Ermittlungsgrundsatz'),(373,'Ermittlungsverfahren'),(352,'Eröffnungsbeschluss'),(374,'Erpressung'),(375,'Ersatzvornahme'),(376,'Erschleichen von Leistungen'),(377,'Ersitzung'),(378,'Ertragswertverfahren'),(379,'Erziehungsbeistand'),(380,'Erziehungsberechtigter'),(381,'Erziehungshilfe'),(382,'Erziehungsmaßregeln'),(383,'Erziehungsregister'),(384,'Erziehungsurlaub'),(385,'Erziehungszeiten'),(386,'Europäische Gemeinschaft'),(387,'Europäische Grundrechtecharta'),(388,'Europäische Menschenrechtskonvention'),(389,'Europäische Sozialcharta'),(390,'Europäische Union'),(391,'Europäische Zentralbank'),(392,'Europäischer Gerichtshof'),(393,'Europäischer Gerichtshof für Menschenrechte'),(394,'Europäisches Parlament'),(395,'Europarecht'),(396,'Eventualmaxime'),(397,'Exekutive'),(398,'Exterritorialität'),(405,'Fachaufsicht'),(406,'Factoring'),(407,'Fahndung'),(408,'Fahreignungsregister'),(410,'Fahren ohne Fahrerlaubnis'),(409,'Fahren ohne Führerschein'),(411,'Fahrerflucht'),(412,'Fahrerlaubnis'),(413,'Fahrlässigkeit'),(414,'Fahrverbot'),(415,'faktischer Vertrag'),(399,'Fälligkeit'),(416,'Falschaussage'),(417,'falsche Verdächtigung'),(400,'Fälschung technischer Aufzeichnungen'),(418,'FamFG'),(419,'Familiengericht'),(420,'Familienpflegezeit'),(421,'Familienrecht'),(422,'Feiertage'),(423,'Fernabsatzverträge'),(424,'Fernmeldegeheimnis'),(425,'Festnahme'),(426,'Feststellungsklage'),(427,'Fiktion'),(428,'Finanzamt'),(429,'Finanzausgleich'),(430,'Finanzgerichtsbarkeit'),(431,'Finanzverfassung'),(432,'Finanzverwaltung'),(433,'Finderlohn'),(434,'Firma'),(435,'Flächennutzungsplan'),(436,'Fluchtgefahr'),(401,'Föderalismusreform'),(437,'Folgenbeseitigung'),(438,'Forderung'),(439,'Formularvertrag'),(440,'Formvorschriften'),(441,'Fraktion'),(442,'Frauenarbeit'),(443,'Freibetrag'),(444,'Freigrenze'),(445,'Freiheitsstrafe'),(446,'freiwillige Gerichtsbarkeit'),(448,'Freizeitarrest'),(447,'Freizügigkeit'),(449,'Friedenspflicht'),(450,'Frist'),(402,'Führerschein'),(403,'Führungsaufsicht'),(404,'Führungszeugnis'),(451,'Fundrecht'),(454,'Garantenstellung'),(455,'Garantie'),(456,'Gaststätte'),(457,'GbR'),(460,'Gebietskörperschaften'),(461,'Gebot'),(462,'Gebrauchsmuster'),(458,'Gebühren'),(459,'gebührenpflichtige Verwarnung'),(466,'Gefahr'),(467,'Gefahr im Verzug'),(463,'Gefährdungshaftung'),(468,'gefahrgeneigte Arbeit'),(469,'Gefahrstoffe'),(464,'Gefälligkeitsfahrt'),(465,'Gefälligkeitsverhältnis'),(470,'Gegendarstellung'),(471,'Gegenseitigkeit'),(472,'Gegenstandswert'),(473,'Gehaltspfändung'),(474,'geheimer Vorbehalt'),(475,'Geheimnis'),(476,'Gehilfe'),(477,'Geiselnahme'),(478,'geistiges Eigentum'),(479,'Geld- und Wertzeichenfälschung'),(480,'Geldbuße'),(481,'Geldstrafe'),(482,'Geldwäsche'),(483,'geldwerte Vorteile'),(484,'GEMA'),(485,'Gemeinde'),(486,'Gemeindevertretung'),(487,'gemeindliche Kreditaufnahme'),(488,'Gemeingebrauch'),(489,'gemeinnützig'),(490,'Gemeinsamer Ausschuss'),(491,'Gemeinschaft'),(492,'gemeinschaftliches Testament'),(493,'Gemeinschaftsaufgaben'),(494,'Gendatei'),(495,'Gender.Mainstreaming'),(496,'Genehmigung'),(497,'Generalbundesanwalt'),(498,'Generalklausel'),(499,'Generalprävention'),(500,'Genfer Konventionen'),(501,'Genfer Protokolle'),(502,'Genfer Vereinbarungen'),(503,'Genomanalyse'),(504,'Genossenschaft'),(505,'Gentechnikgesetz'),(506,'Gericht'),(507,'Gerichtsbarkeit'),(508,'Gerichtsbescheid'),(509,'Gerichtskosten'),(510,'Gerichtsstand'),(511,'Gerichtsstandsvereinbarung'),(512,'Gerichtsverfassung'),(513,'Gerichtsvollzieher'),(514,'Gesamthandsgemeinschaft'),(515,'Gesamtrechtsnachfolge'),(516,'Gesamtschuld'),(517,'Geschäftsbedingungen'),(518,'Geschäftsbesorgungsvertrag'),(519,'Geschäftsfähigkeit'),(520,'Geschäftsführung'),(521,'Geschäftsgrundlage'),(522,'Geschmacksmuster'),(523,'Gesellschaft des bürgerlichen Rechts'),(524,'Gesellschaft mit beschränkter Haftung'),(525,'Gesetz'),(526,'Gesetzeskonkurrenz'),(527,'Gesetzesvorbehalt'),(528,'gesetzgebende Gewalt'),(529,'Gesetzgebung'),(530,'Gesetzgebungsverfahren'),(531,'gesetzlicher Richter'),(532,'gesetzlicher Vertreter'),(533,'Gesetzmäßigkeit der Verwaltung'),(534,'Gestaltungsklage'),(535,'Gesundheitsrecht'),(536,'Gesundheitszeugnis'),(537,'Gewährleistung'),(539,'Gewalt'),(540,'Gewaltenteilung'),(541,'Gewaltmonopol'),(542,'Gewaltverhältnis'),(538,'Gewässerverunreinigung'),(543,'Gewerbe'),(544,'Gewerbefreiheit'),(545,'Gewerbesteuer'),(546,'gewerblicher Rechtsschutz'),(547,'gewerbsmäßiges Handeln'),(548,'Gewissensfreiheit'),(549,'gewohnheitsmäßiges Handeln'),(550,'Gewohnheitsrecht'),(554,'Glaubens-, Gewissens- und Bekenntnisfreiheit'),(555,'Glaubhaftmachung'),(551,'Gläubiger'),(552,'Gläubigerverzug'),(556,'Gleichbehandlung'),(557,'Gleichberechtigung'),(558,'gleichgeschlechtliche Lebenspartnerschaft'),(559,'Gleichheit'),(560,'Gleichstellungsbeauftragte'),(561,'Gleitklausel'),(553,'Glücksspiel'),(562,'GmbH'),(563,'GmbH & Co'),(564,'Gnade'),(565,'Gratifikation'),(566,'grober Unfug'),(567,'Grundbuch'),(568,'Grundeigentum'),(569,'Grunderwerbsteuer'),(570,'Grundfreiheiten'),(571,'Grundgesetz'),(572,'Grundrechte'),(573,'Grundschuld'),(574,'Grundstück'),(575,'Grundstückskaufvertrag'),(576,'guter Glaube'),(452,'Gütergemeinschaft'),(453,'Güteverfahren'),(577,'Gutglaubensschutz'),(580,'Haager Abkommen'),(581,'Haager Tribunal'),(582,'Haft'),(583,'Haftbefehl'),(584,'Haftpflicht'),(585,'Haftung'),(586,'Halter'),(587,'Halterkostenhaftung'),(588,'Handelsgeschäft'),(589,'Handelsgesellschaft'),(590,'Handelsgewerbe'),(591,'Handelskauf'),(592,'Handelsrecht'),(593,'Handelsregister'),(594,'Handelsvertreter'),(595,'Handlungsfähigkeit'),(596,'Handwerk'),(597,'Handwerksordnung'),(598,'Harmonisierung'),(599,'Hauptverhandlung'),(600,'Hausfrieden'),(601,'Haushaltsplan'),(602,'Haustürgeschäfte'),(603,'Hehlerei'),(604,'Heimarbeit'),(605,'Heimgesetz'),(606,'Heranwachsender'),(607,'Herausgabeanspruch'),(608,'herrenlose Sache'),(609,'Hilfe zum Lebensunterhalt'),(610,'Hilfe zur Erziehung'),(611,'Hinterbliebenenrente'),(612,'Hinterlegung'),(578,'höchstpersönliche Rechte'),(613,'Hochverrat'),(614,'Hoheitsrechte'),(579,'höhere Gewalt'),(615,'Homosexualität'),(616,'Hypothek'),(617,'Idealkonkurrenz'),(618,'Immaterialgüterrecht'),(619,'Immissionsschutz'),(620,'Immunität'),(621,'in dubio pro reo'),(622,'Indemnität'),(623,'indirekte Steuern'),(624,'Indiz'),(625,'informationelle Selbstbestimmung'),(626,'Informationsfreiheit'),(627,'Inhaberpapier'),(628,'Inkompatibilität'),(629,'Inkrafttreten von Gesetzen'),(630,'innere Verwaltung'),(631,'Inquisitionsprinzip'),(632,'Insolvenz'),(633,'Insolvenzordnung'),(634,'Instanz'),(635,'Institution'),(636,'Interessenausgleich'),(637,'internationales Privatrecht'),(638,'Intervention'),(639,'Irrtum'),(640,'Ius'),(641,'Jagdrecht'),(642,'Judikative'),(643,'Jugendamt'),(644,'Jugendarbeitsschutz'),(645,'Jugendarrest'),(646,'Jugendgerichtsbarkeit'),(647,'Jugendgerichtshilfe'),(648,'Jugendhilfe'),(649,'Jugendhilferecht'),(650,'Jugendkammer'),(651,'Jugendkriminalität'),(652,'Jugendliche'),(653,'Jugendrecht'),(654,'Jugendrichter'),(655,'Jugendschutz'),(656,'Jugendschutzsachen'),(657,'Jugendstrafe'),(658,'Jugendstrafrecht'),(659,'juristische Person'),(660,'Justiz'),(661,'Justizgewährungsanspruch'),(668,'Kapitalgesellschaft'),(669,'Kapitalverkehrsfreiheit'),(670,'Kartell'),(671,'Kauf'),(672,'Kaufmann'),(673,'Kausalität'),(674,'Kaution'),(675,'Kerbholz'),(676,'Kettenarbeitsverhältnis'),(677,'Kind'),(678,'Kinder- und Jugendhilfe'),(679,'Kinderarbeit'),(680,'Kindererziehungszeiten'),(681,'Kinderfreibetrag'),(682,'Kindergeld'),(683,'Kindesmissbrauch'),(684,'Kindesmisshandlung'),(685,'Kindschaftsrecht'),(686,'Kirchensteuer'),(687,'Klage'),(688,'Klageerzwingungsverfahren'),(689,'Klausel'),(690,'Koalitionsfreiheit'),(691,'Kollegialgericht'),(692,'Kommanditgesellschaft'),(693,'Kommunalaufsicht'),(694,'kommunale Selbstverwaltung'),(695,'Kommunalverbände'),(696,'Kommunalverfassung'),(697,'Kompetenzkonflikt'),(698,'Konfiskation'),(699,'konkludente Handlung'),(700,'Konkurrenz'),(701,'konkurrierende Gesetzgebung'),(702,'Konkurs'),(703,'konstitutive Wirkung'),(704,'Kontaktsperre'),(705,'Kontrahierungszwang'),(706,'Kontrollmitteilungen'),(707,'Konventionalstrafe'),(708,'Konzession'),(662,'Körperschaft'),(663,'Körperschaftsteuer'),(664,'Körperverletzung'),(709,'Kraftfahrtbundesamt'),(710,'Kraftfahrzeughaftung'),(711,'Kraftfahrzeughalter'),(712,'Kraftloserklärung'),(713,'Krankenversicherung'),(714,'Krankenversicherung der Landwirte'),(715,'Kreditbetrug'),(716,'Kreditkartenmissbrauch'),(717,'Kreditvertrag'),(718,'Kreis'),(719,'Kreistag'),(720,'Kriegsdienstverweigerung'),(721,'Kriegsverbrechen'),(722,'Kriegsverbrechertribunal'),(723,'kriminelle Vereinigungen'),(724,'Kriminologie'),(725,'Kronzeuge'),(726,'Kulturhoheit'),(727,'Kultusfreiheit'),(728,'Kumulation'),(665,'Kündigung'),(666,'Kündigungsschutz'),(667,'Künstlersozialversicherung'),(729,'Kuppelei'),(732,'Ladendiebstahl'),(733,'Ladenschluss'),(734,'Ladung'),(730,'Länder'),(735,'Landesrecht'),(736,'Landesregierung'),(737,'Landfriedensbruch'),(738,'Landgericht'),(739,'Landtag'),(740,'Lauschangriff'),(741,'Leasing'),(742,'Lebensmittel-, Bedarfsgegenstände- und Futtermittelgesetzbuch'),(743,'Lebensmittelrecht'),(744,'Lebenspartnerschaft'),(745,'Legaldefinition'),(746,'Legalitätsprinzip'),(747,'Legislative'),(748,'Legitimation'),(749,'Legitimationspapier'),(750,'Leichtfertigkeit'),(751,'Leiharbeitsverhältnis'),(752,'Leihe'),(753,'Leistung'),(754,'Leistungsklage'),(755,'Leistungsstörungen'),(756,'Leistungsverwaltung'),(757,'Leistungsverweigerungsrecht'),(758,'leitende Angestellte'),(759,'Liquidation'),(760,'Lizenz'),(761,'Lohnfortzahlung'),(762,'Lohnpfändung'),(763,'Lohnsteuer'),(731,'Löschung'),(764,'Lotterievertrag'),(765,'Luftfahrtrecht'),(766,'Luftverkehrssteuer'),(771,'Mahnung'),(772,'Mahnverfahren'),(773,'Makler'),(774,'mala fide'),(775,'Mandat'),(776,'Mangelfolgeschaden'),(767,'Mängelhaftung'),(777,'Marke'),(778,'Markenschutz'),(779,'marktbeherrschendes Unternehmen'),(770,'Maßregeln der Besserung und Sicherung'),(780,'Mediation'),(781,'Mehrwertsteuer'),(782,'Meineid'),(783,'Meinungsfreiheit'),(784,'Meldepflicht'),(785,'Meldewesen'),(786,'Menschenhandel'),(787,'Menschenrechte'),(788,'Menschenwürde'),(789,'Mentalreservation'),(790,'merkantiler Minderwert'),(791,'Miete'),(792,'Minderjährige'),(793,'Minderung'),(794,'Mindestlohn'),(795,'Mindestunterhalt'),(796,'Misshandlung von Schutzbefohlenen'),(797,'Mitbestimmung'),(798,'Miteigentum'),(799,'Mittäterschaft'),(800,'mittelbare Täterschaft'),(801,'Mobbing'),(802,'Mord'),(768,'Mündel'),(769,'Mündlichkeitsprinzip'),(803,'Musterprozess'),(804,'Musterschutz'),(805,'Mutterschaftsgeld'),(806,'Mutterschaftsurlaub'),(807,'Mutterschutz'),(809,'Nachbarrecht'),(810,'Nachbesserung'),(811,'Nacherbe'),(812,'Nachstellung'),(813,'Nachwirkung'),(814,'Namensrecht'),(816,'Naturalobligation'),(817,'Naturalrestitution'),(815,'natürliche Person'),(818,'Naturrecht'),(819,'Naturschutz'),(820,'ne bis in idem'),(821,'Nebenklage'),(822,'Nebenleistung'),(823,'Nebentäterschaft'),(824,'Nebentätigkeit'),(825,'negatives Interesse'),(826,'Netzfahndung'),(827,'Neutralität'),(828,'nicht eheliche Kinder'),(829,'nicht eheliche Lebensgemeinschaft'),(830,'Nichterfüllung'),(831,'Nichtigkeit'),(832,'Nichtigkeitsklage'),(833,'Nichtraucherschutz'),(834,'Nichtzulassungsbeschwerde'),(836,'Niederlassungsfreiheit'),(835,'Nießbrauch'),(837,'normative Wirkung'),(838,'Normenkontrolle'),(839,'Notar'),(840,'notarielle Urkunden'),(841,'Notfrist'),(842,'Nothilfe'),(808,'Nötigung'),(843,'Notstand'),(844,'Notstandsverfassung'),(845,'Notweg'),(846,'Notwehr'),(847,'Novelle'),(848,'nulla poena sine lege'),(849,'Nullzone'),(850,'Nutzungsausfall'),(851,'Nutzungsrecht'),(852,'Oberbürgermeister'),(853,'Oberlandesgericht'),(854,'Oberverwaltungsgericht'),(855,'Obhutspflicht'),(856,'objektives Recht'),(857,'Obliegenheit'),(858,'Obligation'),(859,'offene Handelsgesellschaft'),(11,'öffentliche Sicherheit und Ordnung'),(12,'öffentlicher Dienst'),(13,'öffentliches Recht'),(2,'Öffentlichkeit'),(860,'Offizialdelikt'),(861,'Offizialprinzip'),(862,'Opferanspruchssicherungsgesetz'),(863,'Opferentschädigung'),(864,'Opportunitätsprinzip'),(865,'ordentliche Gerichtsbarkeit'),(866,'Ordnungsbehörden'),(867,'Ordnungsmittel'),(868,'Ordnungswidrigkeiten'),(869,'Ordre public'),(870,'Organ'),(871,'Organhaftung'),(872,'Pacht'),(873,'Pacta sunt servanda'),(874,'Panaschieren'),(875,'Paraphierung'),(876,'Parlament'),(877,'Partei'),(878,'Parteibetrieb'),(879,'Parteifähigkeit'),(880,'Parteiverrat'),(881,'Partnerschaftsgesellschaft'),(882,'Pass'),(883,'Passivlegitimation'),(884,'Patent'),(885,'Patientenverfügung'),(887,'Personalausweis'),(888,'Personalrat'),(889,'Personalvertretung'),(890,'Personen der Zeitgeschichte'),(891,'Personengesellschaft'),(892,'Personenstand'),(886,'Persönlichkeitsrecht'),(893,'Petition'),(896,'Pfandrecht'),(894,'Pfändung'),(895,'Pfändungsschutz'),(897,'Pflegekind'),(898,'Pflegeversicherung'),(899,'Pflegschaft'),(900,'Pflichtteil'),(901,'Pflichtverteidiger'),(902,'Plädoyer'),(903,'Planfeststellung'),(904,'Planungshoheit'),(905,'politische Beamte'),(906,'politische Straftaten'),(907,'Polizei'),(908,'Polizeistunde'),(909,'Pornografie'),(910,'positive Vertragsverletzung'),(911,'Postgeheimnis'),(912,'Postulationsfähigkeit'),(913,'pp'),(914,'Präjudiz'),(915,'Präklusion'),(916,'Prävention'),(917,'Präzedenz'),(918,'Preisausschreiben'),(919,'Preisauszeichnung'),(920,'Pressefreiheit'),(921,'Prima-facie-Beweis'),(922,'Privatautonomie'),(923,'Privatklage'),(924,'Privatrecht'),(925,'Privatsphäre'),(926,'Probearbeitsverhältnis'),(927,'Probezeit'),(928,'Produkthaftung'),(929,'Prokura'),(930,'Prospekt'),(931,'Prostitution'),(932,'Protokoll'),(933,'Prozess'),(934,'Prozessfähigkeit'),(935,'Prozesskostenhilfe'),(936,'Prozessmaximen'),(937,'Prozessstandschaft'),(938,'Prozessvollmacht'),(939,'Prozessvoraussetzung'),(940,'Punktekatalog'),(941,'putativ'),(942,'Quellensteuern'),(943,'Quittung'),(951,'Radikalenerlass'),(952,'Rang'),(953,'Rasterfahndung'),(954,'Ratenlieferungsvertrag'),(955,'Raterteilung'),(956,'Ratifikation'),(957,'Raub'),(944,'räuberische Erpressung'),(958,'Rauchen'),(959,'Raumordnung'),(945,'Räumung'),(960,'Rauschtat'),(961,'Realkonkurrenz'),(962,'Reallast'),(963,'Realrechte'),(964,'Recht'),(965,'Recht am eigenen Bild'),(966,'Recht auf Arbeit'),(967,'Rechtfertigungsgründe'),(968,'rechtliches Gehör'),(969,'Rechtmäßigkeit der Verwaltung'),(970,'Rechtsanwalt'),(971,'Rechtsanwaltsvergütung'),(972,'Rechtsaufsicht'),(973,'Rechtsbehelf'),(974,'Rechtsberatung'),(975,'Rechtsbeschwerde'),(976,'Rechtsbeugung'),(977,'Rechtsdienstleistung'),(978,'Rechtsfähigkeit'),(979,'Rechtsgeschäft'),(980,'Rechtsgeschichte'),(982,'Rechtshandlung'),(981,'Rechtshängigkeit'),(983,'Rechtshilfe'),(984,'Rechtskraft'),(985,'Rechtsmissbrauch'),(986,'Rechtsmittel'),(987,'Rechtsmittelbelehrung'),(988,'Rechtsnachfolge'),(989,'Rechtsnorm'),(990,'Rechtsordnung'),(991,'Rechtspflege'),(992,'Rechtspfleger'),(993,'Rechtspositivismus'),(994,'Rechtsprechung'),(995,'Rechtsquelle'),(996,'Rechtsschein'),(997,'Rechtsschutzbedürfnis'),(998,'Rechtssicherheit'),(999,'Rechtsstaat'),(1000,'Rechtssubjekt'),(1001,'Rechtsverhältnis'),(1002,'Rechtsverordnung'),(1003,'Rechtsweg'),(1004,'Rechtswidrigkeit'),(1005,'Rechtszug'),(1006,'Reformatio in Peius'),(1007,'Regelbedarf'),(1008,'Regelunterhalt'),(1009,'Registergericht'),(1010,'Regress'),(1011,'Rehabilitation'),(1012,'Rehabilitierungsgesetze'),(1013,'Reisevertrag'),(1014,'relatives Recht'),(1015,'Religionsfreiheit'),(1016,'Rentenschuld'),(1017,'Rentenversicherung'),(1018,'Resozialisierung'),(1019,'Restschuldbefreiung'),(1020,'Revision'),(1021,'Richter'),(1022,'Richtlinien'),(1023,'Rubrum'),(946,'Rückfall'),(947,'Rückgriff'),(948,'Rücktritt'),(949,'Rückwirkung'),(950,'Rückwirkungsverbot'),(1024,'Ruhen des Verfahrens'),(1025,'Ruhestörung'),(1027,'Sachbeschädigung'),(1028,'Sache'),(1029,'Sachenrecht'),(1030,'Sachlegitimation'),(1031,'salvatorische Klausel'),(1032,'Satzung'),(1036,'Schadensersatz'),(1037,'Schatzfund'),(1038,'Scheck- und Kreditkartenmissbrauch'),(1039,'Scheidung'),(1040,'Scheidungs- und Trennungsfolgenvereinbarung'),(1041,'Scheingeschäft'),(1042,'Schengener Abkommen'),(1043,'Schenkung'),(1044,'Schenkungsteuer'),(1045,'Schiedsgerichtsbarkeit'),(1046,'Schikane'),(1047,'Schlägerei'),(1049,'Schleppnetzfahndung'),(1050,'Schlichtung'),(1048,'Schlüssigkeit'),(1051,'Schmerzensgeld'),(1033,'Schöffen'),(1034,'Schöffengericht'),(1035,'Schönheitsreparaturen'),(1052,'Schriftform'),(1053,'schriftliches Verfahren'),(1055,'Schuld'),(1056,'Schuldanerkenntnis'),(1057,'Schuldner'),(1058,'Schuldnerverzug'),(1059,'Schuldrecht'),(1060,'Schuldschein'),(1054,'Schuldübernahme'),(1061,'Schuldunfähigkeit'),(1062,'Schuldverhältnis'),(1063,'Schuldversprechen'),(1064,'Schulpflicht'),(1065,'Schusswaffengebrauch'),(1066,'Schwägerschaft'),(1067,'Schwangerschaftsabbruch'),(1068,'Schwarzarbeit'),(1069,'Schwarzfahrer'),(1070,'schwebendes Geschäft'),(1071,'Schweigen'),(1072,'Schweigepflicht'),(1073,'Schwerbehinderte'),(1074,'Schwerbeschädigte'),(1075,'Schwurgericht'),(1076,'Selbstbestimmungsrecht'),(1077,'Selbstbindung der Verwaltung'),(1078,'Selbsthilfe'),(1079,'Selbstmord'),(1080,'Selbstverwaltung'),(1081,'SEPA'),(1082,'Sexualdelikte'),(1083,'sexuelle Handlung'),(1084,'sexueller Missbrauch von Jugendlichen'),(1085,'sexueller Missbrauch von Kindern'),(1086,'Shitstorm'),(1087,'Sicherheitsleistung'),(1088,'Sicherungsübereignung'),(1089,'Sicherungsverwahrung'),(1090,'Siegelbruch'),(1091,'Sittenwidrigkeit'),(1092,'Softwarevertrag'),(1093,'Soldatengesetz'),(1094,'Sondereigentum'),(1095,'Sonderopfer'),(1096,'Sonn- und Feiertagsruhe'),(1097,'Sonntagsarbeit'),(1098,'Sonntagsfahrverbot'),(1099,'Sorgerecht'),(1100,'Sorgfaltspflicht'),(1101,'Souveränität'),(1102,'Sozialadäquanz'),(1103,'Sozialauswahl'),(1104,'Sozialgerichtsbarkeit'),(1105,'Sozialgesetzbuch'),(1106,'Sozialhilfe'),(1107,'Sozialisierung'),(1108,'Sozialplan'),(1109,'Sozialrecht'),(1110,'Sozialstaat'),(1111,'Sozialversicherung'),(1112,'Sozialversicherungsausweis'),(1113,'Spediteur'),(1114,'Spezialprävention'),(1115,'Spiel'),(1116,'Sportgerichte'),(1117,'Spruchkörper'),(1119,'Staat'),(1120,'Staatsangehörigkeit'),(1121,'Staatsanwaltschaft'),(1122,'Staatsbürger'),(1123,'Staatshaftung'),(1124,'Staatsnotrecht'),(1125,'Staatsrecht'),(1126,'Staatszielbestimmungen'),(1127,'Stalking'),(1128,'Standesamt'),(1129,'Stellungnahme'),(1130,'Stellvertretung'),(1131,'Sterbehilfe'),(1132,'Steuern'),(1133,'Steuerrecht'),(1134,'Stiftung'),(1135,'stille Gesellschaft'),(1118,'Störer'),(1136,'StPO'),(1141,'Strafantrag'),(1142,'Strafaufhebungsgründe'),(1143,'Strafaussetzung zur Bewährung'),(1144,'Strafbefehl'),(1145,'Strafe'),(1146,'Strafgerichtsbarkeit'),(1147,'Strafgesetzbuch'),(1148,'Strafklageverbrauch'),(1149,'Strafmündigkeit'),(1150,'Strafprozess'),(1151,'Strafrecht'),(1152,'Strafregister'),(1153,'Straftat'),(1154,'Straftilgung'),(1155,'Strafvollstreckung'),(1156,'Strafvollzug'),(1137,'Straßenverkehrsgefährdung'),(1138,'Straßenverkehrshaftung'),(1139,'Straßenverkehrsrecht'),(1140,'Straßenverkehrssanktionenrecht'),(1157,'Streik'),(1158,'Streitgegenstand'),(1159,'Streitgenossenschaft'),(1160,'Streitverkündung'),(1161,'Streitwert'),(1162,'Stufenklage'),(1163,'Stundung'),(1164,'subjektives öffentliches Recht'),(1165,'subjektives Recht'),(1166,'Subsidiaritätsprinzip'),(1167,'Subsumtion'),(1026,'Sühneversuch'),(1168,'Supranationalität'),(1169,'Surrogation'),(1170,'Suspensiveffekt'),(1176,'Tabularersitzung'),(1177,'Tagessatz'),(1178,'Tarifautonomie'),(1179,'Tarifvertrag'),(1180,'Taschengeld'),(1181,'Tatbestand'),(1182,'Tateinheit'),(1171,'Täter-Opfer-Ausgleich'),(1172,'tätige Reue'),(1183,'Tatmehrheit'),(1184,'Tatverdacht'),(1185,'Tausch'),(1173,'Täuschung'),(1186,'Teilnahme'),(1187,'Teilungsanordnung'),(1188,'Teilzahlung'),(1189,'Teilzahlungspreis'),(1190,'Teilzeitbeschäftigung'),(1192,'Telefon'),(1191,'Telefonüberwachung'),(1193,'Telekommunikationsgesetz'),(1194,'Tendenzbetriebe'),(1195,'Tenor'),(1196,'Termin'),(1197,'terroristische Vereinigungen'),(1198,'Testament'),(1199,'Testamentsvollstrecker'),(1200,'Testierfähigkeit'),(1201,'Tierhalter'),(1202,'Tierschutz'),(1203,'Titel'),(1204,'Tod'),(1205,'Todeserklärung'),(1206,'Todesstrafe'),(1207,'Tonbandprotokolle'),(1208,'Totschlag'),(1174,'Tötung auf Verlangen'),(1175,'Tötungsdelikte'),(1209,'Treu und Glauben'),(1210,'Treuepflicht'),(1211,'Treuhand'),(1212,'Treuhandeigentum'),(1213,'Trunkenheit im Verkehr'),(3,'Überbau'),(4,'Überfall'),(5,'Übergangsvorschriften'),(6,'Überhang'),(7,'Übermaßverbot'),(8,'Überstunden'),(9,'Übertragbarkeit'),(10,'Übertretung'),(14,'üble Nachrede'),(1214,'Umdeutung'),(1215,'Umweltbundesamt'),(1216,'Umwelthaftung'),(1217,'Umweltinformationsgesetz'),(1218,'Umweltkriminalität'),(1219,'Umweltrecht'),(1220,'Umweltstrafrecht'),(1221,'Unabdingbarkeit'),(1222,'unabwendbares Ereignis'),(1223,'unbestellte Sachen'),(1224,'unbestimmter Rechtsbegriff'),(1225,'unerlaubte Handlung'),(1226,'unerlaubtes Entfernen vom Unfallort'),(1227,'Unfallflucht'),(1228,'Unfallversicherung'),(1229,'ungerechtfertigte Bereicherung'),(1230,'Unionsbürgerschaft'),(1231,'unlauterer Wettbewerb'),(1233,'unmittelbarer Zwang'),(1234,'Unmittelbarkeit'),(1232,'Unmöglichkeit'),(1235,'Untätigkeitsklage'),(1236,'Unterbrechung'),(1237,'Unterbringung'),(1238,'Unterhalt'),(1239,'Unterhaltspflicht'),(1240,'Unterhaltsverfahren'),(1241,'unterlassene Hilfeleistung'),(1242,'Unterlassung'),(1243,'Unterlassungsdelikt'),(1244,'Untermiete'),(1245,'Unternehmerpfandrecht'),(1246,'Unterschlagung'),(1247,'Unterschrift'),(1248,'Untersuchungsausschuss'),(1249,'Untersuchungsgrundsatz'),(1250,'Untersuchungshaft'),(1251,'Untreue'),(1252,'unveräußerliche Rechte'),(1253,'Unverletzlichkeit der Wohnung'),(1254,'unverzüglich'),(1255,'Unwirksamkeit'),(1256,'Unzumutbarkeit'),(1257,'Unzurechnungsfähigkeit'),(1258,'Urheberrecht'),(1259,'Urkunde'),(1260,'Urkundendelikte'),(1261,'Urkundenfälschung'),(1262,'Urkundsbeamte'),(1263,'Urlaub'),(1264,'Urteil'),(1266,'V-Leute'),(1267,'V-Mann'),(1268,'Vaterschaft'),(1270,'Verbandsklage'),(1271,'Verbindung'),(1269,'Verböserung'),(1272,'verbotene Eigenmacht'),(1273,'Verbotsirrtum'),(1274,'Verbraucher'),(1275,'Verbraucherinsolvenzverfahren'),(1276,'Verbraucherkredit'),(1277,'Verbrauchsgüterkauf'),(1278,'Verbrauchsteuern'),(1279,'Verbrechen'),(1280,'Verdächtigung'),(1281,'verdeckter Ermittler'),(1282,'Verdunkelungsgefahr'),(1283,'Verein'),(1284,'vereinfachtes Jugendverfahren'),(1285,'vereinfachtes Verfahren'),(1286,'Vereinigungsfreiheit'),(1290,'Verfall'),(1291,'Verfassung'),(1292,'Verfassungsbeschwerde'),(1293,'Verfassungsgerichtsbarkeit'),(1294,'verfassungskonforme Auslegung'),(1295,'Verfassungsprinzipien'),(1296,'Verfassungsschutz'),(1297,'Verfassungswidrigkeit'),(1287,'Verfügung'),(1288,'Verfügung eines Nichtberechtigten'),(1289,'Verführung'),(1298,'Vergehen'),(1299,'Vergesellschaftung'),(1300,'Vergewaltigung'),(1301,'Vergleich'),(1302,'Verhältnismäßigkeit'),(1303,'Verhältnismäßigkeitsprinzip'),(1304,'Verhandlungsfähigkeit'),(1305,'Verhandlungsgrundsatz'),(1306,'Verjährung'),(1307,'Verkehrssicherungspflicht'),(1308,'Verkehrssitte'),(1309,'Verkehrsteuern'),(1310,'Verkehrsunfallflucht'),(1311,'Verkehrsvergehen'),(1312,'Verkehrsverstöße'),(1313,'Verkehrszentralregister'),(1315,'Verlagsrecht'),(1316,'Verletzter'),(1317,'Verleumdung'),(1314,'Verlöbnis'),(1318,'Vermächtnis'),(1324,'Vermieterpfandrecht'),(1319,'Vermögen'),(1320,'Vermögensauskunft'),(1321,'Vermögensschaden'),(1322,'Vermögensstrafe'),(1323,'Vermögensteuer'),(1325,'Vermummung'),(1326,'Vermutung'),(1327,'Vernehmung'),(1328,'Verordnung'),(1329,'Verpflichtungsgeschäft'),(1330,'Verpflichtungsklage'),(1331,'Verrichtungsgehilfe'),(1334,'Versammlungsfreiheit'),(1332,'Versäumnisurteil'),(1333,'Versäumnisverfahren'),(1335,'Verschollenheit'),(1336,'Verschulden'),(1337,'Verschwiegenheitspflicht'),(1338,'Versendungskauf'),(1339,'Versetzung'),(1340,'Versicherungsbetrug'),(1341,'Versicherungspflicht'),(1342,'Versorgungsausgleich'),(1343,'Verständigung'),(1344,'Versteigerung'),(1345,'Verstrickung'),(1346,'Verstrickungsbruch'),(1347,'Versuch'),(1348,'Verteidigung'),(1349,'Verteidigungsfall'),(1350,'Vertrag'),(1351,'Vertrag zugunsten Dritter'),(1352,'Vertragsfreiheit'),(1353,'Vertragsstrafe'),(1354,'Vertrauensgrundsatz'),(1355,'Vertrauensschaden'),(1356,'Vertrauensschutz'),(1357,'vertretbare Handlung'),(1358,'vertretbare Sache'),(1359,'Vertreter'),(1360,'Veruntreuung'),(1361,'Verursachung'),(1362,'Verwahrung'),(1363,'Verwaltung'),(1364,'Verwaltungsakt'),(1365,'Verwaltungsgerichtsbarkeit'),(1366,'Verwaltungsprozess'),(1367,'Verwaltungsrecht'),(1368,'Verwaltungsverfahren'),(1369,'Verwaltungsvollstreckungsverfahren'),(1370,'Verwaltungsvorschriften'),(1371,'Verwaltungszwang'),(1372,'Verwandtschaft'),(1373,'Verwarnung'),(1374,'Verwendungen'),(1375,'Verwertungsgesellschaften'),(1376,'Verwirkung'),(1377,'Verzicht'),(1378,'Verzug'),(1265,'Völkerrecht'),(1379,'Volksabstimmung'),(1380,'Volksbegehren'),(1381,'Volksentscheid'),(1382,'Volksinitiative'),(1383,'Volkssouveränität'),(1384,'Volksverhetzung'),(1385,'Volksvertretung'),(1386,'Volljährigkeit'),(1387,'Vollmacht'),(1388,'vollstreckbare Urkunde'),(1389,'Vollstreckung'),(1390,'Vollstreckungsabwehrklage'),(1391,'Vollstreckungsgericht'),(1392,'Vollstreckungsklausel'),(1393,'Vollstreckungsschutz'),(1394,'Vollstreckungstitel'),(1395,'vollziehende Gewalt'),(1396,'Vorbehalt'),(1397,'Vorbereitungshandlungen'),(1398,'Vorerbe'),(1399,'Vorkaufsrecht'),(1400,'vorläufige Vollstreckbarkeit'),(1401,'Vormerkung'),(1402,'Vormundschaft'),(1403,'Vornahmeklage'),(1404,'Vorrang des Gesetzes'),(1405,'Vorsatz'),(1406,'Vorsorgeaufwendungen'),(1407,'Vorsorgevollmacht'),(1408,'Vorstrafe'),(1409,'Vortäuschen einer Straftat'),(1410,'Vorteilsannahme'),(1411,'Vorteilsausgleichung'),(1412,'Waffengebrauch'),(1413,'Waffenrecht'),(1414,'Waffenschein'),(1415,'Wahlen'),(1416,'Wahlrecht'),(1417,'Wahlsystem'),(1418,'Wahlverteidiger'),(1419,'Warenzeichen'),(1420,'Warnweste'),(1421,'Wechsel'),(1422,'Wegerecht'),(1423,'Wehrdienstverweigerung'),(1424,'Wehrrecht'),(1425,'Weiterbeschäftigungsanspruch'),(1426,'Werklieferungsvertrag'),(1427,'Werkvertrag'),(1428,'Wertsicherungsklausel'),(1429,'Wesensgehaltsgarantie'),(1430,'Wesentlichkeitslehre'),(1431,'Wettbewerbsverbot'),(1432,'Wette'),(1433,'wichtiger Grund'),(1434,'Widerklage'),(1435,'Widerruf'),(1436,'Widerspruch'),(1437,'Widerstand gegen Vollstreckungsbeamte'),(1438,'Widerstandsrecht'),(1439,'Widmung'),(1440,'Wiederaufnahme des Verfahrens'),(1441,'Wiedereinsetzung in den vorigen Stand'),(1442,'Willenserklärung'),(1443,'Willkürverbot'),(1444,'Wirtschaftskriminalität'),(1445,'Wirtschaftsrecht'),(1446,'Witwenrente'),(1447,'Wohngeld'),(1448,'Wohnsitz'),(1449,'Wohnung'),(1450,'Wohnungseigentum'),(1451,'Wucher'),(1453,'Zechprellerei'),(1454,'Zensur'),(1455,'Zentrales Vollstreckungsgericht'),(1456,'Zession'),(1457,'Zeuge'),(1458,'Zeugnis'),(1459,'Zeugnisverweigerungsrecht'),(1460,'Zinshöhe'),(1461,'Zitiergebot'),(1462,'Zivildienst'),(1463,'Zivilgericht'),(1464,'Zivilprozess'),(1465,'Zivilrecht'),(1466,'Zubehör'),(1452,'Züchtigungsrecht'),(1467,'Zuchtmittel'),(1468,'Zug-um-Zug-Leistung'),(1469,'Zugewinngemeinschaft'),(1470,'Zuhälter'),(1471,'Zumutbarkeit'),(1472,'Zurückbehaltungsrecht'),(1473,'Zurückverweisung'),(1474,'Zuständigkeit'),(1475,'Zustellung'),(1476,'Zustimmung'),(1477,'Zwang'),(1478,'Zwangsmittel'),(1479,'Zwangsversteigerung'),(1480,'Zwangsverwaltung'),(1481,'Zwangsvollstreckung'),(1482,'Zweckbindung'),(1483,'Zweckvermögen'),(1484,'zwingendes Recht');
+/*!40000 ALTER TABLE `tbl_law_terms` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_results`
 --
 
+DROP TABLE IF EXISTS `tbl_results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_results` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_input` varchar(1000) NOT NULL,
   `picked_file` int(11) NOT NULL,
   `similarity` float NOT NULL,
-  `date` date NOT NULL,
-  `user_rating` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date` datetime NOT NULL,
+  `user_rating` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `picked_file` (`picked_file`),
+  CONSTRAINT `tbl_results_ibfk_1` FOREIGN KEY (`picked_file`) REFERENCES `tbl_judgement` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_committee`
---
-ALTER TABLE `tbl_committee`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `tbl_judgement`
---
-ALTER TABLE `tbl_judgement`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `file_reference` (`file_reference`),
-  ADD KEY `committee` (`committee`),
-
---
--- Indexes for table `tbl_results`
---
-ALTER TABLE `tbl_results`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `picked_file` (`picked_file`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_committee`
---
-ALTER TABLE `tbl_committee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbl_judgement`
---
-ALTER TABLE `tbl_judgement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbl_results`
---
-ALTER TABLE `tbl_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbl_judgement`
---
-ALTER TABLE `tbl_judgement`
-  ADD CONSTRAINT `tbl_judgement_ibfk_1` FOREIGN KEY (`committee`) REFERENCES `tbl_committee` (`id`),
-
---
--- Constraints for table `tbl_results`
---
-ALTER TABLE `tbl_results`
-  ADD CONSTRAINT `tbl_results_ibfk_1` FOREIGN KEY (`picked_file`) REFERENCES `tbl_judgement` (`id`);
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-03-13 12:58:36
