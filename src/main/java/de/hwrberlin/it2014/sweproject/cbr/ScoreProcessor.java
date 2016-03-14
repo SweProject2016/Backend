@@ -85,7 +85,7 @@ public class ScoreProcessor<T extends Scoreable> {
 			}
 			check: for(String sy : synynoms) {
 				for(String kw : s.getKeywordsAsList()) {
-					if(kw.toLowerCase().indexOf(sy.toLowerCase()) != -1) { // check, kann auch im wort vorkommen, umgeben von anderen zeichen
+					if(kw.equalsIgnoreCase(sy)) { // check
 						found = true;
 						break check;
 					}
@@ -127,10 +127,10 @@ public class ScoreProcessor<T extends Scoreable> {
 		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(stmt.executeQuery()); // cast is safe as Judgement implement scoreable
 		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
-		System.out.println("raw results: " + prefilter.size());
 		for(T s : prefilter) {
 			double dist = getDistance(s, filteredKeywords, timestamp);
-			scores.put(s, -(dist * sortWeights[0]) + s.getPageRank() * sortWeights[1]);
+			double score = -(dist * sortWeights[0]) + s.getPageRank() * sortWeights[1];
+			scores.put(s, score);
 		}
 		scoreCache.putAll(scores);
 		// sortieren absteigend
