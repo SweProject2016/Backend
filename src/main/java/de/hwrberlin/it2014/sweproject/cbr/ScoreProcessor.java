@@ -133,7 +133,7 @@ public class ScoreProcessor<T extends Scoreable> {
 			scores.put(s, -(dist * sortWeights[0]) + s.getPageRank() * sortWeights[1]);
 		}
 		scoreCache.putAll(scores);
-		// sortieren
+		// sortieren absteigend
 		ArrayList<T> ordered = new ArrayList<>(prefilter);
 		Collections.sort(ordered, new Comparator<T>(){
 
@@ -141,9 +141,9 @@ public class ScoreProcessor<T extends Scoreable> {
 			public int compare(T o1, T o2){
 				double v1 = scores.get(o1);
 				double v2 = scores.get(o2);
-				if(v1 < v2) {
+				if(v1 > v2) {
 					return -1;
-				} else if(v1 > v2) {
+				} else if(v1 < v2) {
 					return 1;
 				} else
 					return 0;
