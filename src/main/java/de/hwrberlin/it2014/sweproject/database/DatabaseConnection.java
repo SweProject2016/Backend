@@ -242,11 +242,12 @@ public class DatabaseConnection {
     }
 
     /**
-     * Execute Update on database (SQL-Insert) for a single dataset only
-     * not tested
+     * Führt ein SQL-Insert-Befehl aus und gibt die ID des eingefügten Datensatzes zurück.
+     * Nur für einzelne Datensätze!
+     * ### nicht getestet ###
      * @author Max Bock
      * @param query - SQL-Insert Statement only
-     * @return (hopefully) the ID of the inserted Set; -1 if something went wrong
+     * @return the ID of the inserted Set; -1 if something went wrong
      * @throws SQLException
      */
     public int executeUpdateRetrieveID(final String query) throws SQLException
