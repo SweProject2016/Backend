@@ -84,9 +84,11 @@ public class ScoreProcessor<T extends Scoreable> {
 				wordTypeCache.put(keyword, isJura);
 			}
 			check: for(String sy : synynoms) {
-				if(s.getKeywordsAsList().contains(sy.toLowerCase())) {
-					found = true;
-					break check;
+				for(String kw : s.getKeywordsAsList()) {
+					if(kw.toLowerCase().indexOf(sy.toLowerCase()) != -1) { // check, kann auch im wort vorkommen, umgeben von anderen zeichen
+						found = true;
+						break check;
+					}
 				}
 			}
 			if(!found) {
@@ -127,7 +129,8 @@ public class ScoreProcessor<T extends Scoreable> {
 		final HashMap<T, Double> scores = new HashMap<>();
 		System.out.println("raw results: " + prefilter.size());
 		for(T s : prefilter) {
-			scores.put(s, getDistance(s, filteredKeywords, timestamp));
+			double dist = getDistance(s, filteredKeywords, timestamp);
+			scores.put(s, -(dist * sortWeights[0]) + s.getPageRank() * sortWeights[1]);
 		}
 		scoreCache.putAll(scores);
 		// sortieren
@@ -136,10 +139,8 @@ public class ScoreProcessor<T extends Scoreable> {
 
 			@Override
 			public int compare(T o1, T o2){
-				double d1 = scores.get(o1);
-				double d2 = scores.get(o2);
-				double v1 = -(d1 * sortWeights[0]) + o1.getPageRank() * sortWeights[1];
-				double v2 = -(d2 * sortWeights[0]) + o2.getPageRank() * sortWeights[1];
+				double v1 = scores.get(o1);
+				double v2 = scores.get(o2);
 				if(v1 < v2) {
 					return -1;
 				} else if(v1 > v2) {

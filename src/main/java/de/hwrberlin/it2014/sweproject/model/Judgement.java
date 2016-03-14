@@ -1,6 +1,7 @@
 package de.hwrberlin.it2014.sweproject.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import de.hwrberlin.it2014.sweproject.cbr.Scoreable;
@@ -10,26 +11,25 @@ public class Judgement implements Scoreable {
 
 	public static final String KEYWORD_SEPERATOR = " ";
 
-	private String fileReference, sentence, offence, pdfLink, pdfFileName,
-			keywords;
+	private String fileReference, sentence, offence, pdfLink, pdfFileName, keywords;
 	private Committee comittee;
 	private LawSector lawSector;
 	private Date date;
 	private float pageRank;
-	
+
 	public Judgement(String pdfLink, String pdfFileName){
 		this.pdfLink = pdfLink;
 		this.pdfFileName = pdfFileName;
 	}
-	
+
 	public LawSector getLawSector(){
 		return lawSector;
 	}
-	
+
 	public void setLawSector(LawSector sector){
-		this.lawSector=sector;
+		this.lawSector = sector;
 	}
-	
+
 	public String getKeywords(){
 		return keywords;
 	}
@@ -94,6 +94,7 @@ public class Judgement implements Scoreable {
 		this.offence = offence;
 	}
 
+	@Override
 	public float getPageRank(){
 		return pageRank;
 	}
@@ -107,13 +108,23 @@ public class Judgement implements Scoreable {
 	 */
 	@Override
 	public ArrayList<String> getKeywordsAsList(){
-		// parse keywords in arraylist
-		String[] split = keywords.split(KEYWORD_SEPERATOR);
-		ArrayList<String> l = new ArrayList<>(split.length);
-		for(String s : split) {
-			l.add(s);
+		/*
+		 * keywords in arraylist parsen
+		 * 
+		 * dabei nicht nur die eigentlichen "keywords" wie in der db nutzen, sondern auch allen anderen textfelder des falles
+		 * dadurch wird die präzision verbesser
+		 */
+		ArrayList<String> all = new ArrayList<>();
+		all.addAll(Arrays.asList(keywords.split(KEYWORD_SEPERATOR)));
+		all.addAll(Arrays.asList(offence.split(KEYWORD_SEPERATOR)));
+		all.addAll(Arrays.asList(sentence.split(KEYWORD_SEPERATOR)));
+		ArrayList<String> cleared = new ArrayList<>();
+		for(String w : all) {
+			if(w.trim().length() > 0) { // leere strings entfernen
+				cleared.add(w);
+			}
 		}
-		return l;
+		return cleared;
 	}
 
 	/**
