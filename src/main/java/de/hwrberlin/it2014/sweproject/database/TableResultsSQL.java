@@ -13,12 +13,13 @@ public class TableResultsSQL {
 	 private final static String INSERT_QUERY_STRING = "INSERT INTO tbl_results "
 	            + "(user_input, picked_file, similarity, date, user_rating)"
 	            + "VALUES (?,?,?,?,?)";
+	 private final static String SAVE_USER_RATING_STRING = "UPDATE tbl_results SET user_rating = ? WHERE id = ?"; 
 	 
 	 /**
-	  * Generiert ein PreparedStatement für ein Insert in tbl_results
+	  * Generiert ein PreparedStatement fï¿½r ein Insert in tbl_results
 	  * @author Dominik Habel
 	  *
-	  * @param res das Result, das eingefügt werden soll
+	  * @param res das Result, das eingefï¿½gt werden soll
 	  * @param con Datenbank-Verbindung
 	  * @return das generierte PreparedStatement
 	  * @throws SQLException
@@ -42,6 +43,7 @@ public class TableResultsSQL {
         }
         return stmt;
      }
+	 
 	 public static PreparedStatement prepareInsert(final Result res, final DatabaseConnection con) throws SQLException{
 		 return prepareInsert(res,con,Statement.NO_GENERATED_KEYS);
 	 }
@@ -50,7 +52,7 @@ public class TableResultsSQL {
 	  * Generiert SQL-Insert-Code zu einem Result
 	  * @author Dominik Habel
 	  *
-	  * @param result das einzufügende Result
+	  * @param result das einzufï¿½gende Result
 	  * @return der SQL-Code
 	  */
 	public static String getInsertSQLCode(Result result){
@@ -71,7 +73,7 @@ public class TableResultsSQL {
 	public static String getSelectSQLCode(int id){
 		//TODO
 		//get Result From DB by ID
-		String sql="SELECT * FROM tbl_result WHERE id = " + id + " LIMIT 1";
+		String sql="SELECT * FROM tbl_results WHERE id = " + id + " LIMIT 1";
 		return sql;
 	}
 	
@@ -92,4 +94,22 @@ public class TableResultsSQL {
 	 * after rating you receive the user_input, user_rating and caseID from the frontend 
 	 * it would be better to save the result only after the user rate it or otherwise directly delete it
 	 */
+	
+	public static int saveUserRating(int id, float rating, DatabaseConnection con){
+		Connection c = con.getConnection();
+		PreparedStatement stmt = null;
+		int rows = -1;
+		try{
+			stmt = c.prepareStatement(SAVE_USER_RATING_STRING);
+			stmt.setFloat(1, rating);
+			stmt.setInt(2, id);
+			rows = stmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+			return rows;
+		}
+		return rows;
+	}
+	
+	
 }

@@ -17,6 +17,7 @@ import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.TableJudgementSQL;
 import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
+import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
 /**
  * Created by csc on 13.01.16. Sample Resource für den REST-WS
@@ -74,11 +75,7 @@ public class SampleResource extends Resource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response generalTestMethod(@QueryParam("input") String input){
     	try{
-    		ArrayList<String> keywords = new ArrayList<>();
-    		keywords.add("offence");
-    		keywords.add("sentence");
-    		DatabaseConnection dbc = new DatabaseConnection();
-    		TableJudgementSQL.prepareSelect(keywords, LawSector.STRAFRECHT, dbc);
+    		ThesaurusLoader.getSynonyms("Gericht");
     		return build(Status.OK);
     	} catch(Exception e){
     		e.printStackTrace();

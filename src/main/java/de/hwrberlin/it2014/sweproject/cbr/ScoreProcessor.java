@@ -1,5 +1,6 @@
 package de.hwrberlin.it2014.sweproject.cbr;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,8 @@ public class ScoreProcessor<T extends Scoreable> {
 	private HashMap<T, Double> scoreCache = new HashMap<>();
 	private final double weights[];
 	private final double[] sortWeights;
+	private HashMap<String, ArrayList<String>> synonymCache = new HashMap<>();
+	private HashMap<String, Boolean> wordTypeCache = new HashMap<>(); // true = rechtsbegriff
 
 	/**
 	 * @author Tobias Glaeser
@@ -73,7 +76,13 @@ public class ScoreProcessor<T extends Scoreable> {
 		for(String keyword : filteredKeywords) {
 			ArrayList<String> synynoms = expandSynonyms(keyword);
 			boolean found = false;
-			boolean isJura = LawTester.testIfWordIsLawTerm(keyword);
+			boolean isJura = false;
+			if(wordTypeCache.containsKey(keyword)) {
+				isJura = wordTypeCache.get(keyword);
+			} else {
+				isJura = LawTester.testIfWordIsLawTerm(keyword);
+				wordTypeCache.put(keyword, isJura);
+			}
 			check: for(String sy : synynoms) {
 				if(s.getKeywordsAsList().contains(sy.toLowerCase())) {
 					found = true;
@@ -110,12 +119,13 @@ public class ScoreProcessor<T extends Scoreable> {
 		// alle keywords fuer query, gefilterte fuer distanz-berechnung
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
-		String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
+		// String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
 		DatabaseConnection con = new DatabaseConnection();
-		con.connectToMysql();
-		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(con.executeQuery(query)); // cast is safe as Judgement implement scoreable
+		PreparedStatement stmt = TableJudgementSQL.prepareSelect(allKeywords, con);
+		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(stmt.executeQuery()); // cast is safe as Judgement implement scoreable
 		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
+		System.out.println("raw results: " + prefilter.size());
 		for(T s : prefilter) {
 			scores.put(s, getDistance(s, filteredKeywords, timestamp));
 		}
@@ -138,10 +148,11 @@ public class ScoreProcessor<T extends Scoreable> {
 					return 0;
 			}
 		});
-		for(int i = 0; i < ordered.size() - number; i++) {
-			ordered.remove(ordered.size() - 1);
+		ArrayList<T> ret = new ArrayList<>();
+		for(int i = 0; i < ordered.size() && i < number; i++) {
+			ret.add(ordered.get(i));
 		}
-		return ordered;
+		return ret;
 	}
 
 	/**
@@ -205,7 +216,16 @@ public class ScoreProcessor<T extends Scoreable> {
 	public ArrayList<String> expandSynonyms(ArrayList<String> keywords){
 		ArrayList<String> allKeywords = new ArrayList<>(keywords);
 		for(String keyword : keywords) {
-			ArrayList<String> synonyms = ThesaurusLoader.getSynonyms(keyword.toLowerCase());
+
+			ArrayList<String> synonyms;
+
+			// test cache
+			if(synonymCache.containsKey(keyword)) {
+				synonyms = new ArrayList<>(synonymCache.get(keyword));
+			} else {
+				synonyms = ThesaurusLoader.getSynonyms(keyword.toLowerCase());
+				synonymCache.put(keyword, synonyms);
+			}
 			for(String word : synonyms) {
 				if(!allKeywords.contains(word.toLowerCase())) {
 					allKeywords.add(word.toLowerCase());

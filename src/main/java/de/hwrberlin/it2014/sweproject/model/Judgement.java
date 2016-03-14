@@ -16,7 +16,7 @@ public class Judgement implements Scoreable {
 	private LawSector lawSector;
 	private Date date;
 	private float pageRank;
-
+	
 	public Judgement(String pdfLink, String pdfFileName){
 		this.pdfLink = pdfLink;
 		this.pdfFileName = pdfFileName;

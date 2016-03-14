@@ -19,7 +19,7 @@ import de.hwrberlin.it2014.sweproject.model.Result;
  * Produktive REST Resource, die auf Basis der Nutzereingabe eine Liste an Results
  * zurückgibt
  * 
- * @author csc
+ * @author Christian Schlesing
  *
  */
 @Path("/result")
@@ -36,7 +36,9 @@ public class ResultResource extends Resource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getResults(@HeaderParam("X-Api-Key") String apiKey,
 			   				   @HeaderParam("X-Access-Token") String accessToken,
-			   				   @QueryParam("input") String input){
+			   				   @QueryParam("input") String input,
+			   				   @QueryParam("size") int size,
+			   				   @QueryParam("startindex") int startIndex){
 		try{
 			final String path = "/result/get";
 			if(!auth(apiKey,accessToken)){
@@ -44,7 +46,7 @@ public class ResultResource extends Resource {
 			} else {
 				CBR cbr = new CBR();
 				ArrayList<Result> resultList = cbr.startCBR(input);
-				return build(Status.OK,resultList,path);
+				return build(Status.OK,resultList.subList(startIndex, startIndex+size),path);
 			} 
 		} catch(Exception e){
 			e.printStackTrace();
@@ -67,14 +69,14 @@ public class ResultResource extends Resource {
 	public Response rateResult(@HeaderParam("X-Api-Key") String apiKey,
 			   				   @HeaderParam("X-Access-Token") String accessToken,
 			   				   @QueryParam("id") int id,
-							   @QueryParam("rating") float rating,
-							   @QueryParam("delay") int delay){
+							   @QueryParam("rating") float rating
+							   ){
 		try{
 			if(!auth(apiKey,accessToken)){
 				return build(Status.FORBIDDEN);
 			} else {
 				CBR cbr = new CBR();
-				cbr.saveUserRating(id,rating);
+				cbr.saveRating(id,rating);
 				return build(Status.CREATED);
 			}
 		} catch(Exception e){

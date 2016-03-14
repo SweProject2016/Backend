@@ -106,4 +106,13 @@ public class CBR {
 			return "fail: is already rated";
 		}
 	}
+	
+	public boolean saveRating(int id, float rating) {
+		DatabaseConnection con = new DatabaseConnection();
+		int update = TableResultsSQL.saveUserRating(id, rating, con);
+		if(update <=0){
+			return false;
+		}
+		return true;
+	}
 }
