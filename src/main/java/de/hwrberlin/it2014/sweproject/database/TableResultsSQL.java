@@ -55,7 +55,8 @@ public class TableResultsSQL {
 	  * @param result das einzuf�gende Result
 	  * @return der SQL-Code
 	  */
-	public static String getInsertSQLCode(Result result){
+	public static String getInsertSQLCode(Result result)
+	{
 		String sql = "INSERT INTO tbl_results (user_input, picked_file, similarity, date, user_rating) SELECT ";
 		sql+="'"+result.getUserInput()+"',";
 		sql+="j.id,";
@@ -70,9 +71,8 @@ public class TableResultsSQL {
 	 * @param id of a result which is not rated
 	 * @return Sql-Select-Query
 	 */
-	public static String getSelectSQLCode(int id){
-		//TODO
-		//get Result From DB by ID
+	public static String getSelectSQLCode(int id)
+	{
 		String sql="SELECT * FROM tbl_results WHERE id = " + id + " LIMIT 1";
 		return sql;
 	}
@@ -82,9 +82,8 @@ public class TableResultsSQL {
 	 * @param rated result
 	 * @return Sql-Update-Query
 	 */
-	public static String getUpdateSQLCodeForUserRating(Result result){
-		//TODO
-		//update the userRating
+	public static String getUpdateSQLCodeForUserRating(Result result)
+	{
 		String sql="UPDATE tbl_results SET user_rating = '";
 		sql+=result.getUserRating();
 		sql+="' WHERE id = "+ result.getID();
