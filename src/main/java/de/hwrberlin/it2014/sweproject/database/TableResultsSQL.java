@@ -68,7 +68,7 @@ public class TableResultsSQL {
 	
 	/**
 	 * @author Max Bock & Nico Pfeiffer
-	 * @param id of a result which is not rated
+	 * @param id des Results
 	 * @return Sql-Select-Query
 	 */
 	public static String getSelectSQLCode(int id)
@@ -79,7 +79,7 @@ public class TableResultsSQL {
 	
 	/**
 	 * @author Max Bock & Nico Pfeiffer
-	 * @param rated result
+	 * @param bewertetes Result-Objekt
 	 * @return Sql-Update-Query
 	 */
 	public static String getUpdateSQLCodeForUserRating(Result result)
