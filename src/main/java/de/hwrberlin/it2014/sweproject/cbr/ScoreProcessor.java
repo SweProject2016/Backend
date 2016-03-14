@@ -113,7 +113,7 @@ public class ScoreProcessor<T extends Scoreable> {
 	 * @param queryKeywords Raw query keywords (ungefiltert)
 	 * @param number Anzahl der F�lle die max. zur�ckgegeben werden sollen
 	 * @param timestamp Zeitangabe im query (in ms)
-	 * @param lawsector Rechtsbereich (prefilter exclude only)
+	 * @param lawsector Rechtsbereich (nur effektiv fuer prefilter)
 	 * @return liste mit �hnlichen F�llen (absteigende �hnlichkeit)
 	 * @throws SQLException db error
 	 */
@@ -121,10 +121,9 @@ public class ScoreProcessor<T extends Scoreable> {
 		// alle keywords fuer query, gefilterte fuer distanz-berechnung
 		ArrayList<String> filteredKeywords = filterKeywords(queryKeywords);
 		ArrayList<String> allKeywords = expandSynonyms(filteredKeywords);
-		// String query = TableJudgementSQL.getSelectSQLCode(allKeywords, lawsector);
 		DatabaseConnection con = new DatabaseConnection();
 		PreparedStatement stmt = TableJudgementSQL.prepareSelect(allKeywords, con);
-		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(stmt.executeQuery()); // cast is safe as Judgement implement scoreable
+		ArrayList<T> prefilter = (ArrayList<T>) con.convertResultSetToJudgementList(stmt.executeQuery()); // cast ist sicher da Judgement implements scoreable
 		con.close();
 		final HashMap<T, Double> scores = new HashMap<>();
 		for(T s : prefilter) {
