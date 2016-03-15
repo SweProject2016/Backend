@@ -1,9 +1,6 @@
 package de.hwrberlin.it2014.sweproject.synonym;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
 import de.hwrberlin.it2014.sweproject.database.TableLawTermsSQL;

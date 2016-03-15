@@ -95,6 +95,13 @@ public class TableResultsSQL {
 	 * it would be better to save the result only after the user rate it or otherwise directly delete it
 	 */
 	
+	/**
+	 * Update auf tbl_results, User-Rating wird gesichert
+	 * @param id Result-ID
+	 * @param rating User-Rating
+	 * @param con Datenbankverbindung
+	 * @return Anzahl der Reihen, die geupdatet wurden, -1 bei Fehlern
+	 */
 	public static int saveUserRating(int id, float rating, DatabaseConnection con){
 		Connection c = con.getConnection();
 		PreparedStatement stmt = null;

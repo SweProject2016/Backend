@@ -106,8 +106,16 @@ public class CBR {
 			return "fail: is already rated";
 		}
 	}
-	
+	/**
+	 * speichert die Bewertung eines Falles
+	 * 
+	 * @param id ID des gelieferten Results
+	 * @param rating Bewertung des Results
+	 * @return @code true, wenn die Bewertung erfolgreich war, @code false bei allen anderen Fehlern
+	 */
 	public boolean saveRating(int id, float rating) {
+		
+		//TODO: Check, ob Result bereits bewertet wurde
 		DatabaseConnection con = new DatabaseConnection();
 		int update = TableResultsSQL.saveUserRating(id, rating, con);
 		if(update <=0){

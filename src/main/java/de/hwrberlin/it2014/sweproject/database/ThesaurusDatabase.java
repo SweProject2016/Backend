@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/**
+ * Klasse stellt Funktionalit&auml;ten f&uuml;r die Suche nach Synonymen in der lokalen Openthesaurus-Datenbank zur Verf&uuml;gung
+ * @author csc
+ *
+ */
 public class ThesaurusDatabase {
 	
 	private final static String FIND_SYNONYMS_FOR_TERM_PS = "SELECT * FROM openthesaurus_term, openthesaurus_synset, openthesaurus_term term2 "
@@ -16,7 +20,13 @@ public class ThesaurusDatabase {
 			+ "openthesaurus_term.synset_id AND "
 			+ "term2.synset_id = openthesaurus_synset.id AND "
 			+ "term2.word = ?";
-	
+	/**
+	 * Liefert alle verf&uuml;gbaren Synonyme f&uuml;r einen Suchterm
+	 * 
+	 * @param term Der gesuchte Term
+	 * @param con Die Datenbankverbindung
+	 * @return Set mit allen Synonymen
+	 */
 	public static Set<String> getSynonymsForTerm(String term, DatabaseConnection con){
 		Connection c = con.getConnection();
 		Set<String> synonyms = new HashSet<>();

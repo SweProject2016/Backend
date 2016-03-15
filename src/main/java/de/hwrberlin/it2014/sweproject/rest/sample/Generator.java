@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import de.hwrberlin.it2014.sweproject.model.Committee;
 import de.hwrberlin.it2014.sweproject.model.Judgement;
 import de.hwrberlin.it2014.sweproject.model.Result;
@@ -153,5 +150,13 @@ public class Generator {
 	private Date getDate(){
 		Date date = new Date();
 		return date;
+	}
+
+	public ArrayList<Result> setSampleSim(ArrayList<Result> resultList, int startindex) {
+		for(int i=0;i<resultList.size();i++){
+			Result aResult = resultList.get(i);
+			aResult.setSimilarity(generateSimilarity(i, startindex));
+		}
+		return resultList;
 	}	
 }

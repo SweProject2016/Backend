@@ -1,7 +1,5 @@
 package de.hwrberlin.it2014.sweproject.rest;
 
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -13,9 +11,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import de.hwrberlin.it2014.sweproject.database.DatabaseConnection;
-import de.hwrberlin.it2014.sweproject.database.TableJudgementSQL;
-import de.hwrberlin.it2014.sweproject.model.enums.LawSector;
 import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
 import de.hwrberlin.it2014.sweproject.synonym.ThesaurusLoader;
 
@@ -50,7 +45,7 @@ public class SampleResource extends Resource {
             @QueryParam("size") final int size,
             @QueryParam("input") final String input,
             @QueryParam("delay") final int delay,
-            @QueryParam("start") final int start) {
+            @QueryParam("startindex") final int start) {
         try{
             Generator generator = new Generator();
             List<?> output = generator.generate(type, size, input, start);

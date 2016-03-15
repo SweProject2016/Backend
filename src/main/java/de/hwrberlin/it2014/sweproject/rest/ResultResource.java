@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.Status;
 
 import de.hwrberlin.it2014.sweproject.cbr.CBR;
 import de.hwrberlin.it2014.sweproject.model.Result;
+import de.hwrberlin.it2014.sweproject.rest.sample.Generator;
 
 /**
  * Produktive REST Resource, die auf Basis der Nutzereingabe eine Liste an Results
@@ -26,10 +27,14 @@ import de.hwrberlin.it2014.sweproject.model.Result;
 public class ResultResource extends Resource {
 
 	/**
-	 * REST Methode
+	 * REST-Methode, die passende Results zu einem Suchterm liefert
 	 * 
-	 * @param input String Nutzereingabe
-	 * @return Response
+	 * @param apiKey API-Key aus dem HTTP-Request-Header
+	 * @param accessToken Access Token aus dem HTTP-Request-Header
+	 * @param input Suchterm
+	 * @param size Gr&ouml;&szlig;e der zur&uuml;ckegegebenen Liste
+	 * @param startIndex Start-Index f&uuml;r die Liste, wird ben&ouml;tigt vom Frontend
+	 * @return Response mit HTTP-Code 200 bei Erfolg, 500 bei Fehler, 403 bei falscher Authentifizierung
 	 */
 	@GET
 	@Path("/get")
@@ -46,7 +51,18 @@ public class ResultResource extends Resource {
 			} else {
 				CBR cbr = new CBR();
 				ArrayList<Result> resultList = cbr.startCBR(input);
-				return build(Status.OK,resultList.subList(startIndex, startIndex+size),path);
+				if(resultList.isEmpty()){
+					return build(Status.OK,resultList,path);
+				} else {
+					Generator gen = new Generator();
+					resultList = gen.setSampleSim(resultList, startIndex);
+					
+					try {
+						return build(Status.OK,resultList.subList(startIndex, startIndex+size),path);
+					} catch(IndexOutOfBoundsException e){
+						return build(Status.OK,resultList.subList(startIndex, resultList.size()),path);
+					}
+				}
 			} 
 		} catch(Exception e){
 			e.printStackTrace();
@@ -55,14 +71,13 @@ public class ResultResource extends Resource {
 	}
 	
 	/**
-	 * REST Resource um einen Fall zu bewerten
+	 * REST-Methode, um ein Result zu bewerten
 	 * 
-	 * @param apiKey der API-Key
-	 * @param accessToken der Access-Token
-	 * @param id Result ID
-	 * @param rating Die Bewertung des Results
-	 * @param delay Verzögerung
-	 * @return Response 201, wenn erfolgreich, 400/403 bei Fehlern
+	 * @param apiKey API-Key aus dem HTTP-Request-Header
+	 * @param accessToken Access Token aus dem HTTP-Request-Header
+	 * @param id ID des Results, welches bewertet werden soll
+	 * @param rating Bewertung des Nutzers
+	 * @return Response mit HTTP-Code 201 bei Erfolg, 500 bei Fehler, 403 bei falscher Authentifizierung
 	 */
 	@POST
 	@Path("rate")
