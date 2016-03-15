@@ -87,6 +87,9 @@ public class CBR {
 	 */
 	public String saveUserRating(int idOfResult, float rating) throws SQLException
 	{
+		//TODO
+		//doesnt work yet
+		//use saveRating instead
 		if(idOfResult<=-1)
 			return "invalid id";
 		String query = TableResultsSQL.getSelectSQLCode(idOfResult);

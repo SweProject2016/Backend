@@ -47,7 +47,8 @@ public class Request {
 		String sstream = "";
 		for (String s : description)
 		{
-			sstream += s + " ";
+			if(sstream != "") sstream += " ";
+			sstream += s;
 		}
 		return sstream;
 	}
